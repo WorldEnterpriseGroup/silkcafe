@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Visit Us | SILK Cafe</title>
+        <title>Place Your Order | SILK Cafe</title>
         <script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
         <script src="https://www.youtube.com/player_api"></script>
         <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
@@ -133,7 +133,7 @@
         <header class="page">
             <div class="page_cover d-flex flex-column align-items-center justify-content-center">
                 <div class="page_cover-img"></div>
-                <h2 class="page_cover-title">Visit Us</h2>
+                <h2 class="page_cover-title">Place Your Order</h2>
             </div>
             <div class="page_breadcrumbs">
                 <ul class="page_breadcrumbs-list d-flex flex-wrap justify-content-center h5">
@@ -141,7 +141,7 @@
                         <a class="link" href="index.html">Home</a>
                     </li>
 
-                    <li>Visit Us</li>
+                    <li>Place Your Order</li>
                 </ul>
             </div>
         </header>
@@ -150,13 +150,13 @@
             <section class="reservation section">
                 <div class="container">
                     <div class="section_header">
-                        <span class="section_header-subtitle" data-aos="fade-down">Member-Exclusive Space</span>
-                        <h2 class="section_header-title" data-aos="fade-up">Request a Visit</h2>
+                        <span class="section_header-subtitle" data-aos="fade-down">Members-Only Dine-In</span>
+                        <h2 class="section_header-title" data-aos="fade-up">Order Pickup or Catering</h2>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="50">
-                            SILK Cafe is exclusive to SILK Members and their guests. Want to visit? Become a SILK Member or request a guest pass below.
+                            SILK Cafe is a members-only dine-in space for SILK Homes residents. However, our delicious farm-to-table creations are available to the community via pickup and catering services.
                         </p>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="75">
-                            <strong>Not a member yet?</strong> Learn about joining SILK Homes at <a href="https://silkhomes.org" target="_blank" style="color: inherit; text-decoration: underline;">silkhomes.org</a>
+                            <strong>Choose from 10 pickup locations</strong> at SILK Homes properties across the region. Perfect for gatherings, events, or enjoying SILK quality at home. <a href="https://silkhomes.org" target="_blank" style="color: inherit; text-decoration: underline;">Learn more about SILK Homes</a>
                         </p>
                     </div>
                     <form class="reservation_form" action="#" method="post" data-type="booking">
@@ -170,11 +170,23 @@
                             placeholder="Email Address"
                         />
                         <input class="field required" type="text" data-type="tel" name="bookingTel" id="bookingTel" placeholder="Phone Number" />
-                        <select class="field required" name="bookingMemberStatus" id="bookingMemberStatus">
-                            <option value="">Member Status</option>
-                            <option value="silk-member">I'm a SILK Member</option>
-                            <option value="guest-pass">Requesting a Guest Pass</option>
-                            <option value="interested">Interested in Membership</option>
+                        <select class="field required" name="bookingOrderType" id="bookingOrderType">
+                            <option value="">Order Type</option>
+                            <option value="pickup">Pickup Order</option>
+                            <option value="catering">Catering Inquiry</option>
+                        </select>
+                        <select class="field required" name="bookingLocation" id="bookingLocation">
+                            <option value="">Pickup Location (SILK Homes)</option>
+                            <option value="ravenswood">Ravenswood - 123 Main St</option>
+                            <option value="parkersburg">Parkersburg - 456 Oak Ave</option>
+                            <option value="marietta">Marietta - 789 River Rd</option>
+                            <option value="riverside">Riverside - 321 Water St</option>
+                            <option value="milltown">Milltown - 654 Mill Ln</option>
+                            <option value="foresthill">Forest Hill - 987 Grove Ave</option>
+                            <option value="lakeview">Lakeview - 147 Lake Dr</option>
+                            <option value="meadowbrook">Meadowbrook - 258 Meadow Ln</option>
+                            <option value="stonegate">Stonegate - 369 Stone Rd</option>
+                            <option value="hillside">Hillside - 741 Hill St</option>
                         </select>
                         <div class="wrapper">
                             <input
@@ -183,7 +195,7 @@
                                 data-type="date"
                                 name="bookingDate"
                                 id="bookingDate"
-                                placeholder="Preferred Visit Date"
+                                placeholder="Pickup Date"
                             />
                             <label class="icon-date icon" for="bookingDate"></label>
                         </div>
@@ -195,13 +207,13 @@
                                 name="bookingTime"
                                 id="bookingTime"
                                 data-open="multiple-open-elements"
-                                placeholder="Preferred Time"
+                                placeholder="Pickup Time"
                             />
                             <label class="icon-clock icon" for="bookingTime" data-open="multiple-open-elements"></label>
                         </div>
-                        <input class="field required" type="number" name="bookingSeats" id="bookingSeats" placeholder="Number of Guests" />
-                        <textarea class="field" name="bookingMessage" id="bookingMessage" placeholder="Additional Information (Member ID, purpose of visit, etc.)"></textarea>
-                        <button class="btn" type="submit">Request Visit</button>
+                        <input class="field required" type="number" name="bookingServings" id="bookingServings" placeholder="Number of Servings" />
+                        <textarea class="field" name="bookingMessage" id="bookingMessage" placeholder="Order Details & Special Requests (menu items, dietary restrictions, event details for catering, etc.)"></textarea>
+                        <button class="btn" type="submit">Submit Order Request</button>
                     </form>
                 </div>
             </section>
