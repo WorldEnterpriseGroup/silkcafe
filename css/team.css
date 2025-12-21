@@ -1595,7 +1595,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .page_cover {
-    background: url(../img/placeholder.jpg) center/cover no-repeat
+    background: url(../img/index/coffeecup.webp) center/cover no-repeat
 }
 
 .join {

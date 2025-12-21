@@ -1464,7 +1464,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
 .banner {
     display: none;
-    background: url(../img/placeholder.jpg) center/cover no-repeat fixed
+    background: url(../img/index/slide01.webp) center/cover no-repeat fixed
 }
 
 @media screen and (min-width:767.98px) {

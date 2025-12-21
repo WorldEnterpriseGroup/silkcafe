@@ -1453,7 +1453,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .page_cover {
-    background: url(../img/placeholder.jpg) center/cover no-repeat
+    background: url(../img/index/new01.webp) center/cover no-repeat
 }
 
 .benefits {

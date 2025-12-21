@@ -1424,7 +1424,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 .error {
     min-height: 100vh;
     text-align: center;
-    background: url(../img/placeholder.jpg) center/cover no-repeat
+    background: url(../img/index/slide02.webp) center/cover no-repeat
 }
 
 .error .section_header * {

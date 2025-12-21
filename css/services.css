@@ -1761,7 +1761,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .testimonials {
-    background: url(../img/placeholder.jpg) left center/cover no-repeat;
+    background: url(../img/index/menu05.webp) left center/cover no-repeat;
     text-align: center
 }
 
@@ -1827,7 +1827,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .contacts {
-    background: url(../img/placeholder.jpg) right center/cover no-repeat
+    background: url(../img/index/menu05.webp) right center/cover no-repeat
 }
 
 .contacts_main .btn {
@@ -2010,6 +2010,6 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .page_cover {
-    background: url(../img/placeholder.jpg) center/cover no-repeat
+    background: url(../img/index/menu05.webp) center/cover no-repeat
 }
 /*# sourceMappingURL=../sourcemaps/services.css.map */
