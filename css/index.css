@@ -1771,6 +1771,17 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     overflow: hidden
 }
 
+.menu_tabs-list_item .media {
+    height: 100%;
+    width: 100%
+}
+
+.menu_tabs-list_item .media picture {
+    display: block;
+    height: 100%;
+    width: 100%
+}
+
 .menu_tabs-list_item img {
     height: 100%;
     width: 100%;

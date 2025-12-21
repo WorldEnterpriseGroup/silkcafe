@@ -51,6 +51,17 @@
                 height: 240px;
                 overflow: hidden;
 
+                .media {
+                    height: 100%;
+                    width: 100%;
+
+                    picture {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
                 img {
                     height: 100%;
                     width: 100%;
