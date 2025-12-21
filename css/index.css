@@ -1741,7 +1741,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 .menu_nav .nav-link:after {
     content: '';
     position: absolute;
-    top: 50%;
+    bottom: 0;
     left: 0;
     height: 2px;
     width: 0;
