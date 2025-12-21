@@ -1464,7 +1464,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
 .banner {
     display: none;
-    background: url(../img/index/slide01.webp) center/cover no-repeat fixed
+    background: url(../img/index/cafe_seating.webp) center/cover no-repeat fixed
 }
 
 @media screen and (min-width:767.98px) {
@@ -1975,13 +1975,23 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .presentation_slider-slide {
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
     overflow: hidden
 }
 
 .presentation_slider-slide .link {
     display: block;
-    position: relative
+    position: relative;
+    height: 100%
+}
+
+.presentation_slider-slide .link .media {
+    height: 100%
+}
+
+.presentation_slider-slide .link .media picture {
+    display: block;
+    height: 100%
 }
 
 .presentation_slider-slide .link:hover .main {
@@ -1990,6 +2000,8 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
 .presentation_slider-slide .link img {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
     -webkit-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
     transition: .3s ease-in-out
@@ -2089,6 +2101,18 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
     .presentation_slider {
         width: 75%
+    }
+
+    .presentation_slider-slide {
+        aspect-ratio: unset;
+        height: 100%
+    }
+
+    .presentation_slider-slide .link,
+    .presentation_slider-slide .link .media,
+    .presentation_slider-slide .link .media picture,
+    .presentation_slider-slide .link img {
+        height: 100%
     }
 }
 
@@ -2359,12 +2383,33 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     }
 
     .recent_posts-item .main {
-        width: calc(100% - 360px)
+        width: calc(100% - 360px);
+        background: rgba(179, 142, 106, 0.92);
+        padding: 20px 25px;
+        border-radius: 4px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15)
     }
 
     .recent_posts-item .main_title {
         display: block;
         max-width: 190px
+    }
+
+    .recent_posts-item .main_title a {
+        color: #fff
+    }
+
+    .recent_posts-item .main_text {
+        color: rgba(255, 255, 255, 0.95)
+    }
+
+    .recent_posts-item .main_link {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.5)
+    }
+
+    .recent_posts-item .main_link:hover {
+        color: #E5DCD2
     }
 }
 
