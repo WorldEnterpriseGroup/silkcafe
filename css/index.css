@@ -1772,7 +1772,9 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .menu_tabs-list_item img {
-    height: 100%
+    height: 100%;
+    width: 100%;
+    object-fit: cover
 }
 
 .menu_tabs-list_item .link {
