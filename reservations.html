@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Place Your Order | SILK Cafe</title>
+        <title>Order Form | SILK Cafe</title>
         <script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
         <script src="https://www.youtube.com/player_api"></script>
         <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
@@ -133,7 +133,7 @@
         <header class="page">
             <div class="page_cover d-flex flex-column align-items-center justify-content-center">
                 <div class="page_cover-img"></div>
-                <h2 class="page_cover-title">Place Your Order</h2>
+                <h2 class="page_cover-title">Order Form</h2>
             </div>
             <div class="page_breadcrumbs">
                 <ul class="page_breadcrumbs-list d-flex flex-wrap justify-content-center h5">
@@ -141,7 +141,7 @@
                         <a class="link" href="index.html">Home</a>
                     </li>
 
-                    <li>Place Your Order</li>
+                    <li>Order Form</li>
                 </ul>
             </div>
         </header>
@@ -150,43 +150,40 @@
             <section class="reservation section">
                 <div class="container">
                     <div class="section_header">
-                        <span class="section_header-subtitle" data-aos="fade-down">Members-Only Dine-In</span>
-                        <h2 class="section_header-title" data-aos="fade-up">Order Pickup or Catering</h2>
+                        <span class="section_header-subtitle" data-aos="fade-down">Members Dine-In</span>
+                        <h2 class="section_header-title" data-aos="fade-up">Pickup & Catering</h2>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="50">
-                            SILK Cafe is a members-only dine-in space for SILK Homes residents. However, our delicious farm-to-table creations are available to the community via pickup and catering services.
-                        </p>
-                        <p class="section_header-text" data-aos="fade-up" data-aos-delay="75">
-                            <strong>Choose from 10 pickup locations</strong> at SILK Homes properties across the region. Perfect for gatherings, events, or enjoying SILK quality at home. <a href="https://silkhomes.org" target="_blank" style="color: inherit; text-decoration: underline;">Learn more about SILK Homes</a>
+                            Farm-to-table creations available via pickup at 10 SILK Homes locations. Perfect for gatherings or enjoying quality at home.
                         </p>
                     </div>
                     <form class="reservation_form" action="#" method="post" data-type="booking">
-                        <input class="field required" type="text" name="bookingName" id="bookingName" placeholder="Full Name" />
+                        <input class="field required" type="text" name="bookingName" id="bookingName" placeholder="Name" />
                         <input
                             class="field required"
                             type="text"
                             data-type="email"
                             name="bookingEmail"
                             id="bookingEmail"
-                            placeholder="Email Address"
+                            placeholder="Email"
                         />
-                        <input class="field required" type="text" data-type="tel" name="bookingTel" id="bookingTel" placeholder="Phone Number" />
+                        <input class="field required" type="text" data-type="tel" name="bookingTel" id="bookingTel" placeholder="Phone" />
                         <select class="field required" name="bookingOrderType" id="bookingOrderType">
-                            <option value="">Order Type</option>
-                            <option value="pickup">Pickup Order</option>
-                            <option value="catering">Catering Inquiry</option>
+                            <option value="">Type</option>
+                            <option value="pickup">Pickup</option>
+                            <option value="catering">Catering</option>
                         </select>
                         <select class="field required" name="bookingLocation" id="bookingLocation">
-                            <option value="">Pickup Location (SILK Homes)</option>
-                            <option value="ravenswood">Ravenswood, WV</option>
-                            <option value="parkersburg">Parkersburg, WV</option>
-                            <option value="marietta">Marietta, OH</option>
-                            <option value="riverside">Riverside, WV</option>
-                            <option value="milltown">Milltown, WV</option>
-                            <option value="foresthill">Forest Hill, WV</option>
-                            <option value="lakeview">Lakeview, OH</option>
-                            <option value="meadowbrook">Meadowbrook, WV</option>
-                            <option value="stonegate">Stonegate, OH</option>
-                            <option value="hillside">Hillside, WV</option>
+                            <option value="">Location</option>
+                            <option value="ravenswood">Ravenswood</option>
+                            <option value="parkersburg">Parkersburg</option>
+                            <option value="marietta">Marietta</option>
+                            <option value="riverside">Riverside</option>
+                            <option value="milltown">Milltown</option>
+                            <option value="foresthill">Forest Hill</option>
+                            <option value="lakeview">Lakeview</option>
+                            <option value="meadowbrook">Meadowbrook</option>
+                            <option value="stonegate">Stonegate</option>
+                            <option value="hillside">Hillside</option>
                         </select>
                         <div class="wrapper">
                             <input
@@ -195,7 +192,7 @@
                                 data-type="date"
                                 name="bookingDate"
                                 id="bookingDate"
-                                placeholder="Pickup Date"
+                                placeholder="dd.mm.yyyy"
                             />
                             <label class="icon-date icon" for="bookingDate"></label>
                         </div>
@@ -207,13 +204,13 @@
                                 name="bookingTime"
                                 id="bookingTime"
                                 data-open="multiple-open-elements"
-                                placeholder="Pickup Time"
+                                placeholder="Time"
                             />
                             <label class="icon-clock icon" for="bookingTime" data-open="multiple-open-elements"></label>
                         </div>
-                        <input class="field required" type="number" name="bookingServings" id="bookingServings" placeholder="Number of Servings" />
-                        <textarea class="field" name="bookingMessage" id="bookingMessage" placeholder="Order Details & Special Requests (menu items, dietary restrictions, event details for catering, etc.)"></textarea>
-                        <button class="btn" type="submit">Submit Order Request</button>
+                        <input class="field required" type="number" name="bookingServings" id="bookingServings" placeholder="Servings" />
+                        <textarea class="field" name="bookingMessage" id="bookingMessage" placeholder="Order details & requests"></textarea>
+                        <button class="btn" type="submit">submit order</button>
                     </form>
                 </div>
             </section>
@@ -293,7 +290,7 @@
                     <h4 class="footer_block-title">Contact Info</h4>
                     <ul class="footer_block-list text--bold text--md">
                         <li>
-                            <a class="link" href="mailto:hello@silkcafe.org"> <i class="icon-email icon"></i> hello@silkcafe.org </a>
+                            <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
                         </li>
                         <li>
                             Mid-Ohio Valley, WV & Ohio
