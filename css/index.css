@@ -1790,7 +1790,8 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
 .menu_tabs-list_item .link {
     display: block;
-    position: relative
+    position: relative;
+    height: 100%
 }
 
 .menu_tabs-list_item .link:hover .main {
