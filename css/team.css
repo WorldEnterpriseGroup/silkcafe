@@ -1113,6 +1113,32 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     background: #e5dcd2
 }
 
+.header.sticky .logo {
+    color: #534931
+}
+
+.header.sticky .nav-item,
+.header.sticky .nav-item_text {
+    color: #534931
+}
+
+.header.sticky .nav-item:hover,
+.header.sticky .nav-item:hover .nav-item_text {
+    color: #b38e6a
+}
+
+.header.sticky .header_nav-socials .link {
+    color: #534931
+}
+
+.header.sticky .header_nav-socials .link:hover {
+    color: #b38e6a
+}
+
+.header.sticky .header_trigger .line {
+    background: #534931
+}
+
 .header.opened {
     height: 100vh
 }
@@ -1437,20 +1463,26 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .page_breadcrumbs {
-    background: #e5dcd2;
+    background: transparent;
     padding: 20px
 }
 
 .page_breadcrumbs-list {
-    text-transform: capitalize
+    text-transform: capitalize;
+    color: #fff
 }
 
 .page_breadcrumbs-list li {
-    position: relative
+    position: relative;
+    color: #fff
 }
 
 .page_breadcrumbs-list li .link {
-    color: #b38e6a
+    color: #fff
+}
+
+.page_breadcrumbs-list li .link:hover {
+    color: #e5dcd2
 }
 
 .page_breadcrumbs-list li:not(:last-of-type):after {
@@ -1595,7 +1627,59 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 .page_cover {
-    background: url(../img/index/coffeecup.webp) center/cover no-repeat
+    background: url(../img/index/community_header.webp) center/cover no-repeat;
+    position: relative
+}
+
+.page_cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1
+}
+
+.page_cover > * {
+    position: relative;
+    z-index: 2
+}
+
+.page_cover .page_cover-title {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
+}
+
+.header {
+    background: rgba(0, 0, 0, 0.4)
+}
+
+.header .logo {
+    color: #fff
+}
+
+.header .nav-item,
+.header .nav-item_text {
+    color: #fff
+}
+
+.header .nav-item:hover,
+.header .nav-item:hover .nav-item_text {
+    color: #e5dcd2
+}
+
+.header .header_nav-socials .link {
+    color: #fff
+}
+
+.header .header_nav-socials .link:hover {
+    color: #e5dcd2
+}
+
+.header .header_trigger .line {
+    background: #fff
 }
 
 .join {

@@ -14,6 +14,9 @@
 
 import {initSwiperSlider} from "./modules/slider";
 import initGallery from "./modules/gallery";
+import Swiper, {Navigation, Autoplay, Pagination, EffectFade} from 'swiper';
+
+Swiper.use([Navigation, Autoplay, Pagination, EffectFade]);
 
 document.addEventListener('DOMContentLoaded', () => {
     initSwiperSlider('.hero_slider', '.hero_slider-nav', {
@@ -40,15 +43,45 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         }
     });
-    initSwiperSlider('.testimonials_slider', '.testimonials_slider-nav', {
-        autoplay: true,
-        speed: 1500,
-        slidesPerView: 1,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        }
-    });
+    // Initialize synced testimonials sliders
+    const testimonialsImagesEl = document.querySelector('.testimonials_images');
+    const testimonialsSliderEl = document.querySelector('.testimonials_slider');
+
+    if (testimonialsImagesEl && testimonialsSliderEl) {
+        // Initialize image slider
+        const testimonialsImages = new Swiper('.testimonials_images', {
+            loop: true,
+            effect: 'fade',
+            speed: 800,
+            fadeEffect: {
+                crossFade: true
+            },
+            allowTouchMove: false,
+        });
+
+        // Initialize text slider with sync
+        const testimonialsText = new Swiper('.testimonials_slider', {
+            loop: true,
+            effect: 'fade',
+            speed: 800,
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.testimonials_slider-nav .swiper-button-next',
+                prevEl: '.testimonials_slider-nav .swiper-button-prev',
+            },
+            on: {
+                slideChangeTransitionStart: function() {
+                    testimonialsImages.slideToLoop(this.realIndex, 800);
+                }
+            }
+        });
+    }
     initSwiperSlider('.services_gallery-slider', '.services_gallery-slider_nav', {
         spaceBetween: 15,
         autoplay: true,

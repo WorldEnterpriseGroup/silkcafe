@@ -12,6 +12,52 @@
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
         <link rel="stylesheet" href="css/menu.min.css" />
+    <style>
+        /* Initial header styling for readability on hero */
+        .header {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .header .logo {
+            color: #fff;
+            white-space: nowrap;
+            min-width: max-content;
+        }
+        .header .nav-item,
+        .header .nav-item_text {
+            color: #fff;
+        }
+        .header .nav-item:hover,
+        .header .nav-item:hover .nav-item_text {
+            color: #e5dcd2;
+        }
+        .header .header_nav-socials .link {
+            color: #fff;
+        }
+        .header .header_nav-socials .link:hover {
+            color: #e5dcd2;
+        }
+        .header .header_trigger .line {
+            background: #fff;
+        }
+
+        /* 508 Accessibility fix: Dark text on sticky nav with light background */
+        .header.sticky .header_nav-list .nav-link,
+        .header.sticky .header_nav-list .nav-item_text,
+        .header.sticky .logo {
+            color: #333 !important;
+        }
+        .header.sticky .header_nav-socials .icon,
+        .header.sticky .header_nav-socials .link {
+            color: #333 !important;
+        }
+        .header.sticky .header_trigger .line {
+            background-color: #333 !important;
+        }
+        .header.sticky .header_nav-list .nav-link:hover,
+        .header.sticky .header_nav-list .nav-link.current {
+            color: #8B4513 !important;
+        }
+    </style>
     </head>
     <body>
         <header class="header" data-page="menu" data-page-parent="@@parent">
@@ -29,164 +75,30 @@
                 </a>
                 <nav class="header_nav text--medium text--md collapse" id="headerMenu">
                     <ul class="header_nav-list">
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="index.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#homeMenu"
-                                data-trigger="dropdown"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                                data-page="home"
-                                data-page-parent="home"
-                            >
-                                <span class="nav-item_text"> Home </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="homeMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="home"
-                                            data-page-parent="home"
-                                            href="index.html"
-                                            data-main="true"
-                                        >
-                                            Home 1
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="home2" data-page-parent="home" href="index2.html">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
                                 <span class="nav-item_text">About</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="menu.html" data-page="menu" data-single="true">
-                                <span class="nav-item_text">Menu</span>
+                            <a class="nav-item nav-link" href="community.html" data-page="team" data-single="true">
+                                <span class="nav-item_text">Community</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="catering.html" data-page="catering" data-single="true">
-                                <span class="nav-item_text">Catering</span>
+                            <a class="nav-item nav-link" href="gatherings.html" data-page="gatherings" data-single="true">
+                                <span class="nav-item_text">Gatherings</span>
                             </a>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="events.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#blogMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="events"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="blogMenu"
-                                data-page="events"
-                            >
-                                <span class="nav-item_text"> Blog </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="stories.html" data-page="events" data-single="true">
+                                <span class="nav-item_text">Stories</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="blogMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="events"
-                                            data-page-parent="events"
-                                            href="events.html"
-                                            data-main="true"
-                                        >
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="post" data-page-parent="events" href="post.html">
-                                            Single Post
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="#"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#pagesMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="pages"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                <span class="nav-item_text"> Pages </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="contacts.html" data-page="contacts" data-single="true">
+                                <span class="nav-item_text">Connect</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="pagesMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="team" data-page-parent="pages" href="team.html">
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="error" data-page-parent="pages" href="404.html">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="contacts.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#contactsMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="contacts"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="contactsMenu"
-                            >
-                                <span class="nav-item_text"> Contact Us </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="contactsMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="contacts"
-                                            data-page-parent="contacts"
-                                            href="contacts.html"
-                                        >
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="reservations"
-                                            data-page-parent="contacts"
-                                            href="reservations.html"
-                                        >
-                                            Reservations
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                     <ul class="header_nav-socials d-flex">
@@ -245,7 +157,7 @@
                         <span class="section_header-subtitle" data-aos="fade-down">Our menu</span>
                         <h2 class="section_header-title" data-aos="fade-up" data-aos-delay="50">Special Menu</h2>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="100">
-                            Cottage food compliant items. Members dine in. Community access via pickup and catering.
+                            Cottage food compliant items. Our members gather for meals. Community welcome via pickup and catering.
                         </p>
                     </div>
                     <div class="menu_main">
@@ -259,7 +171,7 @@
                                     role="tab"
                                     aria-selected="true"
                                 >
-                                    Members-Only Dine-In
+                                    Member Dining
                                 </div>
                             </li>
                             <li class="nav-item h4" role="presentation">
@@ -308,7 +220,7 @@
                                     aria-expanded="true"
                                     role="button"
                                 >
-                                    <span class="label h4">Members-Only Dine-In</span>
+                                    <span class="label h4">Member Dining</span>
                                     <i class="icon"></i>
                                 </span>
                                 <ul class="menu_tab-list collapse show" id="silkhomes">
@@ -553,7 +465,7 @@
                                     </picture>
                                 </span>
                                 <span class="main">
-                                    <span class="section_header-subtitle">Members-Only</span>
+                                    <span class="section_header-subtitle">For Those Who Call SILK Home</span>
                                     <span class="h4">Quiet Residential Dining</span>
                                     <span class="main_text text--medium text--md">Inside SILK Homes</span>
                                 </span>
@@ -620,7 +532,7 @@
                         <span class="section_header-subtitle" data-aos="fade-up">contact us</span>
                         <h2 class="section_header-title" data-aos="fade-up" data-aos-delay="50">Book Your Reservation Today</h2>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="100">
-                            SILK Cafe is for SILK Homes residents. Community members access via pickup and catering services.
+                            SILK Cafe serves folks who live here. The wider community joins us through pickup and catering services.
                         </p>
                     </div>
                     <div class="wrapper" data-aos="fade-up" data-aos-delay="150">
@@ -629,9 +541,11 @@
                 </div>
             </section>
             <!-- booking section end -->
-            <!-- map section start -->
-            <div id="map"></div>
-            <!-- map section end -->
+            <!-- cafe interior section start -->
+            <section class="map-section" style="width: 100%; overflow: hidden;">
+                <img src="img/index/cafe-interior-banner.webp" alt="SILK Cafe interior - warm residential kitchen and cozy gathering space" style="width: 100%; height: auto; display: block;" loading="lazy" />
+            </section>
+            <!-- cafe interior section end -->
             <!-- gallery section start -->
             <div class="gallery_slider swiper">
                 <div class="swiper-wrapper">
@@ -707,14 +621,26 @@
                         <li>
                             <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
                         </li>
+                        <li>
+                            <a class="link" href="tel:+13045551234"> <i class="icon-phone icon"></i> (304) 555-1234 </a>
+                        </li>
+                    </ul>
+                    <p class="footer_block-subtitle text--md text--bold" style="margin-top: 1rem;">Follow Us</p>
+                    <ul class="footer_block-list text--md">
+                        <li><a class="link" href="https://instagram.com/silkcafe" target="_blank"><i class="icon-instagram icon"></i> Instagram</a></li>
+                        <li><a class="link" href="https://facebook.com/silkcafe" target="_blank"><i class="icon-facebook icon"></i> Facebook</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
-                    <h4 class="footer_block-title">Access Options</h4>
+                    <h4 class="footer_block-title">Explore</h4>
                     <ul class="footer_block-list text--md">
-                        <li><span class="text--bold">Members-Only:</span> Dine-in at SILK Homes</li>
-                        <li><span class="text--bold">Community:</span> Pickup & Catering</li>
-                        <li><span class="text--bold">Items:</span> Cottage food compliant</li>
+                        <li><a class="link" href="menu.html">Our Menu</a></li>
+                        <li><a class="link" href="about.html">About Us</a></li>
+                        <li><a class="link" href="community.html">Community Kitchen</a></li>
+                        <li><a class="link" href="catering.html">Catering Services</a></li>
+                        <li><a class="link" href="gatherings.html">Gatherings</a></li>
+                        <li><a class="link" href="stories.html">Success Stories</a></li>
+                        <li><a class="link" href="contacts.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
@@ -724,6 +650,7 @@
                         <li><a class="link" href="https://silkcorp.org" target="_blank">SILK Corp</a></li>
                         <li><a class="link" href="https://silkyoga.org" target="_blank">SILK Yoga</a></li>
                         <li><a class="link" href="https://silkarts.org" target="_blank">SILK Arts</a></li>
+                        <li><a class="link" href="https://silkcafe.org" target="_blank">SILK Cafe</a></li>
                         <li><a class="link" href="https://silkhomes.org" target="_blank">SILK Homes</a></li>
                         <li><a class="link" href="https://silklife.org" target="_blank">SILK Life</a></li>
                         <li><a class="link" href="https://silkwomen.org" target="_blank">SILK Women</a></li>
@@ -732,6 +659,6 @@
             </div>
         </footer>
         <script src="js/common.min.js"></script>
-        <script src="js/map.min.js"></script>
+        <!-- <script src="js/map.min.js"></script> -->
     </body>
 </html>

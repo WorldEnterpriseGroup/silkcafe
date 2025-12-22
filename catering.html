@@ -12,6 +12,174 @@
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
         <link rel="stylesheet" href="css/services.min.css" />
+    <style>
+        /* 508 Accessibility fix: Dark text on sticky nav with light background */
+        .header.sticky .header_nav-list .nav-link,
+        .header.sticky .header_nav-list .nav-item_text,
+        .header.sticky .logo {
+            color: #333 !important;
+        }
+        .header.sticky .header_nav-socials .icon,
+        .header.sticky .header_nav-socials .link {
+            color: #333 !important;
+        }
+        .header.sticky .header_trigger .line {
+            background-color: #333 !important;
+        }
+        .header.sticky .header_nav-list .nav-link:hover,
+        .header.sticky .header_nav-list .nav-link.current {
+            color: #8B4513 !important;
+        }
+
+        /* Initial header styling for readability on hero */
+        .header {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .header .logo {
+            color: #fff;
+            white-space: nowrap;
+            min-width: max-content;
+        }
+        .header .nav-item,
+        .header .nav-item_text {
+            color: #fff;
+        }
+        .header .nav-item:hover,
+        .header .nav-item:hover .nav-item_text {
+            color: #e5dcd2;
+        }
+        .header .header_nav-socials .link {
+            color: #fff;
+        }
+        .header .header_nav-socials .link:hover {
+            color: #e5dcd2;
+        }
+        .header .header_trigger .line {
+            background: #fff;
+        }
+
+        /* How It Works step images */
+        .step-image {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .services_main-list_item .step-image-wrapper {
+            text-align: center;
+        }
+
+        /* Cottage food gallery */
+        .cottage-gallery {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .cottage-gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 508 Accessibility: Page cover title readability */
+        .page_cover {
+            position: relative;
+        }
+        .page_cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+        .page_cover > * {
+            position: relative;
+            z-index: 2;
+        }
+        .page_cover .page_cover-title {
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 508 Accessibility: Banner title readability */
+        .services_main-banner_title {
+            color: #fff !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* Service item images - 4:1 horizontal ratio */
+        .service-item-img {
+            width: 100%;
+            aspect-ratio: 4 / 1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* 508 Accessibility: Banner text readability - overlay on image only */
+        .services_main-banner .services_main-banner_bg img {
+            filter: brightness(0.55);
+        }
+        .services_main-banner ul li {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 508 Accessibility: Contact section text readability over background image */
+        .contacts {
+            position: relative;
+        }
+        .contacts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.92);
+            z-index: 0;
+        }
+        .contacts .container {
+            position: relative;
+            z-index: 1;
+        }
+        .contacts .section_header-title,
+        .contacts .section_header-subtitle,
+        .contacts .section_header-text {
+            color: #534931;
+        }
+        .contacts_info-list_item .label,
+        .contacts_info-list_item .link {
+            color: #534931;
+        }
+        .contacts_info-list_item .icon {
+            background: #b38e6a;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        /* 508: Focus states for keyboard navigation */
+        .contacts_form .field:focus {
+            outline: 3px solid #b38e6a;
+            outline-offset: 2px;
+            border-color: #534931;
+        }
+        .contacts_form .btn:focus {
+            outline: 3px solid #534931;
+            outline-offset: 2px;
+        }
+    </style>
     </head>
     <body>
         <header class="header" data-page="catering" data-page-parent="@@parent">
@@ -29,164 +197,30 @@
                 </a>
                 <nav class="header_nav text--medium text--md collapse" id="headerMenu">
                     <ul class="header_nav-list">
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="index.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#homeMenu"
-                                data-trigger="dropdown"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                                data-page="home"
-                                data-page-parent="home"
-                            >
-                                <span class="nav-item_text"> Home </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="homeMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="home"
-                                            data-page-parent="home"
-                                            href="index.html"
-                                            data-main="true"
-                                        >
-                                            Home 1
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="home2" data-page-parent="home" href="index2.html">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
                                 <span class="nav-item_text">About</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="menu.html" data-page="menu" data-single="true">
-                                <span class="nav-item_text">Menu</span>
+                            <a class="nav-item nav-link" href="community.html" data-page="team" data-single="true">
+                                <span class="nav-item_text">Community</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="catering.html" data-page="catering" data-single="true">
-                                <span class="nav-item_text">Catering & Pickup</span>
+                            <a class="nav-item nav-link" href="gatherings.html" data-page="gatherings" data-single="true">
+                                <span class="nav-item_text">Gatherings</span>
                             </a>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="events.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#blogMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="events"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="blogMenu"
-                                data-page="events"
-                            >
-                                <span class="nav-item_text"> Blog </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="stories.html" data-page="events" data-single="true">
+                                <span class="nav-item_text">Stories</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="blogMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="events"
-                                            data-page-parent="events"
-                                            href="events.html"
-                                            data-main="true"
-                                        >
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="post" data-page-parent="events" href="post.html">
-                                            Single Post
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="#"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#pagesMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="pages"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                <span class="nav-item_text"> Pages </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="contacts.html" data-page="contacts" data-single="true">
+                                <span class="nav-item_text">Connect</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="pagesMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="team" data-page-parent="pages" href="team.html">
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="error" data-page-parent="pages" href="404.html">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="contacts.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#contactsMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="contacts"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="contactsMenu"
-                            >
-                                <span class="nav-item_text"> Contact Us </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="contactsMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="contacts"
-                                            data-page-parent="contacts"
-                                            href="contacts.html"
-                                        >
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="reservations"
-                                            data-page-parent="contacts"
-                                            href="reservations.html"
-                                        >
-                                            Reservations
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                     <ul class="header_nav-socials d-flex">
@@ -207,7 +241,17 @@
                         </li>
                     </ul>
                 </nav>
-                <button class="header_trigger" type="button" data-bs-toggle="collapse" data-bs-target="#headerMenu">
+                <button
+                    class="header_trigger"
+                    id="headerTrigger"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#headerMenu"
+                    aria-controls="headerMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation menu"
+                    type="button"
+                >
+                    <span class="line"></span>
                     <span class="line"></span>
                     <span class="line line--short"></span>
                 </button>
@@ -237,7 +281,7 @@
                         <span class="section_header-subtitle" data-aos="fade-down">Community Access Point</span>
                         <h2 class="section_header-title" data-aos="fade-up">Your Gateway to SILK Cafe Wholesome Food</h2>
                         <p class="section_header-text" data-aos="fade-up" data-aos-delay="50">
-                            SILK Cafe is a members-only cafe inside our intentional living community. Catering and pickup services are the ONLY ways for the wider community to access our simple, wholesome, home-style cooking—prepared fresh in our residential kitchens following cottage food law.
+                            SILK Cafe serves those who call SILK home—our intentional living community. Catering and pickup are how we share our simple, wholesome, home-style cooking with neighbors and friends beyond our walls, prepared fresh in our residential kitchens following cottage food law.
                         </p>
                     </div>
 
@@ -246,12 +290,12 @@
                         <div class="services_main-banner">
                             <div class="services_main-banner_bg">
                                 <picture>
-                                    <source data-srcset="img/index/menu01.webp" srcset="img/index/menu02.webp" type="image/webp" />
+                                    <source data-srcset="img/index/catering_pickup.webp" srcset="img/index/catering_pickup.webp" type="image/webp" />
                                     <img
                                         class="lazy"
-                                        data-src="img/index/menu03.webp"
-                                        src="img/index/menu04.webp"
-                                        alt="Catering & Pickup Services"
+                                        data-src="img/index/catering_pickup.webp"
+                                        src="img/index/catering_pickup.webp"
+                                        alt="Beautifully packaged prepared meals ready for pickup from a SILK Home kitchen"
                                     />
                                 </picture>
                             </div>
@@ -262,6 +306,7 @@
                         <!-- What We Offer -->
                         <ul class="services_main-list">
                             <li class="services_main-list_item" data-aos="fade-up">
+                                <img class="service-item-img" src="img/index/service_01_pickup.webp" alt="Person picking up packaged meal from Victorian home porch">
                                 <span class="subtitle">01 Pickup Service</span>
                                 <h4 class="title">Order & Pick Up from SILK Homes</h4>
                                 <p class="text text--md">
@@ -269,6 +314,7 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="50">
+                                <img class="service-item-img" src="img/index/service_02_catering.webp" alt="Elegant catering spread at community gathering event">
                                 <span class="subtitle">02 Catering Services</span>
                                 <h4 class="title">Events & Gatherings</h4>
                                 <p class="text text--md">
@@ -276,6 +322,7 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="100">
+                                <img class="service-item-img" src="img/index/service_03_mealprep.webp" alt="Neatly organized meal prep containers with healthy meals">
                                 <span class="subtitle">03 Meal Prep Packages</span>
                                 <h4 class="title">Weekly Meal Solutions</h4>
                                 <p class="text text--md">
@@ -283,6 +330,7 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="150">
+                                <img class="service-item-img" src="img/index/service_04_cottage.webp" alt="Artisan cottage food display with bread, jams and baked goods">
                                 <span class="subtitle">04 Cottage Food Items</span>
                                 <h4 class="title">Homemade Goodness</h4>
                                 <p class="text text--md">
@@ -290,6 +338,7 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="200">
+                                <img class="service-item-img" src="img/index/service_05_community.webp" alt="Community members sharing a meal together at farmhouse table">
                                 <span class="subtitle">05 Community Connection</span>
                                 <h4 class="title">Experience SILK Values</h4>
                                 <p class="text text--md">
@@ -313,9 +362,12 @@
                         </p>
                     </div>
 
-                    <div class="services_main">
+                    <div class="services_main services_main--full-width">
                         <ul class="services_main-list">
                             <li class="services_main-list_item" data-aos="fade-up">
+                                <div class="step-image-wrapper">
+                                    <img class="step-image" src="img/index/catering_step1_order.webp" alt="Person browsing food menu on smartphone">
+                                </div>
                                 <span class="subtitle">Step 01</span>
                                 <h4 class="title">Browse & Order</h4>
                                 <p class="text text--md">
@@ -324,6 +376,9 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="50">
+                                <div class="step-image-wrapper">
+                                    <img class="step-image" src="img/index/catering_step2_location.webp" alt="Charming Victorian SILK Home pickup location">
+                                </div>
                                 <span class="subtitle">Step 02</span>
                                 <h4 class="title">Choose Pickup Location</h4>
                                 <p class="text text--md">
@@ -332,6 +387,9 @@
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="step-image-wrapper">
+                                    <img class="step-image" src="img/index/catering_step3_pickup.webp" alt="Happy person picking up meal from SILK Cafe host">
+                                </div>
                                 <span class="subtitle">Step 03</span>
                                 <h4 class="title">Pick Up & Enjoy</h4>
                                 <p class="text text--md">
@@ -366,10 +424,10 @@
                                     />
                                 </picture>
                             </div>
-                            <h3 class="services_main-banner_title">Selective by Design</h3>
+                            <h3 class="services_main-banner_title">Intentional by Design</h3>
                             <ul class="text text--md" style="list-style: disc; padding-left: 2rem; margin-top: 1rem; color: white;">
-                                <li>SILK Cafe is members-only inside our homes</li>
-                                <li>Catering & pickup are the ONLY community access</li>
+                                <li>SILK Cafe nourishes our members inside the homes</li>
+                                <li>Catering & pickup let us welcome you to our table</li>
                                 <li>All food follows cottage food law (WV/Ohio)</li>
                                 <li>Prepared in residential-style kitchens at SILK Homes</li>
                             </ul>
@@ -380,7 +438,7 @@
                                 <span class="subtitle">Intentional Access</span>
                                 <h4 class="title">Community Engagement by Design</h4>
                                 <p class="text text--md">
-                                    Our members-only cafe model creates selective community engagement. Pickup and catering services allow us to share our food values with the broader community while maintaining the intimate nature of our intentional living spaces.
+                                    Inside our homes, the cafe serves the SILK family. Pickup and catering services invite neighbors to experience our food values while preserving the intimate, grounded nature of our intentional living spaces.
                                 </p>
                             </li>
                             <li class="services_main-list_item" data-aos="fade-up" data-aos-delay="50">
@@ -404,19 +462,19 @@
             <!-- What Makes Us Different section end -->
 
             <!-- Contact section start -->
-            <section class="contacts section">
+            <section class="contacts section" role="region" aria-labelledby="contact-heading">
                 <div class="container d-md-flex align-items-start">
                     <div class="contacts_info">
                         <div class="section_header">
                             <span class="section_header-subtitle" data-aos="fade-down">contact us</span>
-                            <h2 class="section_header-title" data-aos="fade-up">Place Your Order</h2>
-                            <p class="section_header-text" data-aos="fade-up" data-aos-delay="50">
+                            <h2 id="contact-heading" class="section_header-title" data-aos="fade-up">Place Your Order</h2>
+                            <p id="contact-description" class="section_header-text" data-aos="fade-up" data-aos-delay="50">
                                 Ready to order? Get in touch to arrange pickup or discuss catering for your event. We'll help you select the perfect options from our wholesome, home-style menu.
                             </p>
                         </div>
-                        <ul class="contacts_info-list">
+                        <ul class="contacts_info-list" role="list" aria-label="Contact information">
                             <li class="contacts_info-list_item d-flex align-items-start" data-aos="fade-up">
-                                <span class="icon d-flex justify-content-center align-items-center">
+                                <span class="icon d-flex justify-content-center align-items-center" aria-hidden="true">
                                     <i class="icon-pin"></i>
                                 </span>
                                 <div class="wrapper d-flex flex-column">
@@ -425,30 +483,35 @@
                                 </div>
                             </li>
                             <li class="contacts_info-list_item d-flex align-items-start" data-aos="fade-up" data-aos-delay="100">
-                                <span class="icon d-flex justify-content-center align-items-center">
+                                <span class="icon d-flex justify-content-center align-items-center" aria-hidden="true">
                                     <i class="icon-envelope"></i>
                                 </span>
                                 <div class="wrapper d-flex flex-column">
                                     <span class="label">Email Address:</span>
-                                    <a class="link" href="mailto:info@silkcorp.org">info@silkcorp.org</a>
+                                    <a class="link" href="mailto:info@silkcorp.org" aria-label="Email us at info@silkcorp.org">info@silkcorp.org</a>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <form class="contacts_form d-flex flex-column" action="#" method="post" data-type="feedback">
+                    <form class="contacts_form d-flex flex-column" action="#" method="post" data-type="feedback" role="form" aria-labelledby="contact-heading" aria-describedby="contact-description">
                         <div class="row">
                             <div class="col-12 col-sm-6">
+                                <label for="catering-name" class="visually-hidden">Your name</label>
                                 <input
+                                    id="catering-name"
                                     class="field required"
                                     type="text"
                                     placeholder="Your name"
                                     name="name"
                                     data-type="text"
                                     data-aos="fade-up"
+                                    aria-required="true"
                                 />
                             </div>
                             <div class="col-12 col-sm-6">
+                                <label for="catering-email" class="visually-hidden">Your email</label>
                                 <input
+                                    id="catering-email"
                                     class="field required"
                                     type="email"
                                     placeholder="Your email"
@@ -456,29 +519,36 @@
                                     data-type="email"
                                     data-aos="fade-up"
                                     data-aos-delay="50"
+                                    aria-required="true"
                                 />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <label for="catering-subject" class="visually-hidden">Subject</label>
                                 <input
+                                    id="catering-subject"
                                     class="field required"
                                     type="text"
                                     placeholder="Subject"
                                     name="subject"
                                     data-type="text"
                                     data-aos="fade-up"
+                                    aria-required="true"
                                 />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <label for="catering-message" class="visually-hidden">Your message</label>
                                 <textarea
+                                    id="catering-message"
                                     class="field textfield required"
                                     placeholder="Your message"
                                     name="message"
                                     data-type="text"
                                     data-aos="fade-up"
+                                    aria-required="true"
                                 ></textarea>
                             </div>
                         </div>
@@ -507,7 +577,7 @@
                             <span class="brand_name h3">SILK Cafe</span>
                         </a>
                         <p class="footer_main-about_text text text--sm">
-                            Community access to wholesome, home-style food through our catering and pickup services. Members-only cafe inside SILK Homes.
+                            Community access to wholesome, home-style food through our catering and pickup services. A cafe for those who call SILK home.
                         </p>
                     </div>
                     <nav class="footer_main-nav">
@@ -534,15 +604,27 @@
                         <h5 class="footer_main-contacts_header">SILK Ecosystem</h5>
                         <ul class="footer_main-contacts_list d-flex flex-column">
                             <li class="list-item">
-                                <a class="link d-inline-flex align-items-center text text--sm" href="https://silkhomes.org" target="_blank" rel="noopener noreferrer">
-                                    <i class="icon-home icon"></i>
-                                    SILK Homes
-                                </a>
-                            </li>
-                            <li class="list-item">
                                 <a class="link d-inline-flex align-items-center text text--sm" href="https://silkyoga.org" target="_blank" rel="noopener noreferrer">
                                     <i class="icon-heart icon"></i>
                                     SILK Yoga
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center text text--sm" href="https://silkarts.org" target="_blank" rel="noopener noreferrer">
+                                    <i class="icon-picture icon"></i>
+                                    SILK Arts
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center text text--sm" href="https://silkcafe.org" target="_blank" rel="noopener noreferrer">
+                                    <i class="icon-cup icon"></i>
+                                    SILK Cafe
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center text text--sm" href="https://silkhomes.org" target="_blank" rel="noopener noreferrer">
+                                    <i class="icon-home icon"></i>
+                                    SILK Homes
                                 </a>
                             </li>
                             <li class="list-item">

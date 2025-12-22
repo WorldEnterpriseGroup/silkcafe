@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Contacts | SILK Cafe</title>
+        <title>Connect | SILK Cafe</title>
         <script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
         <script src="https://www.youtube.com/player_api"></script>
         <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
@@ -12,6 +12,88 @@
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
         <link rel="stylesheet" href="css/contacts.min.css" />
+        <style>
+            /* Hero banner with dark overlay for readability */
+            .page_cover {
+                position: relative;
+            }
+            .page_cover::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+            .page_cover > * {
+                position: relative;
+                z-index: 2;
+            }
+            .page_cover .page_cover-title {
+                color: #fff;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .page_cover .page_cover-subtitle {
+                color: rgba(255, 255, 255, 0.9);
+            }
+            /* Header styling for dark background hero */
+            .header {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            .header .logo {
+                color: #fff;
+                white-space: nowrap;
+                min-width: max-content;
+            }
+            .header .nav-item,
+            .header .nav-item_text {
+                color: #fff;
+            }
+            .header .nav-item:hover,
+            .header .nav-item:hover .nav-item_text {
+                color: #e5dcd2;
+            }
+            .header .header_nav-socials .link {
+                color: #fff;
+            }
+            .header .header_nav-socials .link:hover {
+                color: #e5dcd2;
+            }
+            .header .header_trigger .line {
+                background: #fff;
+            }
+            /* Fix gallery slider image cropping */
+            .gallery_slider .link img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                bottom: 0;
+                transform: scale(1);
+            }
+            .gallery_slider .link:hover img {
+                transform: scale(1.05);
+            }
+            /* 508 Accessibility fix: Dark text on sticky nav with light background */
+            .header.sticky .header_nav-list .nav-link,
+            .header.sticky .header_nav-list .nav-item_text,
+            .header.sticky .logo {
+                color: #333 !important;
+            }
+            .header.sticky .header_nav-socials .icon,
+            .header.sticky .header_nav-socials .link {
+                color: #333 !important;
+            }
+            .header.sticky .header_trigger .line {
+                background-color: #333 !important;
+            }
+            .header.sticky .header_nav-list .nav-link:hover,
+            .header.sticky .header_nav-list .nav-link.current {
+                color: #8B4513 !important;
+            }
+        </style>
     </head>
     <body>
         <header class="header" data-page="contacts" data-page-parent="contacts">
@@ -29,71 +111,29 @@
                 </a>
                 <nav class="header_nav text--medium text--md collapse" id="headerMenu">
                     <ul class="header_nav-list">
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="index.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#homeMenu"
-                                data-trigger="dropdown"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                                data-page="home"
-                                data-page-parent="home"
-                            >
-                                <span class="nav-item_text"> Home </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="homeMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="home"
-                                            data-page-parent="home"
-                                            href="index.html"
-                                            data-main="true"
-                                        >
-                                            Home 1
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="home2" data-page-parent="home" href="index2.html">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="menu.html" data-page="menu" data-single="true">
-                                <span class="nav-item_text">Member Creations</span>
-                            </a>
-                        </li>
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
-                                <span class="nav-item_text">Our Model</span>
+                                <span class="nav-item_text">About</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="catering.html" data-page="catering" data-single="true">
-                                <span class="nav-item_text">Incubator Program</span>
-                            </a>
-                        </li>
-                        <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="events.html" data-page="events" data-single="true">
-                                <span class="nav-item_text">Success Stories</span>
-                            </a>
-                        </li>
-                        <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="team.html" data-page="team" data-single="true">
+                            <a class="nav-item nav-link" href="community.html" data-page="team" data-single="true">
                                 <span class="nav-item_text">Community</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="gatherings.html" data-page="gatherings" data-single="true">
+                                <span class="nav-item_text">Gatherings</span>
+                            </a>
+                        </li>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="stories.html" data-page="events" data-single="true">
+                                <span class="nav-item_text">Stories</span>
+                            </a>
+                        </li>
+                        <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="contacts.html" data-page="contacts" data-single="true">
-                                <span class="nav-item_text">Contact</span>
+                                <span class="nav-item_text">Connect</span>
                             </a>
                         </li>
                     </ul>
@@ -133,7 +173,8 @@
         <header class="page">
             <div class="page_cover d-flex flex-column align-items-center justify-content-center">
                 <div class="page_cover-img"></div>
-                <h2 class="page_cover-title">Contact</h2>
+                <h2 class="page_cover-title">Connect</h2>
+                <p class="page_cover-subtitle text--md" style="margin-top: 1rem; max-width: 600px; text-align: center;">We'd love to hear from you. Whether you're interested in hosting an event, joining our community, or exploring partnership opportunities, reach out and let's start a conversation.</p>
             </div>
             <div class="page_breadcrumbs">
                 <ul class="page_breadcrumbs-list d-flex flex-wrap justify-content-center h5">
@@ -141,7 +182,7 @@
                         <a class="link" href="index.html">Home</a>
                     </li>
 
-                    <li>Contact</li>
+                    <li>Connect</li>
                 </ul>
             </div>
         </header>
@@ -163,24 +204,29 @@
                             </ul>
                         </li>
                         <li class="info_main-item">
-                            <h4 class="title">Hours</h4>
+                            <h4 class="title">Ways to Connect</h4>
                             <ul class="list">
-                                <li><span class="text--medium">Members Only</span> by SILK Homes access</li>
-                                <li><span class="text--medium">Pickup</span> by appointment</li>
-                                <li><span class="text--medium">Catering</span> by arrangement</li>
+                                <li><span class="text--medium">Community Gatherings:</span> Book our space for your club, study group, or after-school program</li>
+                                <li><span class="text--medium">Cottage Food Program:</span> Learn how to sell your homemade goods through our kitchen</li>
+                                <li><span class="text--medium">SILK Homes Membership:</span> Discover intentional living and join our community</li>
+                                <li><span class="text--medium">Catering & Pickup:</span> Arrange farm-to-table meals for your special events</li>
                             </ul>
                         </li>
                     </ul>
                     <div class="info_media">
                         <picture>
-                            <source data-srcset="img/index/menu01.webp" srcset="img/index/menu02.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/menu03.webp" src="img/index/menu04.webp" alt="Contact Us" />
+                            <source data-srcset="img/index/connect_seating.webp" srcset="img/index/connect_seating.webp" type="image/webp" />
+                            <img class="lazy" data-src="img/index/connect_seating.webp" src="img/index/connect_seating.webp" alt="Welcoming seating area at SILK Cafe" />
                         </picture>
                     </div>
                 </div>
             </div>
             <div class="contacts section">
                 <div class="container">
+                    <div style="text-align: center; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                        <h3 style="margin-bottom: 1rem;">Start the Conversation</h3>
+                        <p class="text--md">Tell us what you're interested in and we'll get back to you within 24 hours. Whether you have a question, an idea, or just want to say hello, we're here and ready to connect.</p>
+                    </div>
                     <form class="contacts_form d-flex" action="#" method="post" data-type="contacts">
                         <input
                             class="field required"
@@ -199,54 +245,56 @@
                             placeholder="Email"
                         />
                         <input class="field required" type="text" data-type="tel" name="contactsTel" id="contactsTel" placeholder="Phone" />
-                        <textarea class="field required" name="contactsMessage" id="contactsMessage" placeholder="Message"></textarea>
+                        <textarea class="field required" name="contactsMessage" id="contactsMessage" placeholder="Tell us what brings you here today..."></textarea>
                         <button class="btn" type="submit">Send</button>
                     </form>
                 </div>
             </div>
-            <!-- map section start -->
-            <div id="map"></div>
-            <!-- map section end -->
+            <!-- cafe interior section start -->
+            <section class="map-section" style="width: 100%; overflow: hidden;">
+                <img src="img/index/connect_banner.webp" alt="SILK Cafe interior - warm residential kitchen and cozy gathering space" style="width: 100%; height: auto; display: block;" loading="lazy" />
+            </section>
+            <!-- cafe interior section end -->
             <!-- gallery section start -->
             <div class="gallery_slider swiper">
                 <div class="swiper-wrapper">
                     <div class="gallery_slider-slide swiper-slide">
                         <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                             <picture>
-                                <source data-srcset="img/index/menu05.webp" srcset="img/index/menu06.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/menu07.webp" src="img/index/menu08.webp" alt="Gallery Item" />
+                                <source data-srcset="img/index/gallery_seating.webp" srcset="img/index/gallery_seating.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/gallery_seating.webp" src="img/index/gallery_seating.webp" alt="SILK Cafe seating area" />
                             </picture>
                         </a>
                     </div>
                     <div class="gallery_slider-slide swiper-slide">
                         <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                             <picture>
-                                <source data-srcset="img/index/menu09.webp" srcset="img/index/menu10.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/menu11.webp" src="img/index/menu12.webp" alt="Gallery Item" />
+                                <source data-srcset="img/index/about_interior.webp" srcset="img/index/about_interior.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/about_interior.webp" src="img/index/about_interior.webp" alt="Residential cafe interior" />
                             </picture>
                         </a>
                     </div>
                     <div class="gallery_slider-slide swiper-slide">
                         <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                             <picture>
-                                <source data-srcset="img/index/menu13.webp" srcset="img/index/menu14.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/menu15.webp" src="img/index/menu16.webp" alt="Gallery Item" />
+                                <source data-srcset="img/index/member01.webp" srcset="img/index/member01.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/member01.webp" src="img/index/member01.webp" alt="SILK Cafe community member" />
                             </picture>
                         </a>
                     </div>
                     <div class="gallery_slider-slide swiper-slide">
                         <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                             <picture>
-                                <source data-srcset="img/index/new01.webp" srcset="img/index/new02.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/new03.webp" src="img/index/post01.webp" alt="Gallery Item" />
+                                <source data-srcset="img/index/member02.webp" srcset="img/index/member02.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/member02.webp" src="img/index/member02.webp" alt="SILK Cafe community member" />
                             </picture>
                         </a>
                     </div>
                     <div class="gallery_slider-slide swiper-slide">
                         <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                             <picture>
-                                <source data-srcset="img/index/post02.webp" srcset="img/index/coffeecup.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/recent.webp" src="img/index/menu01.webp" alt="Gallery Item" />
+                                <source data-srcset="img/index/testimonial01.webp" srcset="img/index/testimonial01.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/testimonial01.webp" src="img/index/testimonial01.webp" alt="Community testimonial" />
                             </picture>
                         </a>
                     </div>
@@ -283,16 +331,25 @@
                             <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
                         </li>
                         <li>
-                            Mid-Ohio Valley, WV & Ohio
+                            <a class="link" href="tel:+13045551234"> <i class="icon-phone icon"></i> (304) 555-1234 </a>
                         </li>
+                    </ul>
+                    <p class="footer_block-subtitle text--md text--bold" style="margin-top: 1rem;">Follow Us</p>
+                    <ul class="footer_block-list text--md">
+                        <li><a class="link" href="https://instagram.com/silkcafe" target="_blank"><i class="icon-instagram icon"></i> Instagram</a></li>
+                        <li><a class="link" href="https://facebook.com/silkcafe" target="_blank"><i class="icon-facebook icon"></i> Facebook</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
-                    <h4 class="footer_block-title">Access Options</h4>
+                    <h4 class="footer_block-title">Explore</h4>
                     <ul class="footer_block-list text--md">
-                        <li><span class="text--bold">Members-Only:</span> Dine-in at SILK Homes</li>
-                        <li><span class="text--bold">Community:</span> Pickup & Catering</li>
-                        <li><span class="text--bold">Items:</span> Cottage food compliant</li>
+                        <li><a class="link" href="menu.html">Our Menu</a></li>
+                        <li><a class="link" href="about.html">About Us</a></li>
+                        <li><a class="link" href="community.html">Community Kitchen</a></li>
+                        <li><a class="link" href="catering.html">Catering Services</a></li>
+                        <li><a class="link" href="gatherings.html">Gatherings</a></li>
+                        <li><a class="link" href="stories.html">Success Stories</a></li>
+                        <li><a class="link" href="contacts.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
@@ -302,6 +359,7 @@
                         <li><a class="link" href="https://silkcorp.org" target="_blank">SILK Corp</a></li>
                         <li><a class="link" href="https://silkyoga.org" target="_blank">SILK Yoga</a></li>
                         <li><a class="link" href="https://silkarts.org" target="_blank">SILK Arts</a></li>
+                        <li><a class="link" href="https://silkcafe.org" target="_blank">SILK Cafe</a></li>
                         <li><a class="link" href="https://silkhomes.org" target="_blank">SILK Homes</a></li>
                         <li><a class="link" href="https://silklife.org" target="_blank">SILK Life</a></li>
                         <li><a class="link" href="https://silkwomen.org" target="_blank">SILK Women</a></li>
@@ -310,6 +368,6 @@
             </div>
         </footer>
         <script src="js/common.min.js"></script>
-        <script src="js/map.min.js"></script>
+        <!-- <script src="js/map.min.js"></script> -->
     </body>
 </html>

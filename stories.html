@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Kitchen Life | SILK Cafe</title>
+        <title>Stories | SILK Cafe</title>
         <script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
         <script src="https://www.youtube.com/player_api"></script>
         <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
@@ -12,9 +12,103 @@
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
         <link rel="stylesheet" href="css/blog.min.css" />
+        <style>
+            /* Fix gallery slider image cropping */
+            .gallery_slider .link img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                bottom: 0;
+                transform: scale(1);
+            }
+            .gallery_slider .link:hover img {
+                transform: scale(1.05);
+            }
+
+            /* 508 Accessibility: Hero banner overlay for text contrast */
+            .page_cover {
+                position: relative;
+            }
+            .page_cover::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+            .page_cover > * {
+                position: relative;
+                z-index: 2;
+            }
+            .page_cover .page_cover-title {
+                color: #fff;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Header styling for dark background */
+            .header {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            .header .logo {
+                color: #fff;
+                white-space: nowrap;
+                min-width: max-content;
+            }
+            .header .nav-item,
+            .header .nav-item_text {
+                color: #fff;
+            }
+            .header .nav-item:hover,
+            .header .nav-item:hover .nav-item_text {
+                color: #e5dcd2;
+            }
+            .header .header_nav-socials .link {
+                color: #fff;
+            }
+            .header .header_nav-socials .link:hover {
+                color: #e5dcd2;
+            }
+            .header .header_trigger .line {
+                background: #fff;
+            }
+
+            /* 508 Accessibility: Dark text on sticky nav with light background */
+            .header.sticky .header_nav-list .nav-link,
+            .header.sticky .header_nav-list .nav-item_text,
+            .header.sticky .logo {
+                color: #333 !important;
+            }
+            .header.sticky .header_nav-socials .icon {
+                color: #333 !important;
+            }
+            .header.sticky .header_trigger .line {
+                background-color: #333 !important;
+            }
+            .header.sticky .header_nav-list .nav-link:hover,
+            .header.sticky .header_nav-list .nav-link.current {
+                color: #8B4513 !important;
+            }
+
+            /* Breadcrumbs styling for contrast */
+            .page_breadcrumbs {
+                background: transparent;
+            }
+            .page_breadcrumbs-list,
+            .page_breadcrumbs-list li,
+            .page_breadcrumbs-list li .link {
+                color: #fff;
+            }
+            .page_breadcrumbs-list li .link:hover {
+                color: #e5dcd2;
+            }
+        </style>
     </head>
     <body>
-        <header class="header" data-page="events" data-page-parent="events">
+        <header class="header" data-page="stories" data-page-parent="events">
             <div class="container d-flex align-items-center justify-content-between flex-wrap flex-xl-nowrap">
                 <a class="logo h3" href="index.html">
                     <span class="logo_img">
@@ -29,164 +123,30 @@
                 </a>
                 <nav class="header_nav text--medium text--md collapse" id="headerMenu">
                     <ul class="header_nav-list">
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="index.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#homeMenu"
-                                data-trigger="dropdown"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                                data-page="home"
-                                data-page-parent="home"
-                            >
-                                <span class="nav-item_text"> Home </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="homeMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="home"
-                                            data-page-parent="home"
-                                            href="index.html"
-                                            data-main="true"
-                                        >
-                                            Home 1
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="home2" data-page-parent="home" href="index2.html">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
                                 <span class="nav-item_text">About</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="menu.html" data-page="menu" data-single="true">
-                                <span class="nav-item_text">Menu</span>
+                            <a class="nav-item nav-link" href="community.html" data-page="team" data-single="true">
+                                <span class="nav-item_text">Community</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="catering.html" data-page="catering" data-single="true">
-                                <span class="nav-item_text">Catering</span>
+                            <a class="nav-item nav-link" href="gatherings.html" data-page="gatherings" data-single="true">
+                                <span class="nav-item_text">Gatherings</span>
                             </a>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="events.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#blogMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="events"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="blogMenu"
-                                data-page="events"
-                            >
-                                <span class="nav-item_text"> Kitchen Life </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="stories.html" data-page="stories" data-single="true">
+                                <span class="nav-item_text">Stories</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="blogMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="events"
-                                            data-page-parent="events"
-                                            href="events.html"
-                                            data-main="true"
-                                        >
-                                            Kitchen Life
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="post" data-page-parent="events" href="post.html">
-                                            Single Story
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="#"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#pagesMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="pages"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                <span class="nav-item_text"> Pages </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="contacts.html" data-page="contacts" data-single="true">
+                                <span class="nav-item_text">Connect</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="pagesMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="team" data-page-parent="pages" href="team.html">
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="error" data-page-parent="pages" href="404.html">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="contacts.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#contactsMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="contacts"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="contactsMenu"
-                            >
-                                <span class="nav-item_text"> Contact Us </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="contactsMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="contacts"
-                                            data-page-parent="contacts"
-                                            href="contacts.html"
-                                        >
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="reservations"
-                                            data-page-parent="contacts"
-                                            href="reservations.html"
-                                        >
-                                            Reservations
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                     <ul class="header_nav-socials d-flex">
@@ -225,8 +185,8 @@
         <header class="page">
             <div class="page_cover d-flex flex-column align-items-center justify-content-center">
                 <div class="page_cover-img"></div>
-                <h2 class="page_cover-title">Kitchen Life</h2>
-                <p class="page_cover-subtitle text--lg" style="margin-top: 1rem; color: rgba(255,255,255,0.9); max-width: 800px; text-align: center;">Updates from our smart, self-service kitchens across SILK Homes</p>
+                <h2 class="page_cover-title">Stories</h2>
+                <p class="page_cover-subtitle text--lg" style="margin-top: 1rem; color: rgba(255,255,255,0.9); max-width: 800px; text-align: center;">Success stories from the community</p>
             </div>
             <div class="page_breadcrumbs">
                 <ul class="page_breadcrumbs-list d-flex flex-wrap justify-content-center h5">
@@ -234,63 +194,45 @@
                         <a class="link" href="index.html">Home</a>
                     </li>
 
-                    <li>Kitchen Life</li>
+                    <li>Stories</li>
                 </ul>
             </div>
         </header>
-        <!-- kitchen life content start -->
+        <!-- stories content start -->
         <main class="section">
             <div class="blog_container container sticky-parent">
                 <div class="blog d-flex flex-column">
                     <!-- Introduction Section -->
                     <div style="text-align: center; padding: 2rem 0 3rem; max-width: 900px; margin: 0 auto;">
                         <p class="h5" style="font-style: italic; line-height: 1.8; color: #555;">
-                            From smart appliances to robotic assistants, our members-only kitchens blend residential comfort with cutting-edge technology. Here's what's cooking in our SILK Homes.
+                            Real stories from our community members—how SILK Cafe's shared kitchen spaces have helped launch businesses, support students, and bring neighbors together.
                         </p>
                     </div>
-                    <!-- Kitchen Update 1: Ninja Kitchen System -->
+                    <!-- Story 1: From Kitchen to Business -->
                     <div class="blog_post">
                         <div class="media">
                             <picture>
-                                <source data-srcset="img/index/menu01.webp" srcset="img/index/menu02.webp" type="image/webp" />
-                                <img class="lazy" data-src="img/index/menu03.webp" src="img/index/menu04.webp" alt="Ninja Kitchen System at Marietta" />
+                                <source data-srcset="img/index/story_entrepreneur.webp" srcset="img/index/story_entrepreneur.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/story_entrepreneur.webp" src="img/index/story_entrepreneur.webp" alt="From Kitchen to Business" />
                             </picture>
                             <ul class="blog_tags text--medium text--sm">
-                                <li class="blog_tags-tag">Smart Appliances</li>
-                                <li class="blog_tags-tag">Tech Upgrade</li>
+                                <li class="blog_tags-tag">Cottage Food Success</li>
+                                <li class="blog_tags-tag">Small Business</li>
                             </ul>
                         </div>
                         <div class="main">
-                            <a class="main_title h3" href="post.html">New Ninja Kitchen System Installed</a>
-                            <ul class="meta">
-                                <li class="meta_item"><i class="icon-date icon"></i> December 2024</li>
-                                <li class="meta_item"><i class="icon-pin icon"></i> SILK Homes Marietta</li>
-                                <li class="meta_item meta_item--pin"><i class="icon-pin icon"></i> Featured Upgrade</li>
-                            </ul>
-                            <p class="main_text">
-                                <strong>What's New:</strong> Complete Ninja CREAMi, Foodi, and Blender suite<br><br>
-                                "The new Ninja system makes meal prep so effortless. I created my own ice cream recipes using cottage cheese—healthy and delicious!"<br><br>
-                                <strong>Features:</strong> App-Connected • Self-Cleaning • Multi-Function • Energy Efficient
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Kitchen Update 2: Self-Service Evolution -->
-                    <div class="blog_post">
-                        <div class="main">
-                            <ul class="blog_tags text--medium text--sm">
-                                <li class="blog_tags-tag">Member Experience</li>
-                                <li class="blog_tags-tag">Self-Service</li>
-                            </ul>
-                            <a class="main_title h3" href="post.html">Perfecting the Self-Service Model</a>
+                            <a class="main_title h3" href="post.html">From Kitchen to Business</a>
                             <ul class="meta">
                                 <li class="meta_item"><i class="icon-date icon"></i> November 2024</li>
-                                <li class="meta_item"><i class="icon-pin icon"></i> SILK Homes Ravenswood</li>
-                                <li class="meta_item meta_item--pin"><i class="icon-pin icon"></i> Featured Update</li>
+                                <li class="meta_item"><i class="icon-pin icon"></i> Parkersburg Location</li>
+                                <li class="meta_item meta_item--pin"><i class="icon-pin icon"></i> Featured Story</li>
                             </ul>
                             <p class="main_text">
-                                <strong>What's Working:</strong> Members love the freedom of 24/7 access<br><br>
-                                "I make smoothies at 6 AM before my shift. Everything I need is right there, organized, and always clean. It feels like my own kitchen."<br><br>
-                                <strong>Updates:</strong> New QR code system • Enhanced cleaning schedule • Smart inventory tracking
+                                Sarah had been making jams and preserves in her home kitchen for years, giving them as gifts to friends and family. When people started asking if they could buy them, she realized she might have a business opportunity—but navigating cottage food licensing and regulations felt overwhelming.
+                                <br><br>
+                                "I needed a licensed commercial kitchen to get my cottage food permit, but renting a full commercial space was way beyond my budget," Sarah explains. "SILK Cafe changed everything. I could rent the kitchen by the hour, perfect my recipes, and start small without taking on massive overhead."
+                                <br><br>
+                                Today, Sarah's preserves are sold at three local farmers markets and two specialty food shops. She still uses SILK's kitchen for her production batches, and she's recently started mentoring other aspiring food entrepreneurs who are following in her footsteps. "I couldn't have launched this business without affordable access to professional equipment," she says. "SILK Cafe didn't just give me a kitchen—it gave me a chance."
                             </p>
                         </div>
                     </div>
@@ -298,9 +240,9 @@
                         <div class="main d-flex flex-column">
                             <i class="icon-quote icon"></i>
                             <q class="main_quote text--medium">
-                                The smart appliances are game-changers. I can start dinner from my phone, and by the time I get home, the Ninja Foodi has everything ready. It's residential living meets high-tech convenience.
+                                I came to SILK Cafe looking for affordable kitchen space. What I found was so much more—a community of people who share my passion for good food, a support system that helped me launch my cottage food business, and friendships I'll treasure forever. This place changed my life.
                             </q>
-                            <span class="main_name">SILK Homes Parkersburg Member</span>
+                            <span class="main_name">Sarah, Cottage Food Entrepreneur</span>
                         </div>
                         <div class="media">
                             <span class="media_light">
@@ -323,59 +265,119 @@
                             </span>
                         </div>
                     </div>
-                    <!-- Kitchen Update 3: Cottage Food Success -->
+                    <!-- Story 3: The Student Corner -->
                     <div class="blog_post">
                         <div class="media">
                             <picture>
-                                <source data-srcset="img/index/menu05.webp" srcset="img/index/menu06.webp" type="image/webp" />
+                                <source data-srcset="img/index/gathering_students.webp" srcset="img/index/gathering_students.webp" type="image/webp" />
                                 <img
                                     class="lazy"
-                                    data-src="img/index/menu07.webp"
-                                    src="img/index/menu08.webp"
-                                    alt="Cottage Food Production"
+                                    data-src="img/index/gathering_students.webp"
+                                    src="img/index/gathering_students.webp"
+                                    alt="The Student Corner"
                                 />
                             </picture>
                         </div>
                         <div class="main">
-                            <a class="main_title h3" href="post.html">Member Spotlight: Cottage Food Creations</a>
+                            <a class="main_title h3" href="post.html">The Student Corner</a>
                             <ul class="meta">
                                 <li class="meta_item"><i class="icon-date icon"></i> October 2024</li>
-                                <li class="meta_item"><i class="icon-pin icon"></i> SILK Homes Parkersburg</li>
+                                <li class="meta_item"><i class="icon-pin icon"></i> Marietta Campus</li>
                             </ul>
                             <p class="main_text">
-                                <strong>What Members Are Making:</strong> Preserves, granola, baked goods under cottage food law<br><br>
-                                "The residential kitchen setup is perfect for cottage food production. I use it for my preserve batches, and everything stays compliant with WV regulations."<br><br>
-                                <strong>Resources:</strong> Recipe testing • Label compliance • Pickup coordination for catering orders
+                                For college students living on campus, meal options often feel limited: dining hall food or expensive takeout. A group of students at the Marietta campus wanted something different—the ability to cook their own fresh, healthy meals without breaking their tight budgets.
+                                <br><br>
+                                "I grew up cooking with my family, and I really missed it," says Marcus, a junior studying business. "The dining hall was convenient, but I wanted real food. When I discovered I could use SILK Cafe's kitchen for just a few dollars an hour, it was perfect. I started coming in between classes to meal prep for the week."
+                                <br><br>
+                                What began as individual students cooking their own meals has evolved into something bigger. Now there's a regular Tuesday afternoon study-and-cook session where students share recipes, study together, and split the cost of ingredients for group meals. "We're not just saving money and eating better," Marcus says. "We're learning life skills and building friendships. Some of my best memories from college have happened in that kitchen."
                             </p>
                         </div>
                     </div>
-                    <!-- Kitchen Update 4: Robotics Preview -->
+                    <!-- Story 4: Neighbors Becoming Friends -->
                     <div class="blog_post">
                         <div class="media">
                             <picture>
-                                <source data-srcset="img/index/menu09.webp" srcset="img/index/menu10.webp" type="image/webp" />
+                                <source data-srcset="img/index/community_potluck.webp" srcset="img/index/community_potluck.webp" type="image/webp" />
                                 <img
                                     class="lazy"
-                                    data-src="img/index/menu11.webp"
-                                    src="img/index/menu12.webp"
-                                    alt="Future Robotics Integration"
+                                    data-src="img/index/community_potluck.webp"
+                                    src="img/index/community_potluck.webp"
+                                    alt="Neighbors Becoming Friends"
                                 />
                             </picture>
                             <ul class="blog_tags text--medium text--sm">
-                                <li class="blog_tags-tag">Innovation</li>
-                                <li class="blog_tags-tag">Coming Soon</li>
+                                <li class="blog_tags-tag">Community Building</li>
+                                <li class="blog_tags-tag">Social Impact</li>
                             </ul>
                         </div>
                         <div class="main">
-                            <a class="main_title h3" href="post.html">The Future: Kitchen Robotics</a>
+                            <a class="main_title h3" href="post.html">Neighbors Becoming Friends</a>
                             <ul class="meta">
-                                <li class="meta_item"><i class="icon-date icon"></i> Planning Phase</li>
-                                <li class="meta_item"><i class="icon-pin icon"></i> All SILK Homes Locations</li>
+                                <li class="meta_item"><i class="icon-date icon"></i> Ongoing</li>
+                                <li class="meta_item"><i class="icon-pin icon"></i> All Locations</li>
                             </ul>
                             <p class="main_text">
-                                <strong>What's Coming:</strong> Automated cleaning bots and prep assistants<br><br>
-                                "We're exploring robotic dishwashers and surface cleaners to make the self-service model even more seamless. Imagine walking into a kitchen that cleans itself!"<br><br>
-                                <strong>Timeline:</strong> Pilot program in 2025 • Marietta location first • Member feedback essential
+                                When Jennifer moved to the area for a new job, she found herself in a paradox familiar to many: surrounded by people, but feeling isolated. She'd wave to neighbors in passing, but meaningful connections seemed hard to come by in today's busy world.
+                                <br><br>
+                                Then she noticed a flyer about a monthly community potluck at SILK Cafe. "I almost didn't go," she admits. "I'm not usually someone who just shows up to events alone. But I decided to take a chance." She brought her grandmother's pasta salad recipe and walked into a room full of strangers. By the end of the evening, she was exchanging phone numbers and recipe cards with three neighbors from her street—people she'd been living near for months without really knowing.
+                                <br><br>
+                                Now, those monthly potlucks have spawned weekly cooking meetups. A group of neighbors regularly books the kitchen together, each preparing their own dinners while sharing conversation, techniques, and tastes. "We've become genuine friends," Jennifer says. "We celebrate birthdays together, help each other through tough times, and share not just recipes but our lives. I finally feel at home here, and it all started because we showed up to cook together."
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Story 5: INSTAR Lab Finds a Professional Home -->
+                    <div class="blog_post">
+                        <div class="media">
+                            <picture>
+                                <source data-srcset="img/index/community_cowork.webp" srcset="img/index/community_cowork.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/community_cowork.webp" src="img/index/community_cowork.webp" alt="INSTAR Lab Board Meeting" />
+                            </picture>
+                            <ul class="blog_tags text--medium text--sm">
+                                <li class="blog_tags-tag">Professional Space</li>
+                                <li class="blog_tags-tag">Research &amp; Innovation</li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                            <a class="main_title h3" href="post.html">INSTAR Lab Finds a Professional Home</a>
+                            <ul class="meta">
+                                <li class="meta_item"><i class="icon-date icon"></i> December 2024</li>
+                                <li class="meta_item"><i class="icon-pin icon"></i> Marietta Campus</li>
+                                <li class="meta_item meta_item--pin"><i class="icon-pin icon"></i> Featured Story</li>
+                            </ul>
+                            <p class="main_text">
+                                INSTAR Lab has held its board meetings at SILK Cafe's Marietta location for years, finding the perfect balance of professionalism and comfort. The research organization values the quiet ambience that allows for focused strategic discussions, while the fast wifi handles all their video conferencing and presentation needs seamlessly.
+                                <br><br>
+                                "What sets SILK Cafe apart is the access to computers and workstations," explains the lab's director. "When we need to collaborate on documents, review data, or set up presentations, everything is right there. We don't have to worry about bringing equipment or dealing with technical issues—the infrastructure supports our work."
+                                <br><br>
+                                The Marietta location has become INSTAR Lab's preferred venue not just for board meetings, but for informal research discussions and team planning sessions. "The atmosphere encourages thoughtful conversation. It's professional enough for serious work but comfortable enough that ideas flow naturally. We've made some of our best decisions over coffee at SILK Cafe."
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Story 6: Curiosity Research Corporation Sessions -->
+                    <div class="blog_post">
+                        <div class="media">
+                            <picture>
+                                <source data-srcset="img/index/community_laptops_window.webp" srcset="img/index/community_laptops_window.webp" type="image/webp" />
+                                <img class="lazy" data-src="img/index/community_laptops_window.webp" src="img/index/community_laptops_window.webp" alt="Students Using Laptop Kiosks" />
+                            </picture>
+                            <ul class="blog_tags text--medium text--sm">
+                                <li class="blog_tags-tag">Education</li>
+                                <li class="blog_tags-tag">Student Programs</li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                            <a class="main_title h3" href="post.html">Curiosity Research Corporation Opens Doors for Students</a>
+                            <ul class="meta">
+                                <li class="meta_item"><i class="icon-date icon"></i> November 2024</li>
+                                <li class="meta_item"><i class="icon-pin icon"></i> Ravenswood Location</li>
+                                <li class="meta_item meta_item--pin"><i class="icon-pin icon"></i> Featured Story</li>
+                            </ul>
+                            <p class="main_text">
+                                Curiosity Research Corporation has not only hosted educational sessions at SILK Cafe's Ravenswood location—they've discovered an invaluable resource for the students they serve. The laptop kiosks have become a centerpiece of their programming, providing reliable technology access that many students lack at home.
+                                <br><br>
+                                "Our students come from diverse backgrounds, and not everyone has a computer or stable internet at home," explains the program coordinator. "When we host sessions at SILK Cafe, students can use the laptop kiosks for research, assignments, and collaborative projects. It levels the playing field and ensures everyone can fully participate."
+                                <br><br>
+                                The partnership has grown organically. Students now visit SILK Cafe independently to work on homework, prepare college applications, and support each other's educational goals. "What started as a venue for our research sessions has become a genuine community hub for learning," notes the coordinator. "These students are building study groups, mentoring each other, and taking ownership of their education. SILK Cafe has given them a space where that's possible."
                             </p>
                         </div>
                     </div>
@@ -701,14 +703,14 @@
                                     </div>
                                     <div style="text-align: center;">
                                         <div style="font-size: 3rem; font-weight: bold; color: var(--accent-color, #8B4513);">Coming</div>
-                                        <div style="font-size: 1.1rem; margin-top: 0.5rem;">Kitchen robotics (2025)</div>
+                                        <div style="font-size: 1.1rem; margin-top: 0.5rem;">Kitchen robotics (2027)</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="section_header" style="margin-top: 3rem;">
                                 <h2 class="section_header-title">Experience SILK Cafe</h2>
                                 <p class="section_header-text text--medium" style="margin-bottom: 2rem;">
-                                    Members-only access to smart, self-service kitchens designed for residential comfort with professional capabilities. From Ninja appliances to future robotics, our kitchens evolve with technology while maintaining the warmth of home.
+                                    For those who call SILK home, smart self-service kitchens designed for residential comfort with professional capabilities. From Ninja appliances to future robotics, our kitchens evolve with technology while maintaining the warmth of home.
                                 </p>
                             </div>
                             <div class="wrapper" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
@@ -750,51 +752,36 @@
                             <li class="list-item">
                                 <div class="media">
                                     <picture>
-                                        <source data-srcset="img/index/menu13.webp" srcset="img/index/menu14.webp" type="image/webp" />
-                                        <img
-                                            class="lazy"
-                                            data-src="img/index/menu15.webp"
-                                            src="img/index/menu16.webp"
-                                            alt="Maria's Organic Granola"
-                                        />
+                                        <source srcset="img/index/article_ninja_kitchen.webp" type="image/webp" />
+                                        <img src="img/index/article_ninja_kitchen.webp" alt="Ninja Kitchen System" loading="lazy" />
                                     </picture>
                                 </div>
                                 <div class="main">
-                                    <a class="main_title h5" href="post.html">Ninja Kitchen System</a>
+                                    <a class="main_title h5" href="article-ninja-kitchen.html">Ninja Kitchen System</a>
                                     <span class="meta_item">December 2024</span>
                                 </div>
                             </li>
                             <li class="list-item">
                                 <div class="media">
                                     <picture>
-                                        <source data-srcset="img/index/new01.webp" srcset="img/index/new02.webp" type="image/webp" />
-                                        <img
-                                            class="lazy"
-                                            data-src="img/index/new03.webp"
-                                            src="img/index/post01.webp"
-                                            alt="The Comfort Kitchen"
-                                        />
+                                        <source srcset="img/index/article_green_valley.webp" type="image/webp" />
+                                        <img src="img/index/article_green_valley.webp" alt="Green Valley Preserves" loading="lazy" />
                                     </picture>
                                 </div>
                                 <div class="main">
-                                    <a class="main_title h5" href="post.html">Self-Service Model</a>
+                                    <a class="main_title h5" href="article-green-valley.html">Self-Service Model</a>
                                     <span class="meta_item">November 2024</span>
                                 </div>
                             </li>
                             <li class="list-item">
                                 <div class="media">
                                     <picture>
-                                        <source data-srcset="img/index/post02.webp" srcset="img/index/coffeecup.webp" type="image/webp" />
-                                        <img
-                                            class="lazy"
-                                            data-src="img/index/recent.webp"
-                                            src="img/index/menu01.webp"
-                                            alt="Green Valley Preserves"
-                                        />
+                                        <source srcset="img/index/article_cottage_food.webp" type="image/webp" />
+                                        <img src="img/index/article_cottage_food.webp" alt="Cottage Food Success" loading="lazy" />
                                     </picture>
                                 </div>
                                 <div class="main">
-                                    <a class="main_title h5" href="post.html">Cottage Food Success</a>
+                                    <a class="main_title h5" href="article-cottage-food.html">Cottage Food Success</a>
                                     <span class="meta_item">October 2024</span>
                                 </div>
                             </li>
@@ -804,19 +791,16 @@
                         <h4 class="sidebar_widget-title">Categories</h4>
                         <ul class="list d-flex flex-column text--medium">
                             <li class="list-item">
-                                <a class="link" href="#">Smart Appliances</a>
+                                <a class="link" href="#">Member Stories</a>
                             </li>
                             <li class="list-item">
-                                <a class="link" href="#">Tech Upgrades</a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#">Member Experiences</a>
+                                <a class="link" href="#">Community Events</a>
                             </li>
                             <li class="list-item">
                                 <a class="link" href="#">Cottage Food</a>
                             </li>
                             <li class="list-item">
-                                <a class="link" href="#">Kitchen Innovation</a>
+                                <a class="link" href="#">Student Programs</a>
                             </li>
                         </ul>
                     </div>
@@ -839,7 +823,7 @@
                                 <a class="link" href="#">Robotics</a>
                             </li>
                             <li class="list-item">
-                                <a class="link" href="#">Member Only</a>
+                                <a class="link" href="#">For Members</a>
                             </li>
                             <li class="list-item">
                                 <a class="link" href="#">Cottage Food</a>
@@ -852,32 +836,64 @@
                             <li class="list-item">
                                 <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                     <picture>
-                                        <source data-srcset="img/index/menu02.webp" srcset="img/index/menu03.webp" type="image/webp" />
-                                        <img class="lazy" data-src="img/index/menu04.webp" src="img/index/menu05.webp" alt="Gallery Item" />
+                                        <source data-srcset="img/index/menu02.webp" srcset="img/index/menu02.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu02.webp" src="img/index/menu02.webp" alt="Gallery Item" />
                                     </picture>
                                 </a>
                             </li>
                             <li class="list-item">
                                 <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                     <picture>
-                                        <source data-srcset="img/index/menu06.webp" srcset="img/index/menu07.webp" type="image/webp" />
-                                        <img class="lazy" data-src="img/index/menu08.webp" src="img/index/menu09.webp" alt="Gallery Item" />
+                                        <source data-srcset="img/index/menu04.webp" srcset="img/index/menu04.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu04.webp" src="img/index/menu04.webp" alt="Gallery Item" />
                                     </picture>
                                 </a>
                             </li>
                             <li class="list-item">
                                 <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                     <picture>
-                                        <source data-srcset="img/index/menu10.webp" srcset="img/index/menu11.webp" type="image/webp" />
-                                        <img class="lazy" data-src="img/index/menu12.webp" src="img/index/menu13.webp" alt="Gallery Item" />
+                                        <source data-srcset="img/index/menu06.webp" srcset="img/index/menu06.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu06.webp" src="img/index/menu06.webp" alt="Gallery Item" />
                                     </picture>
                                 </a>
                             </li>
                             <li class="list-item">
                                 <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                     <picture>
-                                        <source data-srcset="img/index/menu14.webp" srcset="img/index/menu15.webp" type="image/webp" />
-                                        <img class="lazy" data-src="img/index/menu16.webp" src="img/index/new01.webp" alt="Gallery Item" />
+                                        <source data-srcset="img/index/menu08.webp" srcset="img/index/menu08.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu08.webp" src="img/index/menu08.webp" alt="Gallery Item" />
+                                    </picture>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                    <picture>
+                                        <source data-srcset="img/index/menu10.webp" srcset="img/index/menu10.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu10.webp" src="img/index/menu10.webp" alt="Gallery Item" />
+                                    </picture>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                    <picture>
+                                        <source data-srcset="img/index/menu12.webp" srcset="img/index/menu12.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu12.webp" src="img/index/menu12.webp" alt="Gallery Item" />
+                                    </picture>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                    <picture>
+                                        <source data-srcset="img/index/menu14.webp" srcset="img/index/menu14.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu14.webp" src="img/index/menu14.webp" alt="Gallery Item" />
+                                    </picture>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                    <picture>
+                                        <source data-srcset="img/index/menu16.webp" srcset="img/index/menu16.webp" type="image/webp" />
+                                        <img class="lazy" data-src="img/index/menu16.webp" src="img/index/menu16.webp" alt="Gallery Item" />
                                     </picture>
                                 </a>
                             </li>
@@ -892,74 +908,6 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="sidebar_widget sidebar_widget--calendar">
-                        <h4 class="sidebar_widget-title">Calendar Widget Title</h4>
-                        <table class="calendar">
-                            <caption class="calendar_header">
-                                April 2022
-                            </caption>
-                            <tbody class="calendar_body">
-                                <tr class="calendar_body-week">
-                                    <th class="calendar_body-week_day">S</th>
-                                    <th class="calendar_body-week_day">M</th>
-                                    <th class="calendar_body-week_day">T</th>
-                                    <th class="calendar_body-week_day">W</th>
-                                    <th class="calendar_body-week_day">T</th>
-                                    <th class="calendar_body-week_day">F</th>
-                                    <th class="calendar_body-week_day">S</th>
-                                </tr>
-                                <tr class="calendar_body-dates">
-                                    <td class="calendar_body-dates_date"></td>
-                                    <td class="calendar_body-dates_date"></td>
-                                    <td class="calendar_body-dates_date"></td>
-                                    <td class="calendar_body-dates_date">1</td>
-                                    <td class="calendar_body-dates_date">2</td>
-                                    <td class="calendar_body-dates_date">3</td>
-                                    <td class="calendar_body-dates_date">4</td>
-                                </tr>
-                                <tr class="calendar_body-dates">
-                                    <td class="calendar_body-dates_date">5</td>
-                                    <td class="calendar_body-dates_date">6</td>
-                                    <td class="calendar_body-dates_date">7</td>
-                                    <td class="calendar_body-dates_date">8</td>
-                                    <td class="calendar_body-dates_date">9</td>
-                                    <td class="calendar_body-dates_date">10</td>
-                                    <td class="calendar_body-dates_date">11</td>
-                                </tr>
-                                <tr class="calendar_body-dates">
-                                    <td class="calendar_body-dates_date">12</td>
-                                    <td class="calendar_body-dates_date">13</td>
-                                    <td class="calendar_body-dates_date">14</td>
-                                    <td class="calendar_body-dates_date">15</td>
-                                    <td class="calendar_body-dates_date calendar_body-dates_date--current">16</td>
-                                    <td class="calendar_body-dates_date">17</td>
-                                    <td class="calendar_body-dates_date">18</td>
-                                </tr>
-                                <tr class="calendar_body-dates">
-                                    <td class="calendar_body-dates_date">19</td>
-                                    <td class="calendar_body-dates_date">20</td>
-                                    <td class="calendar_body-dates_date">21</td>
-                                    <td class="calendar_body-dates_date">22</td>
-                                    <td class="calendar_body-dates_date">23</td>
-                                    <td class="calendar_body-dates_date">24</td>
-                                    <td class="calendar_body-dates_date">25</td>
-                                </tr>
-                                <tr class="calendar_body-dates">
-                                    <td class="calendar_body-dates_date">26</td>
-                                    <td class="calendar_body-dates_date">27</td>
-                                    <td class="calendar_body-dates_date">28</td>
-                                    <td class="calendar_body-dates_date">29</td>
-                                    <td class="calendar_body-dates_date">30</td>
-                                    <td class="calendar_body-dates_date">31</td>
-                                    <td class="calendar_body-dates_date"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="calendar_nav d-flex justify-content-between align-items-center">
-                            <a class="link" href="#"><i class="icon-arrow-left icon"></i></a>
-                            <a class="link" href="#"><i class="icon-arrow-right icon"></i></a>
-                        </div>
-                    </div>
                     <div class="sidebar_banner d-flex flex-column">
                         <div class="media">
                             <picture>
@@ -972,56 +920,58 @@
                                 <span class="section_header-subtitle">Free</span>
                                 <h4 class="main_header-title">Every 5th Breakfast as a Gift.</h4>
                             </div>
-                            <a class="main_btn btn" href="reservations.html">reservations</a>
+                            <a class="main_btn btn" href="gatherings.html">reservations</a>
                         </div>
                     </div>
                 </aside>
             </div>
             <!-- blog content end -->
         </main>
-        <!-- map section start -->
-        <div id="map"></div>
-        <!-- map section end -->
+        <!-- cafe interior section start -->
+        <section class="map-section" style="width: 100%; overflow: hidden;">
+            <img src="img/index/cafe-interior-banner.webp" alt="SILK Cafe interior - warm residential kitchen and cozy gathering space" style="width: 100%; height: auto; display: block;" loading="lazy" />
+        </section>
+        <!-- cafe interior section end -->
         <!-- gallery section start -->
         <div class="gallery_slider swiper">
             <div class="swiper-wrapper">
                 <div class="gallery_slider-slide swiper-slide">
                     <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <picture>
-                            <source data-srcset="img/index/coffeecup.webp" srcset="img/index/recent.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/menu01.webp" src="img/index/menu02.webp" alt="Gallery Item" />
+                            <source srcset="img/index/community_potluck.webp" type="image/webp" />
+                            <img src="img/index/community_potluck.webp" alt="Community Potluck Dinner" loading="lazy" />
                         </picture>
                     </a>
                 </div>
                 <div class="gallery_slider-slide swiper-slide">
                     <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <picture>
-                            <source data-srcset="img/index/menu03.webp" srcset="img/index/menu04.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/menu05.webp" src="img/index/menu06.webp" alt="Gallery Item" />
+                            <source srcset="img/index/community_cowork.webp" type="image/webp" />
+                            <img src="img/index/community_cowork.webp" alt="Coworking Space" loading="lazy" />
                         </picture>
                     </a>
                 </div>
                 <div class="gallery_slider-slide swiper-slide">
                     <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <picture>
-                            <source data-srcset="img/index/menu07.webp" srcset="img/index/menu08.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/menu09.webp" src="img/index/menu10.webp" alt="Gallery Item" />
+                            <source srcset="img/index/community_laptops_window.webp" type="image/webp" />
+                            <img src="img/index/community_laptops_window.webp" alt="Students at Laptop Kiosks" loading="lazy" />
                         </picture>
                     </a>
                 </div>
                 <div class="gallery_slider-slide swiper-slide">
                     <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <picture>
-                            <source data-srcset="img/index/menu11.webp" srcset="img/index/menu12.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/menu13.webp" src="img/index/menu14.webp" alt="Gallery Item" />
+                            <source srcset="img/index/story_entrepreneur.webp" type="image/webp" />
+                            <img src="img/index/story_entrepreneur.webp" alt="Cottage Food Entrepreneur" loading="lazy" />
                         </picture>
                     </a>
                 </div>
                 <div class="gallery_slider-slide swiper-slide">
                     <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <picture>
-                            <source data-srcset="img/index/menu15.webp" srcset="img/index/menu16.webp" type="image/webp" />
-                            <img class="lazy" data-src="img/index/new01.webp" src="img/index/new02.webp" alt="Gallery Item" />
+                            <source srcset="img/index/cafe_seating.webp" type="image/webp" />
+                            <img src="img/index/cafe_seating.webp" alt="SILK Cafe Seating Area" loading="lazy" />
                         </picture>
                     </a>
                 </div>
@@ -1055,14 +1005,26 @@
                         <li>
                             <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
                         </li>
+                        <li>
+                            <a class="link" href="tel:+13045551234"> <i class="icon-phone icon"></i> (304) 555-1234 </a>
+                        </li>
+                    </ul>
+                    <p class="footer_block-subtitle text--md text--bold" style="margin-top: 1rem;">Follow Us</p>
+                    <ul class="footer_block-list text--md">
+                        <li><a class="link" href="https://instagram.com/silkcafe" target="_blank"><i class="icon-instagram icon"></i> Instagram</a></li>
+                        <li><a class="link" href="https://facebook.com/silkcafe" target="_blank"><i class="icon-facebook icon"></i> Facebook</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
-                    <h4 class="footer_block-title">Opening Hours</h4>
+                    <h4 class="footer_block-title">Explore</h4>
                     <ul class="footer_block-list text--md">
-                        <li><span class="text--bold">Mon – Fri</span> from 8am to 9pm</li>
-                        <li><span class="text--bold">Saturday</span> from 9am to 4pm</li>
-                        <li><span class="text--bold">Sunday</span> from 9am to 4pm</li>
+                        <li><a class="link" href="menu.html">Our Menu</a></li>
+                        <li><a class="link" href="about.html">About Us</a></li>
+                        <li><a class="link" href="community.html">Community Kitchen</a></li>
+                        <li><a class="link" href="catering.html">Catering Services</a></li>
+                        <li><a class="link" href="gatherings.html">Gatherings</a></li>
+                        <li><a class="link" href="stories.html">Success Stories</a></li>
+                        <li><a class="link" href="contacts.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
@@ -1072,6 +1034,7 @@
                         <li><a class="link" href="https://silkcorp.org" target="_blank">SILK Corp</a></li>
                         <li><a class="link" href="https://silkyoga.org" target="_blank">SILK Yoga</a></li>
                         <li><a class="link" href="https://silkarts.org" target="_blank">SILK Arts</a></li>
+                        <li><a class="link" href="https://silkcafe.org" target="_blank">SILK Cafe</a></li>
                         <li><a class="link" href="https://silkhomes.org" target="_blank">SILK Homes</a></li>
                         <li><a class="link" href="https://silklife.org" target="_blank">SILK Life</a></li>
                         <li><a class="link" href="https://silkwomen.org" target="_blank">SILK Women</a></li>
@@ -1080,6 +1043,6 @@
             </div>
         </footer>
         <script src="js/common.min.js"></script>
-        <script src="js/map.min.js"></script>
+        <!-- <script src="js/map.min.js"></script> -->
     </body>
 </html>

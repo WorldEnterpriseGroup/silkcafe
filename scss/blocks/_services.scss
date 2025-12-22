@@ -231,3 +231,16 @@
         }
     }
 }
+
+// Modifier for services sections without a banner (full-width list with 3 columns)
+@media screen and (min-width: 1023.98px) {
+    .services_main--full-width {
+        .services_main-list {
+            width: 100%;
+        }
+
+        .services_main-list_item {
+            width: calc(33.333% - 20px);
+        }
+    }
+}

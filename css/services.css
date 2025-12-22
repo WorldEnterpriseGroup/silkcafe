@@ -1680,6 +1680,16 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     }
 }
 
+@media screen and (min-width:1023.98px) {
+    .services_main--full-width .services_main-list {
+        width: 100%
+    }
+
+    .services_main--full-width .services_main-list_item {
+        width: calc(33.333% - 20px)
+    }
+}
+
 .info {
     background: #f7f7f7
 }

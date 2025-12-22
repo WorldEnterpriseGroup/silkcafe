@@ -12,6 +12,12 @@
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
         <link rel="stylesheet" href="css/post.min.css" />
+        <style>
+    .header .logo {
+        white-space: nowrap;
+        min-width: max-content;
+    }
+</style>
     </head>
     <body>
         <header class="header" data-page="post" data-page-parent="events">
@@ -29,164 +35,30 @@
                 </a>
                 <nav class="header_nav text--medium text--md collapse" id="headerMenu">
                     <ul class="header_nav-list">
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="index.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#homeMenu"
-                                data-trigger="dropdown"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                                data-page="home"
-                                data-page-parent="home"
-                            >
-                                <span class="nav-item_text"> Home </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="homeMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="home"
-                                            data-page-parent="home"
-                                            href="index.html"
-                                            data-main="true"
-                                        >
-                                            Home 1
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="home2" data-page-parent="home" href="index2.html">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
                                 <span class="nav-item_text">About</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="menu.html" data-page="menu" data-single="true">
-                                <span class="nav-item_text">Menu</span>
+                            <a class="nav-item nav-link" href="community.html" data-page="team" data-single="true">
+                                <span class="nav-item_text">Community</span>
                             </a>
                         </li>
                         <li class="header_nav-list_item">
-                            <a class="nav-item nav-link" href="catering.html" data-page="catering" data-single="true">
-                                <span class="nav-item_text">Catering</span>
+                            <a class="nav-item nav-link" href="gatherings.html" data-page="gatherings" data-single="true">
+                                <span class="nav-item_text">Gatherings</span>
                             </a>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="events.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#blogMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="events"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="blogMenu"
-                                data-page="events"
-                            >
-                                <span class="nav-item_text"> Member Stories </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="stories.html" data-page="events" data-single="true">
+                                <span class="nav-item_text">Stories</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="blogMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="events"
-                                            data-page-parent="events"
-                                            href="events.html"
-                                            data-main="true"
-                                        >
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="post" data-page-parent="events" href="post.html">
-                                            Single Story
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="#"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#pagesMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="pages"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                <span class="nav-item_text"> Pages </span>
-                                <span class="icon"></span>
+                        <li class="header_nav-list_item">
+                            <a class="nav-item nav-link" href="contacts.html" data-page="contacts" data-single="true">
+                                <span class="nav-item_text">Connect</span>
                             </a>
-                            <div class="dropdown-menu collapse" id="pagesMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="team" data-page-parent="pages" href="team.html">
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a class="dropdown-item nav-item" data-page="error" data-page-parent="pages" href="404.html">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link nav-item dropdown-toggle d-flex align-items-center"
-                                href="contacts.html"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#contactsMenu"
-                                data-trigger="dropdown"
-                                data-page-parent="contacts"
-                                data-main-link="true"
-                                aria-expanded="false"
-                                aria-controls="contactsMenu"
-                            >
-                                <span class="nav-item_text"> Contact Us </span>
-                                <span class="icon"></span>
-                            </a>
-                            <div class="dropdown-menu collapse" id="contactsMenu">
-                                <ul class="dropdown-list">
-                                    <li class="list-item" data-main="true">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="contacts"
-                                            data-page-parent="contacts"
-                                            href="contacts.html"
-                                        >
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class="list-item">
-                                        <a
-                                            class="dropdown-item nav-item"
-                                            data-page="reservations"
-                                            data-page-parent="contacts"
-                                            href="reservations.html"
-                                        >
-                                            Reservations
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                     <ul class="header_nav-socials d-flex">
@@ -234,7 +106,7 @@
                     </li>
 
                     <li>
-                        <a class="link" href="events.html">Member Stories</a>
+                        <a class="link" href="stories.html">Stories from Home</a>
                     </li>
 
                     <li>Smart Refrigeration System Upgrade</li>
@@ -277,7 +149,7 @@
                             </div>
                             <h3 class="main_header">Technology Meets Community</h3>
                             <p class="main_text">
-                                This upgrade represents our commitment to providing SILK Homes members with professional-grade kitchen technology in a residential setting. The smart refrigeration system integrates seamlessly with our cottage food compliance tracking, automatically logging storage times and temperatures to help members maintain the documentation required under West Virginia cottage food laws.
+                                This upgrade represents our commitment to providing those who call SILK home with professional-grade kitchen technology in a residential setting. The smart refrigeration system integrates seamlessly with our cottage food compliance tracking, automatically logging storage times and temperatures to help our members maintain the documentation required under West Virginia cottage food laws.
                             </p>
                             <ul class="main_gallery gallery">
                                 <li class="main_gallery-item">
@@ -313,7 +185,7 @@
                                                 />
                                             </svg>
                                         </span>
-                                        Individual digital access control for each member
+                                        Individual digital access control for everyone
                                     </li>
                                     <li class="main_list-item">
                                         <span class="marker icon">
@@ -371,7 +243,7 @@
                                     <div class="main_panel d-flex flex-wrap text--sm">
                                         <span class="main_panel-timestamp">November 16, 2024 10:45 am</span>
                                         <a class="main_panel-reply text--bold" href="#"> <i class="icon-reply icon"></i> Reply </a>
-                                        <h5 class="main_panel-name">Michael Chen, SILK Homes Member</h5>
+                                        <h5 class="main_panel-name">Michael Chen, SILK Member</h5>
                                     </div>
                                     <p class="main_comment text--md">
                                         This upgrade is exactly what our cottage food community needed. Being able to check my storage temps from my phone while I'm at work gives me total peace of mind. The app interface is super intuitive too.
@@ -682,19 +554,21 @@
                         </div>
                         <div class="main d-flex flex-column flex-grow-1">
                             <div class="main_header flex-grow-1">
-                                <span class="section_header-subtitle">Members Only</span>
+                                <span class="section_header-subtitle">For Our Community</span>
                                 <h4 class="main_header-title">Smart Kitchen Access 24/7</h4>
                             </div>
-                            <a class="main_btn btn" href="reservations.html">Learn More</a>
+                            <a class="main_btn btn" href="gatherings.html">Learn More</a>
                         </div>
                     </div>
                 </aside>
             </div>
             <!-- post content end -->
         </main>
-        <!-- map section start -->
-        <div id="map"></div>
-        <!-- map section end -->
+        <!-- cafe interior section start -->
+        <section class="map-section" style="width: 100%; overflow: hidden;">
+            <img src="img/index/cafe-interior-banner.webp" alt="SILK Cafe interior - warm residential kitchen and cozy gathering space" style="width: 100%; height: auto; display: block;" loading="lazy" />
+        </section>
+        <!-- cafe interior section end -->
         <!-- gallery section start -->
         <div class="gallery_slider swiper">
             <div class="swiper-wrapper">
@@ -768,14 +642,26 @@
                         <li>
                             <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
                         </li>
+                        <li>
+                            <a class="link" href="tel:+13045551234"> <i class="icon-phone icon"></i> (304) 555-1234 </a>
+                        </li>
+                    </ul>
+                    <p class="footer_block-subtitle text--md text--bold" style="margin-top: 1rem;">Follow Us</p>
+                    <ul class="footer_block-list text--md">
+                        <li><a class="link" href="https://instagram.com/silkcafe" target="_blank"><i class="icon-instagram icon"></i> Instagram</a></li>
+                        <li><a class="link" href="https://facebook.com/silkcafe" target="_blank"><i class="icon-facebook icon"></i> Facebook</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
-                    <h4 class="footer_block-title">Opening Hours</h4>
+                    <h4 class="footer_block-title">Explore</h4>
                     <ul class="footer_block-list text--md">
-                        <li><span class="text--bold">Mon – Fri</span> from 8am to 9pm</li>
-                        <li><span class="text--bold">Saturday</span> from 9am to 4pm</li>
-                        <li><span class="text--bold">Sunday</span> from 9am to 4pm</li>
+                        <li><a class="link" href="menu.html">Our Menu</a></li>
+                        <li><a class="link" href="about.html">About Us</a></li>
+                        <li><a class="link" href="community.html">Community Kitchen</a></li>
+                        <li><a class="link" href="catering.html">Catering Services</a></li>
+                        <li><a class="link" href="gatherings.html">Gatherings</a></li>
+                        <li><a class="link" href="stories.html">Success Stories</a></li>
+                        <li><a class="link" href="contacts.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
@@ -785,6 +671,7 @@
                         <li><a class="link" href="https://silkcorp.org" target="_blank">SILK Corp</a></li>
                         <li><a class="link" href="https://silkyoga.org" target="_blank">SILK Yoga</a></li>
                         <li><a class="link" href="https://silkarts.org" target="_blank">SILK Arts</a></li>
+                        <li><a class="link" href="https://silkcafe.org" target="_blank">SILK Cafe</a></li>
                         <li><a class="link" href="https://silkhomes.org" target="_blank">SILK Homes</a></li>
                         <li><a class="link" href="https://silklife.org" target="_blank">SILK Life</a></li>
                         <li><a class="link" href="https://silkwomen.org" target="_blank">SILK Women</a></li>
@@ -793,7 +680,7 @@
             </div>
         </footer>
         <script src="js/common.min.js"></script>
-        <script src="js/map.min.js"></script>
+        <!-- <script src="js/map.min.js"></script> -->
         <script src="js/blog.min.js"></script>
     </body>
 </html>
