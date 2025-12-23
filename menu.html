@@ -9,815 +9,330 @@
         <link rel="manifest" href="site.webmanifest">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Private Culinary Experiences | SILK Cafe</title>
-        <meta name="description" content="Exclusive private dining experiences with world-class chefs in our intimate Victorian cottage spaces. By reservation only, 2-4 weeks advance. Custom menus from $150-500 per guest.">
+        <title>Menu | SILK Cafe</title>
+        <meta name="description" content="Wholesome farm-to-table dishes in our 1880s Victorian cottages. Browse our menu of hearty Appalachian and Asian-fusion cuisine.">
         <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
         <link rel="stylesheet preload" as="style" href="css/icomoon.css" />
         <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
         <link rel="stylesheet" href="css/menu.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           SILK CAFE - EXCLUSIVE PRIVATE DINING STYLES
-           ============================================ */
-
+        /* Page-specific styles */
         :root {
-            /* Cottage warmth palette */
             --cottage-brown: #534931;
-            --cottage-accent: #B38E6A;
-            --cottage-cream: #E5DCD2;
-            --cottage-warm: #8B4513;
-            --cottage-text: #3d3d3d;
-            --cottage-light: #f9f6f2;
-
-            /* Luxury accents */
-            --luxury-gold: #C9A962;
-            --luxury-charcoal: #1a1a1a;
-            --luxury-burgundy: #722F37;
-            --luxury-ivory: #FEFEFA;
-
-            /* Typography */
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-accent: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Open Sans', sans-serif;
+            --cottage-accent: #8B4513;
+            --cottage-cream: #f5f0e8;
+            --cottage-light: #faf8f5;
+            --cottage-warm: #d4a574;
+            --focus-color: #005fcc;
         }
 
-        /* Header Styling - Transparent overlay on hero */
-        .header {
-            background: transparent;
+        /* 508 Compliance: Skip Navigation Link */
+        .skip-link {
             position: absolute;
-            width: 100%;
-            z-index: 110000;
-            padding: 20px 0;
-        }
-        .header .logo {
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
             color: #fff;
+            padding: 0.75rem 1.5rem;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* 508 Compliance: Focus Indicators for all interactive elements */
+        a:focus,
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus,
+        [tabindex]:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+        a:focus:not(:focus-visible),
+        button:focus:not(:focus-visible) {
+            outline: none;
+        }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* Logo nowrap fix */
+        .header .logo {
             white-space: nowrap;
             min-width: max-content;
-            font-size: 1.5rem;
-            text-decoration: none;
         }
-        .header .logo:hover {
-            color: var(--luxury-gold);
-        }
-        .header .logo_img svg {
-            fill: #fff;
-            color: #fff;
-        }
-        .header .nav-item,
-        .header .nav-link,
-        .header .nav-item_text {
+
+        /* 508 Accessibility: Light text on dark banner - high contrast */
+        .header .header_nav-list .nav-link,
+        .header .header_nav-list .nav-item_text,
+        .header .logo {
             color: #fff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
-        .header .nav-item:hover,
-        .header .nav-link:hover,
-        .header .nav-item:hover .nav-item_text,
-        .header .nav-link:hover .nav-item_text {
-            color: var(--luxury-gold) !important;
-        }
-        .header .header_nav-socials .link {
-            color: #fff;
-        }
-        .header .header_nav-socials .link:hover {
-            color: var(--luxury-gold);
+        .header .header_nav-socials .icon {
+            color: #fff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
         .header .header_trigger .line {
-            background: #fff;
-        }
-        .header_nav-list {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+            background-color: #fff !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* 508 Accessibility - Sticky header */
-        .header.sticky {
-            position: fixed;
-            top: 0;
-            background: #fff;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        /* 508 Accessibility: Dark text on sticky nav */
+        .header.sticky .header_nav-list .nav-link,
+        .header.sticky .header_nav-list .nav-item_text,
+        .header.sticky .logo {
+            color: #1a1a1a !important;
+            text-shadow: none;
         }
-        .header.sticky .logo,
-        .header.sticky .logo_img svg {
-            color: var(--cottage-brown) !important;
-            fill: var(--cottage-brown) !important;
-        }
-        .header.sticky .nav-item,
-        .header.sticky .nav-link,
-        .header.sticky .nav-item_text {
-            color: var(--cottage-brown) !important;
-        }
-        .header.sticky .header_nav-socials .link {
-            color: var(--cottage-brown) !important;
+        .header.sticky .header_nav-socials .icon {
+            color: #1a1a1a !important;
+            text-shadow: none;
         }
         .header.sticky .header_trigger .line {
-            background-color: var(--cottage-brown) !important;
+            background-color: #1a1a1a !important;
         }
-        .header.sticky .nav-item:hover,
-        .header.sticky .nav-link:hover,
-        .header.sticky .nav-item:hover .nav-item_text {
-            color: var(--cottage-warm) !important;
-        }
-
-        /* Mobile header adjustments */
-        @media (max-width: 1199px) {
-            .header_nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: var(--cottage-brown);
-                padding: 80px 30px 30px;
-                flex-direction: column;
-                justify-content: flex-start;
-                z-index: 109999;
-            }
-            .header_nav.collapse:not(.show) {
-                display: none;
-            }
-            .header_nav.show {
-                display: flex !important;
-            }
-            .header_nav-list {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
-            }
-            .header_nav-socials {
-                margin-top: 2rem;
-                justify-content: center;
-                gap: 1.5rem;
-            }
-            .header .nav-item,
-            .header .nav-link,
-            .header .nav-item_text {
-                font-size: 1.25rem;
-            }
+        .header.sticky .header_nav-list .nav-link:hover,
+        .header.sticky .header_nav-list .nav-link:focus,
+        .header.sticky .header_nav-list .nav-link.current {
+            color: var(--cottage-accent) !important;
         }
 
-        /* ============================================
-           HERO SECTION - Full Screen Swiper
-           ============================================ */
-        .hero-section {
-            height: 100vh;
-            min-height: 600px;
-            position: relative;
+        /* Page cover with new banner */
+        .page_cover {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/menu/menu-banner.png') center/cover no-repeat !important;
+            min-height: 400px;
         }
-        .hero-swiper {
-            height: 100%;
-            width: 100%;
-        }
-        .hero-swiper .swiper-slide {
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .hero-swiper .swiper-slide::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
-            z-index: 1;
-        }
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            text-align: center;
+        .page_cover-title {
             color: #fff;
-            width: 90%;
-            max-width: 900px;
-        }
-        .hero-content h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-        .hero-content p {
-            font-family: var(--font-accent);
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-            opacity: 0.95;
-        }
-        .btn-luxury {
-            display: inline-block;
-            background: var(--luxury-gold);
-            color: var(--luxury-charcoal);
-            padding: 1rem 2.5rem;
-            font-family: var(--font-accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 0;
-            transition: all 0.4s ease;
-            text-decoration: none;
-        }
-        .btn-luxury:hover {
-            background: #fff;
-            color: var(--luxury-charcoal);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .hero-swiper .swiper-pagination-bullet {
-            background: #fff;
-            opacity: 0.5;
-            width: 12px;
-            height: 12px;
-        }
-        .hero-swiper .swiper-pagination-bullet-active {
-            opacity: 1;
-            background: var(--luxury-gold);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            font-size: 3rem;
+            font-weight: 700;
         }
 
-        /* ============================================
-           EXCLUSIVITY BANNER
-           ============================================ */
-        .exclusivity-banner {
-            background: var(--luxury-charcoal);
-            color: var(--luxury-gold);
-            padding: 1.25rem 0;
-            text-align: center;
-            font-family: var(--font-accent);
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .exclusivity-banner .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .exclusivity-banner span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .exclusivity-banner i {
-            font-size: 1.1rem;
-        }
-
-        /* ============================================
-           PHILOSOPHY SECTION
-           ============================================ */
-        .philosophy-section {
-            padding: 6rem 0;
-            background: var(--luxury-ivory);
-        }
-        .philosophy-section .row {
-            align-items: center;
-        }
-        .philosophy-image {
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        }
-        .philosophy-content {
-            padding-left: 3rem;
-        }
-        .section-subtitle {
-            display: block;
-            font-family: var(--font-accent);
-            font-size: 1rem;
-            color: var(--luxury-gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.75rem;
-        }
-        .philosophy-content h2 {
-            font-family: var(--font-display);
-            font-size: 2.75rem;
-            color: var(--cottage-brown);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        .philosophy-content p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--cottage-text);
-            margin-bottom: 1.5rem;
-        }
-        .philosophy-points {
+        /* 508 Compliance: Breadcrumb styling */
+        .page_breadcrumbs-list {
             list-style: none;
             padding: 0;
-            margin: 2rem 0 0;
+            margin: 0;
         }
-        .philosophy-points li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-            font-size: 1rem;
+        .page_breadcrumbs-list li {
+            display: inline-flex;
+            align-items: center;
         }
-        .philosophy-points li i {
-            color: var(--luxury-gold);
-            font-size: 1.25rem;
-            margin-top: 2px;
+        .page_breadcrumbs-list li:not(:last-child)::after {
+            content: "/";
+            margin: 0 0.5rem;
+            color: #666;
         }
-        .philosophy-points li strong {
-            color: var(--cottage-brown);
+        .page_breadcrumbs-list li[aria-current="page"] {
+            color: var(--cottage-accent);
+            font-weight: 600;
         }
 
-        @media (max-width: 991px) {
-            .philosophy-content {
-                padding-left: 0;
-                margin-top: 2rem;
-            }
-        }
-
-        /* ============================================
-           POSSIBILITIES SECTION
-           ============================================ */
-        .possibilities-section {
-            padding: 6rem 0;
-            background: #fff;
-        }
-        .section-header {
+        /* Menu sections */
+        .menu-intro {
+            background: var(--cottage-light);
+            padding: 3rem 0;
             text-align: center;
-            margin-bottom: 4rem;
         }
-        .section-header h2 {
-            font-family: var(--font-display);
-            font-size: 2.75rem;
-            color: var(--cottage-brown);
+        .menu-intro .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--cottage-accent);
             margin-bottom: 1rem;
         }
-        .section-header p {
-            font-family: var(--font-accent);
-            font-size: 1.2rem;
-            color: var(--cottage-text);
+        .menu-intro p {
             max-width: 700px;
             margin: 0 auto;
+            color: #666;
+            line-height: 1.8;
         }
 
-        /* Category Headers */
-        .possibility-category {
-            margin-bottom: 4rem;
+        /* Menu category styling */
+        .menu-category {
+            padding: 3rem 0;
         }
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .menu-category:nth-child(even) {
+            background: var(--cottage-cream);
+        }
+        .menu-category-header {
+            text-align: center;
             margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--cottage-cream);
         }
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--cottage-accent);
-            border-radius: 50%;
+        .menu-category-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--cottage-brown);
+            margin-bottom: 0.5rem;
+        }
+        .menu-category-header p {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Dish cards */
+        .dish-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .dish-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        .dish-item-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .dish-item-content {
+            padding: 1rem;
+        }
+        .dish-item h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--cottage-brown);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        .dish-item p {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .dish-item .dish-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: var(--cottage-cream);
+            color: var(--cottage-accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Chef cards - smaller */
+        .chefs-section {
+            background: var(--cottage-brown);
+            color: #fff;
+            padding: 3rem 0;
+        }
+        .chefs-section .section_header-subtitle {
+            color: var(--cottage-warm);
+        }
+        .chefs-section .section_header-title {
+            color: #fff;
+        }
+        .chef-mini {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.25rem;
+            gap: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
         }
-        .category-header h3 {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            color: var(--cottage-brown);
+        .chef-mini img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .chef-mini h4 {
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .chef-mini .specialty {
+            color: var(--cottage-warm);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .chef-mini p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
             margin: 0;
         }
 
-        /* Possibility Cards */
-        .possibility-swiper {
-            padding: 1rem 0 3rem;
-        }
-        .possibility-card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            height: 100%;
-        }
-        .possibility-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-        }
-        .possibility-card__image {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-        }
-        .possibility-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .possibility-card:hover .possibility-card__image img {
-            transform: scale(1.08);
-        }
-        .possibility-card__badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--luxury-gold);
-            color: var(--luxury-charcoal);
-            padding: 0.25rem 0.75rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .possibility-card__content {
-            padding: 1.5rem;
-        }
-        .possibility-card__content h4 {
-            font-family: var(--font-display);
-            font-size: 1.35rem;
-            color: var(--cottage-brown);
-            margin-bottom: 0.75rem;
-        }
-        .possibility-card__content p {
-            font-size: 0.95rem;
-            color: var(--cottage-text);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .possibility-card__meta {
-            display: flex;
-            gap: 1.25rem;
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 1rem;
-        }
-        .possibility-card__meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-        .possibility-card__price {
-            display: block;
-            font-family: var(--font-accent);
-            font-size: 1.15rem;
-            color: var(--cottage-warm);
-            font-weight: 600;
-            padding-top: 1rem;
-            border-top: 1px solid var(--cottage-cream);
-        }
-
-        /* Swiper Navigation */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--cottage-brown);
-            background: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-        .possibility-swiper .swiper-pagination-bullet {
-            background: var(--cottage-accent);
-        }
-
-        /* ============================================
-           PRIVATE SPACES SECTION
-           ============================================ */
-        .spaces-section {
-            padding: 6rem 0;
+        /* Private dining CTA */
+        .private-dining-cta {
             background: var(--cottage-light);
+            padding: 3rem 0;
+            text-align: center;
         }
-        .space-card {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-        }
-        .space-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .space-card:hover img {
-            transform: scale(1.05);
-        }
-        .space-card__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-        }
-        .space-card__content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            color: #fff;
-        }
-        .space-card__content h4 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .space-card__content p {
-            font-size: 0.95rem;
-            opacity: 0.9;
+        .private-dining-cta h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--cottage-brown);
             margin-bottom: 1rem;
         }
-        .btn-link {
-            color: var(--luxury-gold);
-            font-family: var(--font-accent);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-        .btn-link:hover {
-            gap: 0.75rem;
-            color: #fff;
-        }
-
-        /* ============================================
-           EXPERIENCE PROCESS SECTION
-           ============================================ */
-        .process-section {
-            padding: 6rem 0;
-            background: #fff;
-        }
-        .process-steps {
-            margin-top: 3rem;
-        }
-        .process-step {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        .step-number {
-            display: block;
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            color: var(--luxury-gold);
-            opacity: 0.4;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--cottage-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.75rem;
-            color: var(--cottage-brown);
-            transition: all 0.3s ease;
-        }
-        .process-step:hover .step-icon {
-            background: var(--cottage-accent);
-            color: #fff;
-        }
-        .process-step h5 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--cottage-brown);
-            margin-bottom: 0.5rem;
-        }
-        .process-step p {
-            font-size: 0.9rem;
-            color: var(--cottage-text);
-            line-height: 1.5;
-        }
-
-        /* ============================================
-           CHEF SPOTLIGHT SECTION
-           ============================================ */
-        .chefs-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, var(--cottage-brown) 0%, #3d3226 100%);
-            color: #fff;
-        }
-        .chefs-section .section-header h2 {
-            color: #fff;
-        }
-        .chefs-section .section-header p {
-            color: rgba(255,255,255,0.8);
-        }
-        .chefs-section .section-subtitle {
-            color: var(--luxury-gold);
-        }
-        .chef-swiper {
-            padding: 2rem 0;
-        }
-        .chef-spotlight {
-            padding: 2rem;
-        }
-        .chef-portrait {
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 400px;
-        }
-        .chef-info {
-            padding-left: 2rem;
-        }
-        .chef-specialty {
-            display: inline-block;
-            background: var(--luxury-gold);
-            color: var(--luxury-charcoal);
-            padding: 0.35rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        .chef-info h3 {
-            font-family: var(--font-display);
-            font-size: 2.25rem;
-            margin-bottom: 0.5rem;
-        }
-        .chef-origin {
-            font-family: var(--font-accent);
-            font-size: 1.1rem;
-            color: var(--luxury-gold);
-            margin-bottom: 1.5rem;
-        }
-        .chef-info p {
-            font-size: 1rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-        .chef-signature h6 {
-            font-family: var(--font-accent);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--luxury-gold);
-            margin-bottom: 0.5rem;
-        }
-        .chef-signature p {
-            font-style: italic;
-            opacity: 0.85;
-        }
-        .chef-swiper .swiper-pagination-bullet {
-            background: #fff;
-        }
-        .chef-swiper .swiper-pagination-bullet-active {
-            background: var(--luxury-gold);
-        }
-
-        @media (max-width: 991px) {
-            .chef-info {
-                padding-left: 0;
-                margin-top: 2rem;
-            }
-            .chef-portrait {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
-
-        /* ============================================
-           INQUIRY SECTION
-           ============================================ */
-        .inquiry-section {
-            padding: 6rem 0;
-            background: var(--cottage-light);
-        }
-        .inquiry-card {
-            background: #fff;
-            padding: 3.5rem;
-            border-radius: 12px;
-            box-shadow: 0 15px 60px rgba(0,0,0,0.1);
-        }
-        .inquiry-card h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--cottage-brown);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .inquiry-card > p {
-            font-family: var(--font-accent);
-            font-size: 1.15rem;
-            color: var(--cottage-text);
-            text-align: center;
+        .private-dining-cta p {
+            color: #666;
             max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.6;
+            margin: 0 auto 1.5rem;
         }
-        .inquiry-form .form-label {
-            font-weight: 600;
-            color: var(--cottage-brown);
-            margin-bottom: 0.35rem;
-        }
-        .inquiry-form .form-text {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 0.25rem;
-        }
-        .inquiry-form .form-control,
-        .inquiry-form .form-select {
-            border: 1px solid var(--cottage-cream);
+        .btn-cottage {
+            display: inline-block;
+            background: var(--cottage-accent);
+            color: #fff;
+            padding: 0.875rem 2rem;
             border-radius: 4px;
-            padding: 0.85rem 1rem;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
         }
-        .inquiry-form .form-control:focus,
-        .inquiry-form .form-select:focus {
-            border-color: var(--cottage-accent);
-            box-shadow: 0 0 0 3px rgba(179, 142, 106, 0.15);
-        }
-        .inquiry-form textarea.form-control {
-            min-height: 120px;
-        }
-        .inquiry-form .btn-luxury {
-            width: 100%;
-            padding: 1.15rem;
-            font-size: 1rem;
-            margin-top: 1rem;
+        .btn-cottage:hover {
+            background: var(--cottage-brown);
+            color: #fff;
         }
 
+        /* Responsive */
         @media (max-width: 767px) {
-            .inquiry-card {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* ============================================
-           GALLERY SLIDER
-           ============================================ */
-        .gallery-section {
-            background: var(--luxury-charcoal);
-            padding: 0;
-        }
-        .gallery_slider {
-            padding: 0;
-        }
-        .gallery_slider .swiper-slide img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-        }
-
-        /* ============================================
-           RESPONSIVE ADJUSTMENTS
-           ============================================ */
-        @media (max-width: 991px) {
-            .hero-content h1 {
-                font-size: 2.25rem;
-            }
-            .section-header h2,
-            .philosophy-content h2 {
-                font-size: 2rem;
-            }
-        }
-        @media (max-width: 575px) {
-            .exclusivity-banner .container {
+            .chef-mini {
                 flex-direction: column;
-                gap: 0.75rem;
+                text-align: center;
             }
-            .hero-content h1 {
-                font-size: 1.85rem;
-            }
-            .process-step {
-                padding: 1.5rem 0.5rem;
+            .chef-mini img {
+                width: 100px;
+                height: 100px;
             }
         }
     </style>
     </head>
     <body>
-        <!-- Header -->
-        <header class="header" data-page="menu" data-page-parent="menu">
+        <!-- Skip Navigation Link for 508 Compliance -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <header class="header" role="banner" data-page="menu" data-page-parent="menu">
             <div class="container d-flex align-items-center justify-content-between flex-wrap flex-xl-nowrap">
-                <a class="logo h3" href="index.html">
-                    <span class="logo_img">
-                        <svg width="67" height="76" viewBox="0 0 67 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M65.56 4.2C65.56 5.85333 64.9467 7.77333 63.72 9.96C62.5467 12.0933 60.7867 14.36 58.44 16.76C56.1467 19.16 53.32 21.64 49.96 24.2C46.6 26.7067 42.7867 29.16 38.52 31.56C37.0267 34.28 35.6933 36.76 34.52 39C33.4 41.1867 32.3067 43.5067 31.24 45.96C31.1333 46.2267 31.1067 46.3867 31.16 46.44C31.2133 46.44 31.32 46.36 31.48 46.2C32.8133 44.6 34.3867 42.9733 36.2 41.32C38.0133 39.6133 39.8533 38.3333 41.72 37.48C42.04 37.3733 42.28 37.32 42.44 37.32C42.8667 37.32 43.1867 37.5067 43.4 37.88C43.6667 38.2533 43.8 38.5467 43.8 38.76C43.8 38.9733 43.6667 39.4533 43.4 40.2C43.1333 40.9467 42.7867 41.8 42.36 42.76C41.9333 43.72 41.4533 44.76 40.92 45.88C40.44 46.9467 39.96 47.96 39.48 48.92C39 49.8267 38.44 50.8933 37.8 52.12C37.16 53.2933 36.4933 54.4667 35.8 55.64C35.1067 56.8667 34.4133 58.0133 33.72 59.08C33.08 60.2 32.4667 61.16 31.88 61.96C29.5867 65.16 27.24 67.72 24.84 69.64C22.4933 71.6133 19.9867 73.0533 17.32 73.96C14.8667 74.8133 12.52 75.24 10.28 75.24C8.78667 75.24 7.34667 75.0533 5.96 74.68C4.52 74.36 3.21333 73.8267 2.04 73.08C1.66667 72.8133 1.45333 72.52 1.4 72.2C1.29333 71.9333 1.21333 71.5867 1.16 71.16C1.16 70.9467 1.13333 70.6267 1.08 70.2C1.02667 69.8267 0.973333 69.4267 0.92 69C0.866667 68.6267 0.813334 68.2533 0.76 67.88C0.706667 67.5067 0.68 67.24 0.68 67.08C0.68 66.6 0.893334 66.4133 1.32 66.52C1.32 67.1067 1.48 67.8267 1.8 68.68C2.06667 69.5333 2.6 70.3867 3.4 71.24C4.14667 72.0933 5.18667 72.8133 6.52 73.4C7.8 73.9867 9.42667 74.28 11.4 74.28C13.0533 74.28 14.9467 73.96 17.08 73.32C19.6933 72.5733 22.04 71.16 24.12 69.08C26.2 67 28.2 64.52 30.12 61.64C31.08 60.2 32.04 58.5733 33 56.76C33.96 55 34.84 53.2667 35.64 51.56C36.44 49.8533 37.1067 48.3333 37.64 47C38.2267 45.6133 38.6 44.6533 38.76 44.12C39.1333 43.0533 39.3733 42.2533 39.48 41.72C39.5867 41.1333 39.64 40.7067 39.64 40.44C39.64 40.0667 39.5067 39.88 39.24 39.88C39.0267 39.88 38.3867 40.3067 37.32 41.16C36.3067 41.96 35.2133 42.9733 34.04 44.2C32.92 45.3733 31.9067 46.68 31 48.12C30.0933 49.5067 29.64 50.8133 29.64 52.04C29.64 52.4667 29.6667 52.84 29.72 53.16C29.7733 53.48 29.8 53.6933 29.8 53.8C29.8 54.0667 29.4 54.3067 28.6 54.52C27.8533 54.7333 27.1067 55.0533 26.36 55.48C26.1467 55.48 26.04 55.2667 26.04 54.84C26.04 54.2 26.04 53.6933 26.04 53.32C26.04 52.8933 26.0933 52.4133 26.2 51.88C26.36 51.2933 26.6 50.6 26.92 49.8C27.2933 49 27.8533 47.9067 28.6 46.52C29.3467 45.08 30.3067 43.2667 31.48 41.08C32.6533 38.84 34.12 36.0933 35.88 32.84C33.6933 33.96 31.32 35 28.76 35.96C26.2 36.92 23.48 37.72 20.6 38.36C20.12 39.16 19.5333 40.1733 18.84 41.4C18.1467 42.5733 17.48 43.8267 16.84 45.16C16.2533 46.44 15.7467 47.72 15.32 49C14.8933 50.28 14.68 51.4 14.68 52.36C14.68 53.2667 14.7867 53.9333 15 54.36C15.2133 54.7867 15.6667 55 16.36 55C17.1067 55 17.8533 54.84 18.6 54.52C19.4 54.2 20.4133 53.6933 21.64 53C21.8 52.8933 21.9333 52.92 22.04 53.08C22.1467 53.1867 22.1467 53.32 22.04 53.48C18.52 55.6133 15.6933 56.68 13.56 56.68C12.92 56.68 12.36 56.52 11.88 56.2C11.4 55.88 11.16 55 11.16 53.56C11.16 52.92 11.3733 52.04 11.8 50.92C12.28 49.7467 12.84 48.4667 13.48 47.08C14.1733 45.6933 14.8933 44.28 15.64 42.84C16.3867 41.3467 17.0533 39.96 17.64 38.68C16.52 38.9467 15.1333 39.16 13.48 39.32C11.8267 39.4267 10.3333 39.5067 9 39.56C8.78667 39.56 8.68 39.48 8.68 39.32C8.68 39 9 38.84 9.64 38.84C10.2267 38.84 10.9467 38.84 11.8 38.84C12.6533 38.7867 13.48 38.7333 14.28 38.68C15.1333 38.5733 15.9067 38.4667 16.6 38.36C17.3467 38.2533 17.8267 38.1467 18.04 38.04C18.52 37.2933 19.0533 36.4667 19.64 35.56C20.2267 34.6533 20.8133 33.7733 21.4 32.92C21.9867 32.0133 22.52 31.2133 23 30.52C23.5333 29.8267 23.9333 29.3733 24.2 29.16C24.6267 28.8933 25.24 28.6533 26.04 28.44C26.8933 28.1733 27.6667 27.9333 28.36 27.72C28.6267 27.72 28.7333 27.8 28.68 27.96C28.6267 28.12 28.52 28.2533 28.36 28.36C27.9867 28.4667 27.56 28.68 27.08 29C26.6533 29.2667 26.3067 29.5867 26.04 29.96C25.4 30.76 24.6533 31.8 23.8 33.08C23 34.3067 22.0667 35.8267 21 37.64C23.24 37.2133 25.6667 36.52 28.28 35.56C30.9467 34.6 33.5867 33.4267 36.2 32.04C36.9467 30.7067 37.7733 29.1867 38.68 27.48C39.5867 25.7733 40.52 24.04 41.48 22.28C42.4933 20.52 43.4533 18.8133 44.36 17.16C45.32 15.5067 46.2 14.0933 47 12.92C48.12 11.2133 49.32 9.61333 50.6 8.12C51.88 6.62667 53.1867 5.34667 54.52 4.28C55.9067 3.16 57.2667 2.28 58.6 1.64C59.9867 1 61.32 0.68 62.6 0.68C63.2933 0.68 63.96 0.866667 64.6 1.24C65.24 1.56 65.56 2.52 65.56 4.12V4.2ZM63.4 5C63.4 4.30667 63.2933 3.77334 63.08 3.4C62.8667 3.02667 62.5733 2.76 62.2 2.6C61.88 2.38667 61.5067 2.25334 61.08 2.2C60.7067 2.14667 60.3333 2.12 59.96 2.12C59.48 2.12 58.8933 2.25334 58.2 2.52C57.5067 2.78667 56.68 3.34667 55.72 4.2C54.76 5 53.6133 6.17333 52.28 7.72C51 9.26667 49.5333 11.32 47.88 13.88C47.4 14.68 46.8133 15.72 46.12 17C45.4267 18.28 44.68 19.6933 43.88 21.24C43.08 22.7333 42.2533 24.3067 41.4 25.96C40.5467 27.6133 39.72 29.2133 38.92 30.76C41.32 29.48 43.9333 27.88 46.76 25.96C49.5867 23.9867 52.2267 21.8533 54.68 19.56C57.1867 17.2667 59.2667 14.8667 60.92 12.36C62.5733 9.85334 63.4 7.4 63.4 5ZM66.6737 45.48C65.7671 46.6 64.6737 47.7733 63.3937 49C62.1671 50.1733 60.8071 51.2667 59.3137 52.28C57.8737 53.24 56.3537 54.04 54.7537 54.68C53.2071 55.2667 51.6604 55.56 50.1137 55.56C47.6071 55.56 46.3537 54.44 46.3537 52.2C46.3537 50.7067 46.7271 49.1067 47.4738 47.4C48.2737 45.64 49.2871 44.04 50.5137 42.6C51.7404 41.1067 53.0738 39.88 54.5138 38.92C56.0071 37.9067 57.4204 37.4 58.7537 37.4C59.5004 37.4 60.0071 37.5333 60.2738 37.8C60.5938 38.0667 60.7537 38.4133 60.7537 38.84C60.7537 39.48 60.5404 40.1733 60.1138 40.92C59.7404 41.6667 59.1537 42.3867 58.3537 43.08C57.5537 43.72 56.5404 44.28 55.3137 44.76C54.0871 45.1867 52.6204 45.4 50.9137 45.4C50.6471 45.88 50.3537 46.6533 50.0338 47.72C49.7138 48.7333 49.5538 49.7733 49.5538 50.84C49.5538 53.0267 50.5404 54.12 52.5138 54.12C53.7404 54.12 54.9937 53.8267 56.2737 53.24C57.6071 52.6533 58.8871 51.9333 60.1138 51.08C61.3404 50.1733 62.4604 49.2133 63.4737 48.2C64.5404 47.1333 65.4204 46.1467 66.1137 45.24C66.2204 45.1333 66.3271 45.1067 66.4338 45.16C66.5938 45.2133 66.6737 45.32 66.6737 45.48ZM58.2737 39.24C58.2737 38.5467 57.9271 38.2 57.2337 38.2C56.7004 38.2 56.1404 38.4133 55.5538 38.84C55.0204 39.2133 54.4871 39.72 53.9537 40.36C53.4204 41 52.9137 41.6933 52.4338 42.44C51.9537 43.1867 51.5537 43.9067 51.2337 44.6C51.3404 44.6533 51.5271 44.7067 51.7937 44.76C52.0604 44.76 52.2737 44.76 52.4338 44.76C53.9804 44.76 55.3404 44.2267 56.5138 43.16C57.6871 42.04 58.2737 40.7333 58.2737 39.24Z" fill="currentColor"/>
+                <a class="logo h3" href="index.html" aria-label="SILK Cafe Home">
+                    <span class="logo_img" aria-hidden="true">
+                        <svg width="67" height="76" viewBox="0 0 67 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path
+                                d="M65.56 4.2C65.56 5.85333 64.9467 7.77333 63.72 9.96C62.5467 12.0933 60.7867 14.36 58.44 16.76C56.1467 19.16 53.32 21.64 49.96 24.2C46.6 26.7067 42.7867 29.16 38.52 31.56C37.0267 34.28 35.6933 36.76 34.52 39C33.4 41.1867 32.3067 43.5067 31.24 45.96C31.1333 46.2267 31.1067 46.3867 31.16 46.44C31.2133 46.44 31.32 46.36 31.48 46.2C32.8133 44.6 34.3867 42.9733 36.2 41.32C38.0133 39.6133 39.8533 38.3333 41.72 37.48C42.04 37.3733 42.28 37.32 42.44 37.32C42.8667 37.32 43.1867 37.5067 43.4 37.88C43.6667 38.2533 43.8 38.5467 43.8 38.76C43.8 38.9733 43.6667 39.4533 43.4 40.2C43.1333 40.9467 42.7867 41.8 42.36 42.76C41.9333 43.72 41.4533 44.76 40.92 45.88C40.44 46.9467 39.96 47.96 39.48 48.92C39 49.8267 38.44 50.8933 37.8 52.12C37.16 53.2933 36.4933 54.4667 35.8 55.64C35.1067 56.8667 34.4133 58.0133 33.72 59.08C33.08 60.2 32.4667 61.16 31.88 61.96C29.5867 65.16 27.24 67.72 24.84 69.64C22.4933 71.6133 19.9867 73.0533 17.32 73.96C14.8667 74.8133 12.52 75.24 10.28 75.24C8.78667 75.24 7.34667 75.0533 5.96 74.68C4.52 74.36 3.21333 73.8267 2.04 73.08C1.66667 72.8133 1.45333 72.52 1.4 72.2C1.29333 71.9333 1.21333 71.5867 1.16 71.16C1.16 70.9467 1.13333 70.6267 1.08 70.2C1.02667 69.8267 0.973333 69.4267 0.92 69C0.866667 68.6267 0.813334 68.2533 0.76 67.88C0.706667 67.5067 0.68 67.24 0.68 67.08C0.68 66.6 0.893334 66.4133 1.32 66.52C1.32 67.1067 1.48 67.8267 1.8 68.68C2.06667 69.5333 2.6 70.3867 3.4 71.24C4.14667 72.0933 5.18667 72.8133 6.52 73.4C7.8 73.9867 9.42667 74.28 11.4 74.28C13.0533 74.28 14.9467 73.96 17.08 73.32C19.6933 72.5733 22.04 71.16 24.12 69.08C26.2 67 28.2 64.52 30.12 61.64C31.08 60.2 32.04 58.5733 33 56.76C33.96 55 34.84 53.2667 35.64 51.56C36.44 49.8533 37.1067 48.3333 37.64 47C38.2267 45.6133 38.6 44.6533 38.76 44.12C39.1333 43.0533 39.3733 42.2533 39.48 41.72C39.5867 41.1333 39.64 40.7067 39.64 40.44C39.64 40.0667 39.5067 39.88 39.24 39.88C39.0267 39.88 38.3867 40.3067 37.32 41.16C36.3067 41.96 35.2133 42.9733 34.04 44.2C32.92 45.3733 31.9067 46.68 31 48.12C30.0933 49.5067 29.64 50.8133 29.64 52.04C29.64 52.4667 29.6667 52.84 29.72 53.16C29.7733 53.48 29.8 53.6933 29.8 53.8C29.8 54.0667 29.4 54.3067 28.6 54.52C27.8533 54.7333 27.1067 55.0533 26.36 55.48C26.1467 55.48 26.04 55.2667 26.04 54.84C26.04 54.2 26.04 53.6933 26.04 53.32C26.04 52.8933 26.0933 52.4133 26.2 51.88C26.36 51.2933 26.6 50.6 26.92 49.8C27.2933 49 27.8533 47.9067 28.6 46.52C29.3467 45.08 30.3067 43.2667 31.48 41.08C32.6533 38.84 34.12 36.0933 35.88 32.84C33.6933 33.96 31.32 35 28.76 35.96C26.2 36.92 23.48 37.72 20.6 38.36C20.12 39.16 19.5333 40.1733 18.84 41.4C18.1467 42.5733 17.48 43.8267 16.84 45.16C16.2533 46.44 15.7467 47.72 15.32 49C14.8933 50.28 14.68 51.4 14.68 52.36C14.68 53.2667 14.7867 53.9333 15 54.36C15.2133 54.7867 15.6667 55 16.36 55C17.1067 55 17.8533 54.84 18.6 54.52C19.4 54.2 20.4133 53.6933 21.64 53C21.8 52.8933 21.9333 52.92 22.04 53.08C22.1467 53.1867 22.1467 53.32 22.04 53.48C18.52 55.6133 15.6933 56.68 13.56 56.68C12.92 56.68 12.36 56.52 11.88 56.2C11.4 55.88 11.16 55 11.16 53.56C11.16 52.92 11.3733 52.04 11.8 50.92C12.28 49.7467 12.84 48.4667 13.48 47.08C14.1733 45.6933 14.8933 44.28 15.64 42.84C16.3867 41.3467 17.0533 39.96 17.64 38.68C16.52 38.9467 15.1333 39.16 13.48 39.32C11.8267 39.4267 10.3333 39.5067 9 39.56C8.78667 39.56 8.68 39.48 8.68 39.32C8.68 39 9 38.84 9.64 38.84C10.2267 38.84 10.9467 38.84 11.8 38.84C12.6533 38.7867 13.48 38.7333 14.28 38.68C15.1333 38.5733 15.9067 38.4667 16.6 38.36C17.3467 38.2533 17.8267 38.1467 18.04 38.04C18.52 37.2933 19.0533 36.4667 19.64 35.56C20.2267 34.6533 20.8133 33.7733 21.4 32.92C21.9867 32.0133 22.52 31.2133 23 30.52C23.5333 29.8267 23.9333 29.3733 24.2 29.16C24.6267 28.8933 25.24 28.6533 26.04 28.44C26.8933 28.1733 27.6667 27.9333 28.36 27.72C28.6267 27.72 28.7333 27.8 28.68 27.96C28.6267 28.12 28.52 28.2533 28.36 28.36C27.9867 28.4667 27.56 28.68 27.08 29C26.6533 29.2667 26.3067 29.5867 26.04 29.96C25.4 30.76 24.6533 31.8 23.8 33.08C23 34.3067 22.0667 35.8267 21 37.64C23.24 37.2133 25.6667 36.52 28.28 35.56C30.9467 34.6 33.5867 33.4267 36.2 32.04C36.9467 30.7067 37.7733 29.1867 38.68 27.48C39.5867 25.7733 40.52 24.04 41.48 22.28C42.4933 20.52 43.4533 18.8133 44.36 17.16C45.32 15.5067 46.2 14.0933 47 12.92C48.12 11.2133 49.32 9.61333 50.6 8.12C51.88 6.62667 53.1867 5.34667 54.52 4.28C55.9067 3.16 57.2667 2.28 58.6 1.64C59.9867 1 61.32 0.68 62.6 0.68C63.2933 0.68 63.96 0.866667 64.6 1.24C65.24 1.56 65.56 2.52 65.56 4.12V4.2ZM63.4 5C63.4 4.30667 63.2933 3.77334 63.08 3.4C62.8667 3.02667 62.5733 2.76 62.2 2.6C61.88 2.38667 61.5067 2.25334 61.08 2.2C60.7067 2.14667 60.3333 2.12 59.96 2.12C59.48 2.12 58.8933 2.25334 58.2 2.52C57.5067 2.78667 56.68 3.34667 55.72 4.2C54.76 5 53.6133 6.17333 52.28 7.72C51 9.26667 49.5333 11.32 47.88 13.88C47.4 14.68 46.8133 15.72 46.12 17C45.4267 18.28 44.68 19.6933 43.88 21.24C43.08 22.7333 42.2533 24.3067 41.4 25.96C40.5467 27.6133 39.72 29.2133 38.92 30.76C41.32 29.48 43.9333 27.88 46.76 25.96C49.5867 23.9867 52.2267 21.8533 54.68 19.56C57.1867 17.2667 59.2667 14.8667 60.92 12.36C62.5733 9.85334 63.4 7.4 63.4 5ZM66.6737 45.48C65.7671 46.6 64.6737 47.7733 63.3937 49C62.1671 50.1733 60.8071 51.2667 59.3137 52.28C57.8737 53.24 56.3537 54.04 54.7537 54.68C53.2071 55.2667 51.6604 55.56 50.1137 55.56C47.6071 55.56 46.3537 54.44 46.3537 52.2C46.3537 50.7067 46.7271 49.1067 47.4738 47.4C48.2737 45.64 49.2871 44.04 50.5137 42.6C51.7404 41.1067 53.0738 39.88 54.5138 38.92C56.0071 37.9067 57.4204 37.4 58.7537 37.4C59.5004 37.4 60.0071 37.5333 60.2738 37.8C60.5938 38.0667 60.7537 38.4133 60.7537 38.84C60.7537 39.48 60.5404 40.1733 60.1138 40.92C59.7404 41.6667 59.1537 42.3867 58.3537 43.08C57.5537 43.72 56.5404 44.28 55.3137 44.76C54.0871 45.1867 52.6204 45.4 50.9137 45.4C50.6471 45.88 50.3537 46.6533 50.0338 47.72C49.7138 48.7333 49.5538 49.7733 49.5538 50.84C49.5538 53.0267 50.5404 54.12 52.5138 54.12C53.7404 54.12 54.9937 53.8267 56.2737 53.24C57.6071 52.6533 58.8871 51.9333 60.1138 51.08C61.3404 50.1733 62.4604 49.2133 63.4737 48.2C64.5404 47.1333 65.4204 46.1467 66.1137 45.24C66.2204 45.1333 66.3271 45.1067 66.4338 45.16C66.5938 45.2133 66.6737 45.32 66.6737 45.48ZM58.2737 39.24C58.2737 38.5467 57.9271 38.2 57.2337 38.2C56.7004 38.2 56.1404 38.4133 55.5538 38.84C55.0204 39.2133 54.4871 39.72 53.9537 40.36C53.4204 41 52.9137 41.6933 52.4338 42.44C51.9537 43.1867 51.5537 43.9067 51.2337 44.6C51.3404 44.6533 51.5271 44.7067 51.7937 44.76C52.0604 44.76 52.2737 44.76 52.4338 44.76C53.9804 44.76 55.3404 44.2267 56.5138 43.16C57.6871 42.04 58.2737 40.7333 58.2737 39.24Z"
+                                fill="currentColor"
+                            />
                         </svg>
                     </span>
                     SILK Cafe
                 </a>
-                <nav class="header_nav text--medium text--md collapse" id="headerMenu">
+                <nav class="header_nav text--medium text--md collapse" id="headerMenu" role="navigation" aria-label="Main navigation">
                     <ul class="header_nav-list">
                         <li class="header_nav-list_item">
                             <a class="nav-item nav-link" href="about.html" data-page="about" data-single="true">
@@ -845,555 +360,653 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="header_nav-socials d-flex">
+                    <ul class="header_nav-socials d-flex" aria-label="Social media links">
                         <li>
-                            <a class="link" href="https://instagram.com/silkcafe" target="_blank" rel="noopener noreferrer">
-                                <i class="icon-instagram icon"></i>
+                            <a class="link" href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                                <i class="icon-twitter icon" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="link" href="https://facebook.com/silkcafe" target="_blank" rel="noopener noreferrer">
-                                <i class="icon-facebook icon"></i>
+                            <a class="link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                                <i class="icon-facebook icon" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                                <i class="icon-instagram icon" aria-hidden="true"></i>
                             </a>
                         </li>
                     </ul>
                 </nav>
-                <button class="header_trigger" id="headerTrigger" data-bs-toggle="collapse" data-bs-target="#headerMenu" aria-controls="headerMenu" aria-expanded="false" type="button">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line line--short"></span>
+                <button
+                    class="header_trigger"
+                    id="headerTrigger"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#headerMenu"
+                    aria-controls="headerMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation menu"
+                    type="button"
+                >
+                    <span class="line" aria-hidden="true"></span>
+                    <span class="line" aria-hidden="true"></span>
+                    <span class="line line--short" aria-hidden="true"></span>
                 </button>
             </div>
         </header>
 
-        <main>
-            <!-- ============================================
-                 HERO SECTION - Full Screen Swiper
-                 ============================================ -->
-            <section class="hero-section">
-                <div class="hero-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image: url('img/menu/exclusive/hero-simple-dinner.png');">
-                            <div class="hero-content">
-                                <h1 data-aos="fade-up">Simple Food. Exceptional Craft. Your Table.</h1>
-                                <p data-aos="fade-up" data-aos-delay="100">Private dining experiences where talented chefs create honest, heartfelt meals in our intimate Victorian cottage. By reservation only, 2-4 weeks advance.</p>
-                                <a href="#inquiry" class="btn-luxury" data-aos="fade-up" data-aos-delay="200">Begin Your Inquiry</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide" style="background-image: url('img/menu/exclusive/hero-simple-kitchen.png');">
-                            <div class="hero-content">
-                                <h1 data-aos="fade-up">Where Simplicity Is the Point</h1>
-                                <p data-aos="fade-up" data-aos-delay="100">Six to twelve guests. One dedicated chef. A cottage kitchen transformed. The best local ingredients prepared with care and intention.</p>
-                                <a href="#inquiry" class="btn-luxury" data-aos="fade-up" data-aos-delay="200">Plan Your Experience</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide" style="background-image: url('img/menu/exclusive/feast-asian-fusion.png');">
-                            <div class="hero-content">
-                                <h1 data-aos="fade-up">Not a Restaurant. A Private Kitchen.</h1>
-                                <p data-aos="fade-up" data-aos-delay="100">By reservation only. Asian fusion, Appalachian comfort, or something entirely custom. Tell us what you're craving.</p>
-                                <a href="#inquiry" class="btn-luxury" data-aos="fade-up" data-aos-delay="200">Reserve Your Experience</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </section>
-
-            <!-- ============================================
-                 EXCLUSIVITY BANNER
-                 ============================================ -->
-            <div class="exclusivity-banner">
-                <div class="container">
-                    <span><i class="icon-clock"></i> By Advance Reservation Only</span>
-                    <span><i class="icon-calendar"></i> 2-4 Weeks Notice Required</span>
-                    <span><i class="icon-users"></i> Intimate Groups of 6-12</span>
-                </div>
+        <!-- Page Cover Banner -->
+        <section class="page" aria-labelledby="page-title">
+            <div class="page_cover d-flex flex-column align-items-center justify-content-center" role="img" aria-label="Warm farmhouse kitchen with rustic dishes and morning light">
+                <div class="page_cover-img"></div>
+                <h1 id="page-title" class="page_cover-title">Our Menu</h1>
             </div>
+            <nav class="page_breadcrumbs" aria-label="Breadcrumb">
+                <ol class="page_breadcrumbs-list d-flex flex-wrap justify-content-center h5">
+                    <li><a class="link" href="index.html">Home</a></li>
+                    <li aria-current="page">Menu</li>
+                </ol>
+            </nav>
+        </section>
 
-            <!-- ============================================
-                 PHILOSOPHY SECTION
-                 ============================================ -->
-            <section class="philosophy-section section">
+        <main id="main-content">
+            <!-- Menu Intro -->
+            <section class="menu-intro">
                 <div class="container">
+                    <p class="tagline">Nourishing Food. Old Walls. Mindful Living.</p>
+                    <p>Our dishes celebrate Appalachian traditions and Filipino-fusion flavors, made with local West Virginia ingredients—pawpaw, blackberries, ramps, kale, and beans grown in our rich mountain soil. Light, nourishing, and plant-forward, these are the foods that restore body and spirit around our farmhouse tables.</p>
+                </div>
+            </section>
+
+            <!-- BREAKFAST -->
+            <section class="menu-category">
+                <div class="container">
+                    <div class="menu-category-header">
+                        <h3>Breakfast</h3>
+                        <p>Start the day with nourishing morning fare</p>
+                    </div>
                     <div class="row">
-                        <div class="col-lg-6" data-aos="fade-right">
-                            <img src="img/menu/exclusive/feast-six-course.png" alt="Six-course tasting menu" class="img-fluid philosophy-image">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-sunrise-bowl.png" alt="Mountain Sunrise Bowl" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Mountain Sunrise Bowl</h5>
+                                    <p>Steel-cut oats with maple-roasted apples, black walnuts, and local honey</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6" data-aos="fade-left">
-                            <div class="philosophy-content">
-                                <span class="section-subtitle">Our Philosophy</span>
-                                <h2>Simple is Sophisticated</h2>
-                                <p>At SILK Cafe, we believe the most profound culinary experiences happen not in grand dining rooms, but in spaces that feel like home. Our Victorian cottages—each accommodating just 6 to 12 guests—become private stages where talented chefs practice their craft with rare intimacy.</p>
-                                <p>This is not a restaurant. There are no walk-ins, no regular hours, no standard menus. Instead, our visiting chefs bring diverse culinary traditions—from Asian fusion to authentic Appalachian—creating singular experiences tailored exclusively to you.</p>
-                                <ul class="philosophy-points">
-                                    <li><i class="icon-home"></i><span><strong>Victorian Intimacy</strong> — Our 1880s cottage rooms seat 6-12 guests maximum</span></li>
-                                    <li><i class="icon-star"></i><span><strong>Visiting Culinary Masters</strong> — Talented chefs bringing diverse traditions to your table</span></li>
-                                    <li><i class="icon-clock"></i><span><strong>Intentional Exclusivity</strong> — 2-4 weeks advance reservation required</span></li>
-                                    <li><i class="icon-edit"></i><span><strong>Bespoke Menu Design</strong> — Every experience crafted to your preferences</span></li>
-                                </ul>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-ramp-scramble.png" alt="Ramp and Herb Scramble" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Ramp &amp; Herb Scramble</h5>
+                                    <p>Soft scrambled eggs with foraged ramps, kale, and fresh garden herbs</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-buckwheat-cakes.png" alt="Buckwheat Griddle Cakes" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Buckwheat Griddle Cakes</h5>
+                                    <p>Light buckwheat pancakes with pawpaw compote and maple syrup</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-frittata.png" alt="Garden Greens Frittata" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Garden Greens Frittata</h5>
+                                    <p>Baked egg frittata with seasonal kale, carrots, and roasted tomatoes</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-ube-hash.png" alt="Ube Sweet Potato Hash" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Ube Sweet Potato Hash</h5>
+                                    <p>Roasted purple yam with caramelized onions and fresh herbs</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/breakfast-chia-pudding.png" alt="Blackberry Chia Pudding" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Blackberry Chia Pudding</h5>
+                                    <p>Overnight chia seeds with fresh blackberries, honey, and toasted walnuts</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ============================================
-                 FEAST POSSIBILITIES SECTION
-                 ============================================ -->
-            <section class="possibilities-section section">
+            <!-- SOUPS & STEWS -->
+            <section class="menu-category">
                 <div class="container">
-                    <div class="section-header">
-                        <span class="section-subtitle" data-aos="fade-down">Explore</span>
-                        <h2 data-aos="fade-up">Feast Possibilities</h2>
-                        <p data-aos="fade-up" data-aos-delay="50">Each gathering is unique. Browse our collections for inspiration, then let us craft something entirely yours.</p>
+                    <div class="menu-category-header">
+                        <h3>Soups &amp; Stews</h3>
+                        <p>Slow-simmered nourishment in every bowl</p>
                     </div>
-
-                    <!-- Morning Feasts -->
-                    <div class="possibility-category">
-                        <div class="category-header" data-aos="fade-right">
-                            <div class="category-icon"><i class="icon-sun"></i></div>
-                            <h3>Morning Feasts</h3>
-                        </div>
-                        <div class="possibility-swiper swiper" data-slides="4">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/feast-brunch.png" alt="The Grand Brunch" loading="lazy">
-                                            <span class="possibility-card__badge">Signature</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Grand Brunch</h4>
-                                            <p>Mid-morning indulgence with champagne service, house-cured gravlax, warm brioche, seasonal frittata, and a rotating selection of pastries from our visiting pastry chef.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 8-12 guests</span>
-                                                <span><i class="icon-clock"></i> 3 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $195 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/breakfast/shakshuka.webp" alt="The Dawn Gathering" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Dawn Gathering</h4>
-                                            <p>A leisurely breakfast featuring house-baked sourdough, farm eggs prepared three ways, locally smoked trout, seasonal preserves, and single-origin French-press coffee.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 2.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $175 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/breakfast/congee.webp" alt="The Cottage Breakfast" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Cottage Breakfast</h4>
-                                            <p>An intimate morning meal centered around a single showstopping dish—perhaps shakshuka with house-made labneh, or Japanese-style soufflé pancakes with seasonal compote.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-8 guests</span>
-                                                <span><i class="icon-clock"></i> 2 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $150 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/breakfast/avocado_toast.webp" alt="The Working Breakfast" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Working Breakfast</h4>
-                                            <p>Designed for small groups combining business with pleasure. Refined yet focused: smoked salmon board, artisan bread service, farm-fresh yogurt parfaits, and premium coffee.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 1.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $125 per guest</span>
-                                        </div>
-                                    </article>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-bean-greens.png" alt="Appalachian Bean and Greens Stew" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Bean &amp; Greens Stew</h5>
+                                    <p>Slow-simmered white beans with kale, carrots, and fresh herbs</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
                         </div>
-                    </div>
-
-                    <!-- Afternoon Affairs -->
-                    <div class="possibility-category">
-                        <div class="category-header" data-aos="fade-right">
-                            <div class="category-icon"><i class="icon-coffee"></i></div>
-                            <h3>Afternoon Affairs</h3>
-                        </div>
-                        <div class="possibility-swiper swiper" data-slides="4">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/feast-afternoon-tea.png" alt="Cottage Tea Service" loading="lazy">
-                                            <span class="possibility-card__badge">Popular</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Cottage Tea Service</h4>
-                                            <p>A Victorian tradition reimagined. Three tiers of savory bites, house-baked scones with Devon cream, delicate pastries, and a selection of rare teas with vintage china service.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-12 guests</span>
-                                                <span><i class="icon-clock"></i> 2 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $135 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/bowls/mediterranean_bowl.webp" alt="The Light Gathering" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Light Gathering</h4>
-                                            <p>Afternoon grazing for intimate celebrations—artisan cheese and charcuterie, seasonal crudités with house-made dips, marinated olives, warm focaccia, and carefully selected wines.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 8-12 guests</span>
-                                                <span><i class="icon-clock"></i> 2.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $115 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/bowls/buddha_bowl.webp" alt="Garden Luncheon" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Garden Luncheon</h4>
-                                            <p>Fresh, bright, seasonal. Think heirloom tomato salad with burrata, grilled fish with herb oil, handmade pasta with summer vegetables. Served on our wraparound porch.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 2.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $165 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/tea/matcha_latte.webp" alt="The Tasting Flight" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Tasting Flight</h4>
-                                            <p>An afternoon exploration of a single ingredient or technique—perhaps six preparations of oysters, or a journey through regional olive oils. Educational, delicious, unexpected.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-8 guests</span>
-                                                <span><i class="icon-clock"></i> 2 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $145 per guest</span>
-                                        </div>
-                                    </article>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-morel-ramp.png" alt="Morel Mushroom and Ramp Soup" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Morel &amp; Ramp Soup</h5>
+                                    <p>Creamy cashew-based soup with foraged morels and wild ramps</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
                         </div>
-                    </div>
-
-                    <!-- Evening Feasts -->
-                    <div class="possibility-category">
-                        <div class="category-header" data-aos="fade-right">
-                            <div class="category-icon"><i class="icon-moon"></i></div>
-                            <h3>Evening Feasts</h3>
-                        </div>
-                        <div class="possibility-swiper swiper" data-slides="4">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/feast-six-course.png" alt="The Classic Six-Course" loading="lazy">
-                                            <span class="possibility-card__badge">Signature</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Classic Six-Course</h4>
-                                            <p>Our signature experience. A carefully paced journey through aperitif, amuse-bouche, starter, fish course, main, and dessert. Wine pairings available. Each course is a conversation piece.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 3.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $285 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/hero-chef-kitchen.png" alt="Chef's Table Experience" loading="lazy">
-                                            <span class="possibility-card__badge">Intimate</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Chef's Table Experience</h4>
-                                            <p>Sit at our kitchen counter while your chef prepares an intimate tasting menu. Watch technique, ask questions, understand the why behind each decision. Limited to our smallest cottage.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 4-6 guests</span>
-                                                <span><i class="icon-clock"></i> 3 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $325 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/entrees/stuffed_peppers.webp" alt="Vegetable Forward Feast" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Vegetable Forward</h4>
-                                            <p>Seven courses proving vegetables deserve the spotlight. Local, seasonal, prepared with techniques borrowed from fine dining worldwide. Surprisingly substantial, utterly elegant.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 3 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $245 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/entrees/tikka_masala.webp" alt="Regional Exploration" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Regional Exploration</h4>
-                                            <p>Choose a cuisine—Japanese kaiseki, Northern Italian, coastal Spanish, modern Nordic—and experience it through your chef's personal lens. Authentic spirit, intimate setting.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 3.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $295 per guest</span>
-                                        </div>
-                                    </article>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-butternut-apple.png" alt="Roasted Butternut and Apple Bisque" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Butternut &amp; Apple Bisque</h5>
+                                    <p>Velvety roasted squash soup with local apples and maple drizzle</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
                         </div>
-                    </div>
-
-                    <!-- Seasonal Celebrations -->
-                    <div class="possibility-category">
-                        <div class="category-header" data-aos="fade-right">
-                            <div class="category-icon"><i class="icon-leaf"></i></div>
-                            <h3>Seasonal Celebrations</h3>
-                        </div>
-                        <div class="possibility-swiper swiper" data-slides="4">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/feast-harvest.png" alt="The Harvest Feast" loading="lazy">
-                                            <span class="possibility-card__badge">Seasonal</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Harvest Feast</h4>
-                                            <p>October and November only. Long-table dining celebrating the autumn harvest—roasted squash, braised meats, apple-centric desserts, seasonal cocktails. Fireplace lit, warmth all around.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 8-12 guests</span>
-                                                <span><i class="icon-clock"></i> 4 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $310 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/feast-holiday.png" alt="The Holiday Gathering" loading="lazy">
-                                            <span class="possibility-card__badge">Limited</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Holiday Gathering</h4>
-                                            <p>December's ultimate indulgence. Traditional dishes elevated through technique and ingredient quality. Prime rib, twice-baked potatoes, Brussels sprouts, and show-stopping dessert.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 8-12 guests</span>
-                                                <span><i class="icon-clock"></i> 4 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $340 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/bowls/spring_vegetable.webp" alt="Spring Awakening" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Spring Awakening</h4>
-                                            <p>March through May. Bright, fresh, optimistic. Peas, asparagus, spring lamb, rhubarb, and the first strawberries. A menu that tastes like possibility.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 3 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $265 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/space-garden.png" alt="Summer Solstice" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Summer Solstice</h4>
-                                            <p>June celebration featuring the longest day's finest—grilled seafood, farmers market vegetables, stone fruit desserts, and chilled rosé. Served on the porch as the sun sets.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 8-12 guests</span>
-                                                <span><i class="icon-clock"></i> 3.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $275 per guest</span>
-                                        </div>
-                                    </article>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-sinigang.png" alt="Sinigang na Isda" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Sinigang na Isda</h5>
+                                    <p>Light tamarind broth with local fish, tomatoes, and greens</p>
+                                    <span class="dish-tag">Filipino</span>
+                                    <span class="dish-tag">Gluten-Free</span>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
                         </div>
-                    </div>
-
-                    <!-- Custom Creations -->
-                    <div class="possibility-category">
-                        <div class="category-header" data-aos="fade-right">
-                            <div class="category-icon"><i class="icon-star"></i></div>
-                            <h3>Custom Creations</h3>
-                        </div>
-                        <div class="possibility-swiper swiper" data-slides="4">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/hero-tasting-menu.png" alt="The Collaborative Menu" loading="lazy">
-                                            <span class="possibility-card__badge">Custom</span>
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Collaborative Menu</h4>
-                                            <p>Work directly with your chef to design an entirely custom experience. Recreate a meal from your travels, or design a menu around a single treasured ingredient. Entirely yours.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-10 guests</span>
-                                                <span><i class="icon-clock"></i> 3-4 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $300 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/tea/chai_latte.webp" alt="The Wine Dinner" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Wine Dinner</h4>
-                                            <p>Bring your own bottles or choose from our cellar. The chef designs each course to complement your selections. For the collector who wants cuisine worthy of their wine.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-8 guests</span>
-                                                <span><i class="icon-clock"></i> 3.5 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $320 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/generated/desserts/tiramisu.webp" alt="Birthday Indulgence" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Birthday Indulgence</h4>
-                                            <p>Whatever the guest of honor dreams—a perfect burger with hand-cut fries and vintage champagne, or a twelve-course tasting menu. We've done both. This is their day.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 6-12 guests</span>
-                                                <span><i class="icon-clock"></i> 3-4 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $250 per guest</span>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="possibility-card">
-                                        <div class="possibility-card__image">
-                                            <img src="img/menu/exclusive/hero-private-feast.png" alt="Anniversary Dinner" loading="lazy">
-                                        </div>
-                                        <div class="possibility-card__content">
-                                            <h4>The Anniversary Dinner</h4>
-                                            <p>For two to eight guests. Romance, nostalgia, celebration. Tell us your story, and we'll craft a menu that honors it. Flowers, champagne, courses paced for conversation.</p>
-                                            <div class="possibility-card__meta">
-                                                <span><i class="icon-users"></i> 2-8 guests</span>
-                                                <span><i class="icon-clock"></i> 3 hours</span>
-                                            </div>
-                                            <span class="possibility-card__price">From $295 per guest</span>
-                                        </div>
-                                    </article>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-lentil.png" alt="Garden Vegetable and Lentil Stew" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Lentil &amp; Vegetable Stew</h5>
+                                    <p>Hearty lentils with carrots, kale, tomatoes, and fresh herbs</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/soup-arroz-caldo.png" alt="Arroz Caldo" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Arroz Caldo</h5>
+                                    <p>Comforting ginger chicken rice porridge with scallions</p>
+                                    <span class="dish-tag">Filipino</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 
-            <!-- ============================================
-                 PRIVATE SPACES SECTION
-                 ============================================ -->
-            <section class="spaces-section section">
+            <!-- SALADS & BOWLS -->
+            <section class="menu-category">
                 <div class="container">
-                    <div class="section-header">
-                        <span class="section-subtitle" data-aos="fade-down">Intimate Settings</span>
-                        <h2 data-aos="fade-up">Our Private Spaces</h2>
-                        <p data-aos="fade-up" data-aos-delay="50">Each Victorian cottage offers intimate rooms perfect for exclusive gatherings. Reserve the entire space for your party.</p>
+                    <div class="menu-category-header">
+                        <h3>Salads &amp; Bowls</h3>
+                        <p>Fresh and nourishing, straight from the garden</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-kale-caesar.png" alt="Kale Caesar with Black Walnut" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Kale Caesar</h5>
+                                    <p>Massaged kale with hemp seed dressing and toasted black walnuts</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-root-bowl.png" alt="Roasted Root Vegetable Bowl" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Roasted Root Bowl</h5>
+                                    <p>Seasonal carrots, beets, and sweet potatoes over quinoa with tahini</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-blackberry.png" alt="Blackberry and Arugula Salad" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Blackberry &amp; Arugula</h5>
+                                    <p>Fresh blackberries, wild greens, goat cheese, and honey-balsamic</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-pinakbet.png" alt="Pinakbet Bowl" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Pinakbet Bowl</h5>
+                                    <p>Steamed vegetables with light miso-ginger sauce over brown rice</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-grain-power.png" alt="Grain and Green Power Bowl" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Grain &amp; Green Power Bowl</h5>
+                                    <p>Farro, steamed kale, roasted chickpeas, and maple-tahini dressing</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/salad-ramp-potato.png" alt="Spring Ramp and Potato Salad" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Ramp &amp; Potato Salad</h5>
+                                    <p>Steamed new potatoes with foraged ramps, herbs, and olive oil</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HEARTY MAINS -->
+            <section class="menu-category">
+                <div class="container">
+                    <div class="menu-category-header">
+                        <h3>Hearty Mains</h3>
+                        <p>Nourishing dishes for the farmhouse table</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-trout-pawpaw.png" alt="Grilled Trout with Pawpaw Salsa" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Grilled Trout with Pawpaw</h5>
+                                    <p>Local river trout with fresh pawpaw salsa, cilantro, and lime</p>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-roasted-chicken.png" alt="Slow-Roasted Chicken with Herbs" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Herb-Roasted Chicken</h5>
+                                    <p>Free-range chicken with rosemary, thyme, and roasted root vegetables</p>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-chicken-adobo.png" alt="Chicken Adobo" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Chicken Adobo</h5>
+                                    <p>Braised chicken in vinegar, garlic, and bay leaves</p>
+                                    <span class="dish-tag">Filipino</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-bean-cassoulet.png" alt="Three-Bean Cassoulet" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Three-Bean Cassoulet</h5>
+                                    <p>Slow-baked beans with tomatoes, herbs, and whole grain topping</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-mushroom-pie.png" alt="Wild Mushroom and Lentil Shepherds Pie" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Mushroom Shepherd's Pie</h5>
+                                    <p>Foraged morels and lentils topped with mashed sweet potato</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-maple-salmon.png" alt="Grilled Salmon with Maple Glaze" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Maple-Glazed Salmon</h5>
+                                    <p>Wild-caught salmon with local maple syrup and Dijon glaze</p>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-pinakbet.png" alt="Pinakbet Vegetable Stew" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Pinakbet</h5>
+                                    <p>Traditional steamed vegetables with light garlic sauce</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-stuffed-squash.png" alt="Stuffed Acorn Squash" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Stuffed Acorn Squash</h5>
+                                    <p>Roasted squash filled with quinoa, black beans, kale, and herbs</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/main-roasted-turkey.png" alt="Herb-Roasted Turkey Breast" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Herb-Roasted Turkey</h5>
+                                    <p>Oven-roasted turkey with sage, thyme, and seasonal vegetables</p>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIDES & BREAD -->
+            <section class="menu-category">
+                <div class="container">
+                    <div class="menu-category-header">
+                        <h3>Sides &amp; Bread</h3>
+                        <p>Simple accompaniments from garden and oven</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-steamed-greens.png" alt="Steamed Greens with Garlic" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Steamed Greens</h5>
+                                    <p>Kale or collards with olive oil and roasted garlic</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-maple-carrots.png" alt="Maple-Roasted Carrots" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Maple-Roasted Carrots</h5>
+                                    <p>Whole carrots glazed with maple syrup and thyme</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-buckwheat-bread.png" alt="Buckwheat Sourdough Loaf" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Buckwheat Sourdough</h5>
+                                    <p>Naturally leavened bread with stone-ground buckwheat</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-fermented-kraut.png" alt="Fermented Appalachian Kraut" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Fermented Kraut</h5>
+                                    <p>House-made sauerkraut with cabbage and caraway</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-brown-rice.png" alt="Brown Rice Pilaf with Herbs" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Brown Rice Pilaf</h5>
+                                    <p>Fluffy brown rice with fresh parsley, dill, and scallions</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-sweet-potatoes.png" alt="Roasted Sweet Potatoes" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Roasted Sweet Potatoes</h5>
+                                    <p>Cubed sweet potatoes with olive oil and sea salt</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-cornbread.png" alt="Honey Cornbread Muffins" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Honey Cornbread</h5>
+                                    <p>Stone-ground cornmeal muffins with local honey</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/side-bok-choy.png" alt="Garlic Bok Choy" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Garlic Bok Choy</h5>
+                                    <p>Quick-steamed bok choy with garlic and light soy</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SWEETS & BAKED GOODS -->
+            <section class="menu-category">
+                <div class="container">
+                    <div class="menu-category-header">
+                        <h3>Sweets &amp; Baked Goods</h3>
+                        <p>Naturally sweetened treats from our cottage kitchen</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-pawpaw-tart.png" alt="Pawpaw Custard Tart" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Pawpaw Custard Tart</h5>
+                                    <p>Creamy pawpaw custard in a light almond flour crust</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-apple-blackberry.png" alt="Apple-Blackberry Crumble" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Apple-Blackberry Crumble</h5>
+                                    <p>Baked apples and blackberries with oat and walnut topping</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-carrot-cake.png" alt="Honey-Sweetened Carrot Cake" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Honey Carrot Cake</h5>
+                                    <p>Moist spiced cake sweetened with local honey</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-ube-halaya.png" alt="Ube Halaya" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Ube Halaya</h5>
+                                    <p>Traditional Filipino purple yam pudding with coconut milk</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-persimmon-cookies.png" alt="Persimmon Cookies" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Persimmon Cookies</h5>
+                                    <p>Soft-baked cookies with local persimmons and black walnuts</p>
+                                    <span class="dish-tag">Vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/dessert-energy-bites.png" alt="Maple-Walnut Energy Bites" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Maple-Walnut Energy Bites</h5>
+                                    <p>No-bake treats with dates, black walnuts, and maple syrup</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Gluten-Free</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BEVERAGES -->
+            <section class="menu-category">
+                <div class="container">
+                    <div class="menu-category-header">
+                        <h3>Beverages</h3>
+                        <p>Restorative drinks for body and spirit</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/beverage-apple-cider.png" alt="House-Pressed Apple Cider" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Apple Cider</h5>
+                                    <p>Fresh-pressed local apples, served warm or cold</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/beverage-turmeric-latte.png" alt="Golden Turmeric Latte" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Golden Turmeric Latte</h5>
+                                    <p>Warm almond milk with turmeric, ginger, and honey</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/beverage-blackberry-tea.png" alt="Blackberry-Basil Iced Tea" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Blackberry-Basil Tea</h5>
+                                    <p>Cold-brewed green tea with fresh blackberries and basil</p>
+                                    <span class="dish-tag">Vegan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="dish-item">
+                                <img src="img/menu/dishes/beverage-calamansi.png" alt="Calamansi Refresher" class="dish-item-img" loading="lazy">
+                                <div class="dish-item-content">
+                                    <h5>Calamansi Refresher</h5>
+                                    <p>Fresh calamansi lime with honey and sparkling water</p>
+                                    <span class="dish-tag">Vegan</span>
+                                    <span class="dish-tag">Filipino</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHEFS SECTION -->
+            <section class="chefs-section">
+                <div class="container">
+                    <div class="section_header centered">
+                        <span class="section_header-subtitle">Our Visiting Chefs</span>
+                        <h2 class="section_header-title">The Cooks Behind the Food</h2>
                     </div>
                     <div class="row g-4">
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                            <div class="space-card">
-                                <img src="img/menu/exclusive/space-library.png" alt="The Library Room" loading="lazy">
-                                <div class="space-card__overlay"></div>
-                                <div class="space-card__content">
-                                    <h4>The Library Room</h4>
-                                    <p>Seats 6 | Cherry wood table | Fireplace</p>
-                                    <a href="gatherings.html" class="btn-link">View Space <i class="icon-arrow-right"></i></a>
+                        <div class="col-lg-6">
+                            <div class="chef-mini">
+                                <img src="img/menu/exclusive/chef-suzanne.png" alt="Chef Suzanne" loading="lazy">
+                                <div>
+                                    <span class="specialty">Asian Fusion</span>
+                                    <h4>Chef Suzanne</h4>
+                                    <p>Filipino cuisine meets Appalachian ingredients. Bold flavors, family recipes, and the kind of food that brings people together.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="space-card">
-                                <img src="img/menu/exclusive/space-parlor.png" alt="The Golden Parlor" loading="lazy">
-                                <div class="space-card__overlay"></div>
-                                <div class="space-card__content">
-                                    <h4>The Golden Parlor</h4>
-                                    <p>Seats 8-10 | Natural light | Garden views</p>
-                                    <a href="gatherings.html" class="btn-link">View Space <i class="icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="space-card">
-                                <img src="img/menu/exclusive/space-garden.png" alt="The Garden Terrace" loading="lazy">
-                                <div class="space-card__overlay"></div>
-                                <div class="space-card__content">
-                                    <h4>The Garden Terrace</h4>
-                                    <p>Seats 6-8 | Al fresco dining | String lights</p>
-                                    <a href="gatherings.html" class="btn-link">View Space <i class="icon-arrow-right"></i></a>
+                        <div class="col-lg-6">
+                            <div class="chef-mini">
+                                <img src="img/menu/exclusive/chef-dustin.png" alt="Chef Dustin" loading="lazy">
+                                <div>
+                                    <span class="specialty">Appalachian</span>
+                                    <h4>Chef Dustin</h4>
+                                    <p>20+ years of kitchen experience. Root-to-stem cooking, slow-smoked meats, and cast iron everything. The authentic taste of the hills.</p>
                                 </div>
                             </div>
                         </div>
@@ -1401,245 +1014,14 @@
                 </div>
             </section>
 
-            <!-- ============================================
-                 THE EXPERIENCE PROCESS
-                 ============================================ -->
-            <section class="process-section section">
+            <!-- PRIVATE DINING CTA -->
+            <section class="private-dining-cta">
                 <div class="container">
-                    <div class="section-header">
-                        <span class="section-subtitle" data-aos="fade-down">Your Journey</span>
-                        <h2 data-aos="fade-up">The Experience</h2>
-                        <p data-aos="fade-up" data-aos-delay="50">From first inquiry to the final course, we guide you through creating something unforgettable.</p>
-                    </div>
-                    <div class="process-steps">
-                        <div class="row">
-                            <div class="col-lg col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
-                                <div class="process-step">
-                                    <span class="step-number">01</span>
-                                    <div class="step-icon"><i class="icon-envelope"></i></div>
-                                    <h5>Inquiry</h5>
-                                    <p>Share your vision, dates, and guest count</p>
-                                </div>
-                            </div>
-                            <div class="col-lg col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-                                <div class="process-step">
-                                    <span class="step-number">02</span>
-                                    <div class="step-icon"><i class="icon-phone"></i></div>
-                                    <h5>Consultation</h5>
-                                    <p>Personal call to design your experience</p>
-                                </div>
-                            </div>
-                            <div class="col-lg col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-                                <div class="process-step">
-                                    <span class="step-number">03</span>
-                                    <div class="step-icon"><i class="icon-user"></i></div>
-                                    <h5>Chef Selection</h5>
-                                    <p>Meet your culinary guide</p>
-                                </div>
-                            </div>
-                            <div class="col-lg col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-                                <div class="process-step">
-                                    <span class="step-number">04</span>
-                                    <div class="step-icon"><i class="icon-edit"></i></div>
-                                    <h5>Menu Design</h5>
-                                    <p>Craft the perfect feast together</p>
-                                </div>
-                            </div>
-                            <div class="col-lg col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-                                <div class="process-step">
-                                    <span class="step-number">05</span>
-                                    <div class="step-icon"><i class="icon-star"></i></div>
-                                    <h5>The Experience</h5>
-                                    <p>Arrive, relax, feast</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Private Dining &amp; Gatherings</h3>
+                    <p>Planning a special occasion? Our chefs can prepare custom menus for private gatherings in our Victorian cottages. Intimate dinners for 6-12 guests.</p>
+                    <a href="gatherings.html" class="btn-cottage">Plan Your Gathering</a>
                 </div>
             </section>
-
-            <!-- ============================================
-                 CHEF SPOTLIGHT SECTION
-                 ============================================ -->
-            <section class="chefs-section section">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-subtitle" data-aos="fade-down">Culinary Talent</span>
-                        <h2 data-aos="fade-up">Our Visiting Chefs</h2>
-                        <p data-aos="fade-up" data-aos-delay="50">We work with talented chefs who bring diverse culinary traditions to our intimate cottage kitchen, each with their own story and expertise.</p>
-                    </div>
-                </div>
-                <div class="chef-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <!-- Chef Suzanne -->
-                        <div class="swiper-slide">
-                            <div class="chef-spotlight">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 text-center">
-                                            <img src="img/menu/exclusive/chef-suzanne.png" alt="Chef Suzanne" class="chef-portrait" loading="lazy">
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <div class="chef-info">
-                                                <span class="chef-specialty">Asian Fusion</span>
-                                                <h3>Chef Suzanne</h3>
-                                                <p class="chef-origin">Filipina Heritage</p>
-                                                <p>Chef Suzanne brings the bold, comforting flavors of Filipino cuisine to the Ohio Valley, reimagined with local ingredients. Her dishes honor family recipes passed down through generations while embracing the fresh produce and meats available from regional farms. Every meal tells a story of heritage meeting home.</p>
-                                                <div class="chef-signature">
-                                                    <h6>Signature Dishes</h6>
-                                                    <p>Local shredded beef lumpia. Rice noodles with seasonal vegetables. Flavors that warm the soul.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Chef Dustin -->
-                        <div class="swiper-slide">
-                            <div class="chef-spotlight">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 text-center">
-                                            <img src="img/menu/exclusive/chef-dustin.png" alt="Chef Dustin" class="chef-portrait" loading="lazy">
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <div class="chef-info">
-                                                <span class="chef-specialty">Authentic Appalachian</span>
-                                                <h3>Chef Dustin</h3>
-                                                <p class="chef-origin">Columbus, Ohio</p>
-                                                <p>With over 20 years of professional kitchen experience, Chef Dustin has dedicated his craft to elevating the honest, hearty cuisine of Appalachia. He sources from local farms and foragers, bringing the flavors of the region to the table with technique refined over two decades in kitchens across Ohio.</p>
-                                                <div class="chef-signature">
-                                                    <h6>Signature Style</h6>
-                                                    <p>Root-to-stem cooking. Smoked meats. Preserved vegetables. The authentic taste of the hills.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </section>
-
-            <!-- ============================================
-                 INQUIRY SECTION
-                 ============================================ -->
-            <section class="inquiry-section section" id="inquiry">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10 col-xl-8">
-                            <div class="inquiry-card" data-aos="fade-up">
-                                <h2>Begin Your Private Dining Experience</h2>
-                                <p>Exclusive experiences require advance planning. Share your vision with us, and we'll craft an experience worthy of the occasion. All inquiries receive personal responses within 48 hours.</p>
-                                <form class="inquiry-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="name">Your Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" required>
-                                            <div class="form-text">How should we address you?</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="email">Email Address</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
-                                            <div class="form-text">Where should we send our response?</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="phone">Phone Number</label>
-                                            <input type="tel" class="form-control" id="phone" name="phone">
-                                            <div class="form-text">Prefer a phone conversation? (Optional)</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="date">Preferred Date(s)</label>
-                                            <input type="text" class="form-control" id="date" name="date" placeholder="e.g., March 15-20, 2025">
-                                            <div class="form-text">Flexibility helps—2-4 weeks advance required</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="guests">Number of Guests</label>
-                                            <select class="form-select" id="guests" name="guests" required>
-                                                <option value="">Select guest count</option>
-                                                <option value="2-4">2-4 guests (Intimate)</option>
-                                                <option value="5-8">5-8 guests</option>
-                                                <option value="9-12">9-12 guests</option>
-                                            </select>
-                                            <div class="form-text">Our cottages accommodate 6-12 guests comfortably</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="occasion">Occasion</label>
-                                            <select class="form-select" id="occasion" name="occasion">
-                                                <option value="">Select occasion</option>
-                                                <option value="Anniversary">Anniversary</option>
-                                                <option value="Birthday">Birthday</option>
-                                                <option value="Corporate">Corporate Gathering</option>
-                                                <option value="Celebration">Celebration</option>
-                                                <option value="Tuesday">Just Because</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                            <div class="form-text">All reasons are worthy</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="cuisine">Cuisine Interest</label>
-                                            <input type="text" class="form-control" id="cuisine" name="cuisine" placeholder="e.g., Japanese, Italian, or surprise us">
-                                            <div class="form-text">Any style or chef calling to you?</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="budget">Budget Per Guest</label>
-                                            <select class="form-select" id="budget" name="budget">
-                                                <option value="">Select range</option>
-                                                <option value="$150-200">$150-200 per guest</option>
-                                                <option value="$200-300">$200-300 per guest</option>
-                                                <option value="$300-400">$300-400 per guest</option>
-                                                <option value="$400+">$400+ per guest</option>
-                                            </select>
-                                            <div class="form-text">Helps us recommend appropriately</div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label" for="dietary">Dietary Considerations</label>
-                                            <input type="text" class="form-control" id="dietary" name="dietary" placeholder="Allergies, restrictions, or preferences">
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label" for="vision">Your Vision</label>
-                                            <textarea class="form-control" id="vision" name="vision" rows="4" placeholder="Tell us about your dream experience. What would make this gathering perfect?"></textarea>
-                                            <div class="form-text">Dream big—we'll help make it real</div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button type="submit" class="btn-luxury">Request Your Private Experience</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ============================================
-                 GALLERY SLIDER
-                 ============================================ -->
-            <section class="gallery-section">
-                <div class="gallery_slider swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="img/menu/exclusive/feast-brunch.png" alt="Grand brunch spread" loading="lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/menu/exclusive/feast-six-course.png" alt="Six-course tasting" loading="lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/menu/exclusive/feast-harvest.png" alt="Harvest feast" loading="lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/menu/exclusive/feast-afternoon-tea.png" alt="Afternoon tea" loading="lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/menu/exclusive/feast-holiday.png" alt="Holiday gathering" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
         </main>
 
         <!-- Footer -->
@@ -1649,111 +1031,65 @@
                     <a class="logo h3" href="index.html">
                         <span class="logo_img">
                             <svg width="67" height="76" viewBox="0 0 67 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M65.56 4.2C65.56 5.85333 64.9467 7.77333 63.72 9.96C62.5467 12.0933 60.7867 14.36 58.44 16.76C56.1467 19.16 53.32 21.64 49.96 24.2C46.6 26.7067 42.7867 29.16 38.52 31.56C37.0267 34.28 35.6933 36.76 34.52 39C33.4 41.1867 32.3067 43.5067 31.24 45.96C31.1333 46.2267 31.1067 46.3867 31.16 46.44C31.2133 46.44 31.32 46.36 31.48 46.2C32.8133 44.6 34.3867 42.9733 36.2 41.32C38.0133 39.6133 39.8533 38.3333 41.72 37.48C42.04 37.3733 42.28 37.32 42.44 37.32C42.8667 37.32 43.1867 37.5067 43.4 37.88C43.6667 38.2533 43.8 38.5467 43.8 38.76C43.8 38.9733 43.6667 39.4533 43.4 40.2C43.1333 40.9467 42.7867 41.8 42.36 42.76C41.9333 43.72 41.4533 44.76 40.92 45.88C40.44 46.9467 39.96 47.96 39.48 48.92C39 49.8267 38.44 50.8933 37.8 52.12C37.16 53.2933 36.4933 54.4667 35.8 55.64C35.1067 56.8667 34.4133 58.0133 33.72 59.08C33.08 60.2 32.4667 61.16 31.88 61.96C29.5867 65.16 27.24 67.72 24.84 69.64C22.4933 71.6133 19.9867 73.0533 17.32 73.96C14.8667 74.8133 12.52 75.24 10.28 75.24C8.78667 75.24 7.34667 75.0533 5.96 74.68C4.52 74.36 3.21333 73.8267 2.04 73.08C1.66667 72.8133 1.45333 72.52 1.4 72.2C1.29333 71.9333 1.21333 71.5867 1.16 71.16C1.16 70.9467 1.13333 70.6267 1.08 70.2C1.02667 69.8267 0.973333 69.4267 0.92 69C0.866667 68.6267 0.813334 68.2533 0.76 67.88C0.706667 67.5067 0.68 67.24 0.68 67.08C0.68 66.6 0.893334 66.4133 1.32 66.52C1.32 67.1067 1.48 67.8267 1.8 68.68C2.06667 69.5333 2.6 70.3867 3.4 71.24C4.14667 72.0933 5.18667 72.8133 6.52 73.4C7.8 73.9867 9.42667 74.28 11.4 74.28C13.0533 74.28 14.9467 73.96 17.08 73.32C19.6933 72.5733 22.04 71.16 24.12 69.08C26.2 67 28.2 64.52 30.12 61.64C31.08 60.2 32.04 58.5733 33 56.76C33.96 55 34.84 53.2667 35.64 51.56C36.44 49.8533 37.1067 48.3333 37.64 47C38.2267 45.6133 38.6 44.6533 38.76 44.12C39.1333 43.0533 39.3733 42.2533 39.48 41.72C39.5867 41.1333 39.64 40.7067 39.64 40.44C39.64 40.0667 39.5067 39.88 39.24 39.88C39.0267 39.88 38.3867 40.3067 37.32 41.16C36.3067 41.96 35.2133 42.9733 34.04 44.2C32.92 45.3733 31.9067 46.68 31 48.12C30.0933 49.5067 29.64 50.8133 29.64 52.04C29.64 52.4667 29.6667 52.84 29.72 53.16C29.7733 53.48 29.8 53.6933 29.8 53.8C29.8 54.0667 29.4 54.3067 28.6 54.52C27.8533 54.7333 27.1067 55.0533 26.36 55.48C26.1467 55.48 26.04 55.2667 26.04 54.84C26.04 54.2 26.04 53.6933 26.04 53.32C26.04 52.8933 26.0933 52.4133 26.2 51.88C26.36 51.2933 26.6 50.6 26.92 49.8C27.2933 49 27.8533 47.9067 28.6 46.52C29.3467 45.08 30.3067 43.2667 31.48 41.08C32.6533 38.84 34.12 36.0933 35.88 32.84C33.6933 33.96 31.32 35 28.76 35.96C26.2 36.92 23.48 37.72 20.6 38.36C20.12 39.16 19.5333 40.1733 18.84 41.4C18.1467 42.5733 17.48 43.8267 16.84 45.16C16.2533 46.44 15.7467 47.72 15.32 49C14.8933 50.28 14.68 51.4 14.68 52.36C14.68 53.2667 14.7867 53.9333 15 54.36C15.2133 54.7867 15.6667 55 16.36 55C17.1067 55 17.8533 54.84 18.6 54.52C19.4 54.2 20.4133 53.6933 21.64 53C21.8 52.8933 21.9333 52.92 22.04 53.08C22.1467 53.1867 22.1467 53.32 22.04 53.48C18.52 55.6133 15.6933 56.68 13.56 56.68C12.92 56.68 12.36 56.52 11.88 56.2C11.4 55.88 11.16 55 11.16 53.56C11.16 52.92 11.3733 52.04 11.8 50.92C12.28 49.7467 12.84 48.4667 13.48 47.08C14.1733 45.6933 14.8933 44.28 15.64 42.84C16.3867 41.3467 17.0533 39.96 17.64 38.68C16.52 38.9467 15.1333 39.16 13.48 39.32C11.8267 39.4267 10.3333 39.5067 9 39.56C8.78667 39.56 8.68 39.48 8.68 39.32C8.68 39 9 38.84 9.64 38.84C10.2267 38.84 10.9467 38.84 11.8 38.84C12.6533 38.7867 13.48 38.7333 14.28 38.68C15.1333 38.5733 15.9067 38.4667 16.6 38.36C17.3467 38.2533 17.8267 38.1467 18.04 38.04C18.52 37.2933 19.0533 36.4667 19.64 35.56C20.2267 34.6533 20.8133 33.7733 21.4 32.92C21.9867 32.0133 22.52 31.2133 23 30.52C23.5333 29.8267 23.9333 29.3733 24.2 29.16C24.6267 28.8933 25.24 28.6533 26.04 28.44C26.8933 28.1733 27.6667 27.9333 28.36 27.72C28.6267 27.72 28.7333 27.8 28.68 27.96C28.6267 28.12 28.52 28.2533 28.36 28.36C27.9867 28.4667 27.56 28.68 27.08 29C26.6533 29.2667 26.3067 29.5867 26.04 29.96C25.4 30.76 24.6533 31.8 23.8 33.08C23 34.3067 22.0667 35.8267 21 37.64C23.24 37.2133 25.6667 36.52 28.28 35.56C30.9467 34.6 33.5867 33.4267 36.2 32.04C36.9467 30.7067 37.7733 29.1867 38.68 27.48C39.5867 25.7733 40.52 24.04 41.48 22.28C42.4933 20.52 43.4533 18.8133 44.36 17.16C45.32 15.5067 46.2 14.0933 47 12.92C48.12 11.2133 49.32 9.61333 50.6 8.12C51.88 6.62667 53.1867 5.34667 54.52 4.28C55.9067 3.16 57.2667 2.28 58.6 1.64C59.9867 1 61.32 0.68 62.6 0.68C63.2933 0.68 63.96 0.866667 64.6 1.24C65.24 1.56 65.56 2.52 65.56 4.12V4.2ZM63.4 5C63.4 4.30667 63.2933 3.77334 63.08 3.4C62.8667 3.02667 62.5733 2.76 62.2 2.6C61.88 2.38667 61.5067 2.25334 61.08 2.2C60.7067 2.14667 60.3333 2.12 59.96 2.12C59.48 2.12 58.8933 2.25334 58.2 2.52C57.5067 2.78667 56.68 3.34667 55.72 4.2C54.76 5 53.6133 6.17333 52.28 7.72C51 9.26667 49.5333 11.32 47.88 13.88C47.4 14.68 46.8133 15.72 46.12 17C45.4267 18.28 44.68 19.6933 43.88 21.24C43.08 22.7333 42.2533 24.3067 41.4 25.96C40.5467 27.6133 39.72 29.2133 38.92 30.76C41.32 29.48 43.9333 27.88 46.76 25.96C49.5867 23.9867 52.2267 21.8533 54.68 19.56C57.1867 17.2667 59.2667 14.8667 60.92 12.36C62.5733 9.85334 63.4 7.4 63.4 5ZM66.6737 45.48C65.7671 46.6 64.6737 47.7733 63.3937 49C62.1671 50.1733 60.8071 51.2667 59.3137 52.28C57.8737 53.24 56.3537 54.04 54.7537 54.68C53.2071 55.2667 51.6604 55.56 50.1137 55.56C47.6071 55.56 46.3537 54.44 46.3537 52.2C46.3537 50.7067 46.7271 49.1067 47.4738 47.4C48.2737 45.64 49.2871 44.04 50.5137 42.6C51.7404 41.1067 53.0738 39.88 54.5138 38.92C56.0071 37.9067 57.4204 37.4 58.7537 37.4C59.5004 37.4 60.0071 37.5333 60.2738 37.8C60.5938 38.0667 60.7537 38.4133 60.7537 38.84C60.7537 39.48 60.5404 40.1733 60.1138 40.92C59.7404 41.6667 59.1537 42.3867 58.3537 43.08C57.5537 43.72 56.5404 44.28 55.3137 44.76C54.0871 45.1867 52.6204 45.4 50.9137 45.4C50.6471 45.88 50.3537 46.6533 50.0338 47.72C49.7138 48.7333 49.5538 49.7733 49.5538 50.84C49.5538 53.0267 50.5404 54.12 52.5138 54.12C53.7404 54.12 54.9937 53.8267 56.2737 53.24C57.6071 52.6533 58.8871 51.9333 60.1138 51.08C61.3404 50.1733 62.4604 49.2133 63.4737 48.2C64.5404 47.1333 65.4204 46.1467 66.1137 45.24C66.2204 45.1333 66.3271 45.1067 66.4338 45.16C66.5938 45.2133 66.6737 45.32 66.6737 45.48ZM58.2737 39.24C58.2737 38.5467 57.9271 38.2 57.2337 38.2C56.7004 38.2 56.1404 38.4133 55.5538 38.84C55.0204 39.2133 54.4871 39.72 53.9537 40.36C53.4204 41 52.9137 41.6933 52.4338 42.44C51.9537 43.1867 51.5537 43.9067 51.2337 44.6C51.3404 44.6533 51.5271 44.7067 51.7937 44.76C52.0604 44.76 52.2737 44.76 52.4338 44.76C53.9804 44.76 55.3404 44.2267 56.5138 43.16C57.6871 42.04 58.2737 40.7333 58.2737 39.24Z" fill="currentColor"/>
+                                <path
+                                    d="M65.56 4.2C65.56 5.85333 64.9467 7.77333 63.72 9.96C62.5467 12.0933 60.7867 14.36 58.44 16.76C56.1467 19.16 53.32 21.64 49.96 24.2C46.6 26.7067 42.7867 29.16 38.52 31.56C37.0267 34.28 35.6933 36.76 34.52 39C33.4 41.1867 32.3067 43.5067 31.24 45.96C31.1333 46.2267 31.1067 46.3867 31.16 46.44C31.2133 46.44 31.32 46.36 31.48 46.2C32.8133 44.6 34.3867 42.9733 36.2 41.32C38.0133 39.6133 39.8533 38.3333 41.72 37.48C42.04 37.3733 42.28 37.32 42.44 37.32C42.8667 37.32 43.1867 37.5067 43.4 37.88C43.6667 38.2533 43.8 38.5467 43.8 38.76C43.8 38.9733 43.6667 39.4533 43.4 40.2C43.1333 40.9467 42.7867 41.8 42.36 42.76C41.9333 43.72 41.4533 44.76 40.92 45.88C40.44 46.9467 39.96 47.96 39.48 48.92C39 49.8267 38.44 50.8933 37.8 52.12C37.16 53.2933 36.4933 54.4667 35.8 55.64C35.1067 56.8667 34.4133 58.0133 33.72 59.08C33.08 60.2 32.4667 61.16 31.88 61.96C29.5867 65.16 27.24 67.72 24.84 69.64C22.4933 71.6133 19.9867 73.0533 17.32 73.96C14.8667 74.8133 12.52 75.24 10.28 75.24C8.78667 75.24 7.34667 75.0533 5.96 74.68C4.52 74.36 3.21333 73.8267 2.04 73.08C1.66667 72.8133 1.45333 72.52 1.4 72.2C1.29333 71.9333 1.21333 71.5867 1.16 71.16C1.16 70.9467 1.13333 70.6267 1.08 70.2C1.02667 69.8267 0.973333 69.4267 0.92 69C0.866667 68.6267 0.813334 68.2533 0.76 67.88C0.706667 67.5067 0.68 67.24 0.68 67.08C0.68 66.6 0.893334 66.4133 1.32 66.52C1.32 67.1067 1.48 67.8267 1.8 68.68C2.06667 69.5333 2.6 70.3867 3.4 71.24C4.14667 72.0933 5.18667 72.8133 6.52 73.4C7.8 73.9867 9.42667 74.28 11.4 74.28C13.0533 74.28 14.9467 73.96 17.08 73.32C19.6933 72.5733 22.04 71.16 24.12 69.08C26.2 67 28.2 64.52 30.12 61.64C31.08 60.2 32.04 58.5733 33 56.76C33.96 55 34.84 53.2667 35.64 51.56C36.44 49.8533 37.1067 48.3333 37.64 47C38.2267 45.6133 38.6 44.6533 38.76 44.12C39.1333 43.0533 39.3733 42.2533 39.48 41.72C39.5867 41.1333 39.64 40.7067 39.64 40.44C39.64 40.0667 39.5067 39.88 39.24 39.88C39.0267 39.88 38.3867 40.3067 37.32 41.16C36.3067 41.96 35.2133 42.9733 34.04 44.2C32.92 45.3733 31.9067 46.68 31 48.12C30.0933 49.5067 29.64 50.8133 29.64 52.04C29.64 52.4667 29.6667 52.84 29.72 53.16C29.7733 53.48 29.8 53.6933 29.8 53.8C29.8 54.0667 29.4 54.3067 28.6 54.52C27.8533 54.7333 27.1067 55.0533 26.36 55.48C26.1467 55.48 26.04 55.2667 26.04 54.84C26.04 54.2 26.04 53.6933 26.04 53.32C26.04 52.8933 26.0933 52.4133 26.2 51.88C26.36 51.2933 26.6 50.6 26.92 49.8C27.2933 49 27.8533 47.9067 28.6 46.52C29.3467 45.08 30.3067 43.2667 31.48 41.08C32.6533 38.84 34.12 36.0933 35.88 32.84C33.6933 33.96 31.32 35 28.76 35.96C26.2 36.92 23.48 37.72 20.6 38.36C20.12 39.16 19.5333 40.1733 18.84 41.4C18.1467 42.5733 17.48 43.8267 16.84 45.16C16.2533 46.44 15.7467 47.72 15.32 49C14.8933 50.28 14.68 51.4 14.68 52.36C14.68 53.2667 14.7867 53.9333 15 54.36C15.2133 54.7867 15.6667 55 16.36 55C17.1067 55 17.8533 54.84 18.6 54.52C19.4 54.2 20.4133 53.6933 21.64 53C21.8 52.8933 21.9333 52.92 22.04 53.08C22.1467 53.1867 22.1467 53.32 22.04 53.48C18.52 55.6133 15.6933 56.68 13.56 56.68C12.92 56.68 12.36 56.52 11.88 56.2C11.4 55.88 11.16 55 11.16 53.56C11.16 52.92 11.3733 52.04 11.8 50.92C12.28 49.7467 12.84 48.4667 13.48 47.08C14.1733 45.6933 14.8933 44.28 15.64 42.84C16.3867 41.3467 17.0533 39.96 17.64 38.68C16.52 38.9467 15.1333 39.16 13.48 39.32C11.8267 39.4267 10.3333 39.5067 9 39.56C8.78667 39.56 8.68 39.48 8.68 39.32C8.68 39 9 38.84 9.64 38.84C10.2267 38.84 10.9467 38.84 11.8 38.84C12.6533 38.7867 13.48 38.7333 14.28 38.68C15.1333 38.5733 15.9067 38.4667 16.6 38.36C17.3467 38.2533 17.8267 38.1467 18.04 38.04C18.52 37.2933 19.0533 36.4667 19.64 35.56C20.2267 34.6533 20.8133 33.7733 21.4 32.92C21.9867 32.0133 22.52 31.2133 23 30.52C23.5333 29.8267 23.9333 29.3733 24.2 29.16C24.6267 28.8933 25.24 28.6533 26.04 28.44C26.8933 28.1733 27.6667 27.9333 28.36 27.72C28.6267 27.72 28.7333 27.8 28.68 27.96C28.6267 28.12 28.52 28.2533 28.36 28.36C27.9867 28.4667 27.56 28.68 27.08 29C26.6533 29.2667 26.3067 29.5867 26.04 29.96C25.4 30.76 24.6533 31.8 23.8 33.08C23 34.3067 22.0667 35.8267 21 37.64C23.24 37.2133 25.6667 36.52 28.28 35.56C30.9467 34.6 33.5867 33.4267 36.2 32.04C36.9467 30.7067 37.7733 29.1867 38.68 27.48C39.5867 25.7733 40.52 24.04 41.48 22.28C42.4933 20.52 43.4533 18.8133 44.36 17.16C45.32 15.5067 46.2 14.0933 47 12.92C48.12 11.2133 49.32 9.61333 50.6 8.12C51.88 6.62667 53.1867 5.34667 54.52 4.28C55.9067 3.16 57.2667 2.28 58.6 1.64C59.9867 1 61.32 0.68 62.6 0.68C63.2933 0.68 63.96 0.866667 64.6 1.24C65.24 1.56 65.56 2.52 65.56 4.12V4.2ZM63.4 5C63.4 4.30667 63.2933 3.77334 63.08 3.4C62.8667 3.02667 62.5733 2.76 62.2 2.6C61.88 2.38667 61.5067 2.25334 61.08 2.2C60.7067 2.14667 60.3333 2.12 59.96 2.12C59.48 2.12 58.8933 2.25334 58.2 2.52C57.5067 2.78667 56.68 3.34667 55.72 4.2C54.76 5 53.6133 6.17333 52.28 7.72C51 9.26667 49.5333 11.32 47.88 13.88C47.4 14.68 46.8133 15.72 46.12 17C45.4267 18.28 44.68 19.6933 43.88 21.24C43.08 22.7333 42.2533 24.3067 41.4 25.96C40.5467 27.6133 39.72 29.2133 38.92 30.76C41.32 29.48 43.9333 27.88 46.76 25.96C49.5867 23.9867 52.2267 21.8533 54.68 19.56C57.1867 17.2667 59.2667 14.8667 60.92 12.36C62.5733 9.85334 63.4 7.4 63.4 5ZM66.6737 45.48C65.7671 46.6 64.6737 47.7733 63.3937 49C62.1671 50.1733 60.8071 51.2667 59.3137 52.28C57.8737 53.24 56.3537 54.04 54.7537 54.68C53.2071 55.2667 51.6604 55.56 50.1137 55.56C47.6071 55.56 46.3537 54.44 46.3537 52.2C46.3537 50.7067 46.7271 49.1067 47.4738 47.4C48.2737 45.64 49.2871 44.04 50.5137 42.6C51.7404 41.1067 53.0738 39.88 54.5138 38.92C56.0071 37.9067 57.4204 37.4 58.7537 37.4C59.5004 37.4 60.0071 37.5333 60.2738 37.8C60.5938 38.0667 60.7537 38.4133 60.7537 38.84C60.7537 39.48 60.5404 40.1733 60.1138 40.92C59.7404 41.6667 59.1537 42.3867 58.3537 43.08C57.5537 43.72 56.5404 44.28 55.3137 44.76C54.0871 45.1867 52.6204 45.4 50.9137 45.4C50.6471 45.88 50.3537 46.6533 50.0338 47.72C49.7138 48.7333 49.5538 49.7733 49.5538 50.84C49.5538 53.0267 50.5404 54.12 52.5138 54.12C53.7404 54.12 54.9937 53.8267 56.2737 53.24C57.6071 52.6533 58.8871 51.9333 60.1138 51.08C61.3404 50.1733 62.4604 49.2133 63.4737 48.2C64.5404 47.1333 65.4204 46.1467 66.1137 45.24C66.2204 45.1333 66.3271 45.1067 66.4338 45.16C66.5938 45.2133 66.6737 45.32 66.6737 45.48ZM58.2737 39.24C58.2737 38.5467 57.9271 38.2 57.2337 38.2C56.7004 38.2 56.1404 38.4133 55.5538 38.84C55.0204 39.2133 54.4871 39.72 53.9537 40.36C53.4204 41 52.9137 41.6933 52.4338 42.44C51.9537 43.1867 51.5537 43.9067 51.2337 44.6C51.3404 44.6533 51.5271 44.7067 51.7937 44.76C52.0604 44.76 52.2737 44.76 52.4338 44.76C53.9804 44.76 55.3404 44.2267 56.5138 43.16C57.6871 42.04 58.2737 40.7333 58.2737 39.24Z"
+                                    fill="currentColor"
+                                />
                             </svg>
                         </span>
                         SILK Cafe
                     </a>
                     <div class="wrapper">
                         <p class="footer_about-address text--sm text--bold">Mid-Ohio Valley, WV & Ohio</p>
-                        <p class="footer_about-copyright text--sm">&copy; 2026 SILK Corp. All rights reserved</p>
+                        <p class="footer_about-copyright text--sm">
+                            &copy; 2026 SILK Corp. All rights reserved
+                        </p>
                     </div>
                 </div>
                 <div class="footer_block">
-                    <h4 class="footer_block-title">Private Inquiries</h4>
+                    <h4 class="footer_block-title">Contact Info</h4>
                     <ul class="footer_block-list text--bold text--md">
-                        <li><a class="link" href="mailto:private@silkcafe.org"><i class="icon-email icon"></i> private@silkcafe.org</a></li>
-                        <li><a class="link" href="tel:+13045551234"><i class="icon-phone icon"></i> (304) 555-1234</a></li>
+                        <li>
+                            <a class="link" href="mailto:info@silkcorp.org"> <i class="icon-email icon"></i> info@silkcorp.org </a>
+                        </li>
+                        <li>
+                            <a class="link" href="tel:+13045551234"> <i class="icon-phone icon"></i> (304) 555-1234 </a>
+                        </li>
                     </ul>
-                    <p class="text--sm" style="margin-top: 1rem; opacity: 0.7;">All inquiries answered within 48 hours</p>
+                    <p class="footer_block-subtitle text--md text--bold" style="margin-top: 1rem;">Follow Us</p>
+                    <ul class="footer_block-list text--md">
+                        <li><a class="link" href="https://instagram.com/silkcafe" target="_blank"><i class="icon-instagram icon"></i> Instagram</a></li>
+                        <li><a class="link" href="https://facebook.com/silkcafe" target="_blank"><i class="icon-facebook icon"></i> Facebook</a></li>
+                    </ul>
                 </div>
                 <div class="footer_block">
                     <h4 class="footer_block-title">Explore</h4>
                     <ul class="footer_block-list text--md">
-                        <li><a class="link" href="menu.html">Private Dining</a></li>
+                        <li><a class="link" href="menu.html">Our Menu</a></li>
                         <li><a class="link" href="about.html">About Us</a></li>
-                        <li><a class="link" href="gatherings.html">Our Spaces</a></li>
-                        <li><a class="link" href="stories.html">Stories</a></li>
+                        <li><a class="link" href="community.html">Community Kitchen</a></li>
+                        <li><a class="link" href="catering.html">Catering Services</a></li>
+                        <li><a class="link" href="gatherings.html">Gatherings</a></li>
+                        <li><a class="link" href="stories.html">Success Stories</a></li>
                         <li><a class="link" href="contacts.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer_block">
                     <h4 class="footer_block-title">The SILK Network</h4>
+                    <p class="footer_block-subtitle text--md text--bold">Part of SILK YACHT</p>
                     <ul class="footer_block-list text--md">
                         <li><a class="link" href="https://silkcorp.org" target="_blank">SILK Corp</a></li>
                         <li><a class="link" href="https://silkyoga.org" target="_blank">SILK Yoga</a></li>
                         <li><a class="link" href="https://silkarts.org" target="_blank">SILK Arts</a></li>
+                        <li><a class="link" href="https://silkcafe.org" target="_blank">SILK Cafe</a></li>
                         <li><a class="link" href="https://silkhomes.org" target="_blank">SILK Homes</a></li>
                         <li><a class="link" href="https://silklife.org" target="_blank">SILK Life</a></li>
+                        <li><a class="link" href="https://silkwomen.org" target="_blank">SILK Women</a></li>
                     </ul>
                 </div>
             </div>
         </footer>
 
         <script src="js/common.min.js"></script>
-        <script>
-            // Initialize Hero Swiper
-            document.addEventListener('DOMContentLoaded', function() {
-                // Hero Carousel
-                new Swiper('.hero-swiper', {
-                    effect: 'fade',
-                    fadeEffect: { crossFade: true },
-                    autoplay: { delay: 6000, disableOnInteraction: false },
-                    loop: true,
-                    speed: 1000,
-                    pagination: {
-                        el: '.hero-swiper .swiper-pagination',
-                        clickable: true
-                    }
-                });
-
-                // Possibility Carousels
-                document.querySelectorAll('.possibility-swiper').forEach(function(el) {
-                    new Swiper(el, {
-                        slidesPerView: 1,
-                        spaceBetween: 24,
-                        loop: false,
-                        navigation: {
-                            nextEl: el.querySelector('.swiper-button-next'),
-                            prevEl: el.querySelector('.swiper-button-prev')
-                        },
-                        pagination: {
-                            el: el.querySelector('.swiper-pagination'),
-                            clickable: true
-                        },
-                        breakpoints: {
-                            576: { slidesPerView: 1.5 },
-                            768: { slidesPerView: 2 },
-                            992: { slidesPerView: 3 },
-                            1200: { slidesPerView: 4 }
-                        }
-                    });
-                });
-
-                // Chef Spotlight Carousel
-                new Swiper('.chef-swiper', {
-                    slidesPerView: 1,
-                    loop: true,
-                    speed: 800,
-                    pagination: {
-                        el: '.chef-swiper .swiper-pagination',
-                        clickable: true
-                    }
-                });
-
-                // Gallery Slider
-                new Swiper('.gallery_slider', {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    loop: true,
-                    autoplay: { delay: 4000 },
-                    breakpoints: {
-                        576: { slidesPerView: 2 },
-                        992: { slidesPerView: 3 },
-                        1200: { slidesPerView: 4 }
-                    }
-                });
-            });
-        </script>
     </body>
 </html>

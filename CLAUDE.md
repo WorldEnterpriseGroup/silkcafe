@@ -47,6 +47,16 @@ SILK Cafe operates out of **authentic 1880s Victorian cottages** in **West Virgi
 - No fancy wine glasses or candles (Scandinavian simplicity)
 - No suits/formal attire (casual, comfortable)
 - No grand/tall ceilings or large rooms
+- **NO ALCOHOL** - strictly forbidden (no wine, beer, champagne, cocktails, etc.)
+- **KOSHER KITCHEN** - no pork, no shellfish
+
+### Strictly Prohibited in Images & Content
+- **Alcohol of any kind** - no wine glasses, wine bottles, champagne, beer, cocktails, bars, etc.
+- **Non-kosher foods** - no pork (bacon, ham, sausage, etc.), no shellfish (shrimp, crab, lobster, etc.)
+- Fancy/upscale restaurant aesthetics
+- Modern minimalist design
+- Staged or glamorous photography
+- High ceilings or grand spaces
 
 ---
 
