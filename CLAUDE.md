@@ -1,92 +1,99 @@
-# SILK Cafe - Project Instructions
+# World Enterprise Group — Site Standards
 
-## Brand
+This is a static GitHub Pages website. All changes deploy automatically when pushed to the default branch.
 
-**Tagline:** Good Food. Old Walls. Real People.
+## Deployment
 
----
+- **Hosting**: GitHub Pages (static files only — no server-side code)
+- **Deploy trigger**: Push to default branch (`main`, `master`, or `gh-pages`)
+- **Custom domains**: Configured via `CNAME` file — never delete or modify it
 
-## Physical Property Details
+## Image Standards
 
-SILK Cafe operates out of **authentic 1880s Victorian cottages** in **West Virginia** (Ravenswood, Parkersburg) and **Ohio** (Marietta). These are NOT modern renovations - they are preserved historic homes with original details.
+### Format: AVIF (mandatory)
 
-### Architectural Characteristics
-- **Era:** 1880s Victorian homestead
-- **Ceiling Height:** 9 feet (standard, NOT grand/tall)
-- **Room Size:** Small, intimate rooms (approximately 12x16 feet max)
-- **Floors:** Original dark wide-plank hardwood (slightly worn, authentic patina)
-- **Doors:** Original white-painted 4-panel doors
-- **Windows:** Tall double-hung windows with white trim, some bay windows with interior shutters
-- **Fireplaces:** Original cast iron inserts with white-painted mantels
+All images MUST be saved as `.avif`. Use the `<picture>` element with fallback for maximum compatibility:
 
-### Interior Design & Decor
-- **NOT modern farmhouse** - true 1880s preserved aesthetic
-- **Walls vary by room:**
-  - Warm yellow/mustard paint (living room)
-  - Green & cream striped Victorian wallpaper with solid green panels below chair rail (bedrooms)
-  - Dusty slate/pale blue paint (dining room)
-  - Tan/beige with cream beadboard wainscoting and decorative wallpaper border (kitchen)
-- **Trim:** Simple white-painted crown molding, baseboards, and door frames
-- **Lighting:** Brass/wood ceiling fans, simple black iron chandeliers, practical lamps
-- **Furniture:**
-  - Dark wood Victorian dining tables with upholstered chairs (burgundy/crimson)
-  - Queen Anne style coffee tables
-  - Beige sofas with patterned throw pillows
-  - Light wood farmhouse tables with white Windsor chairs (kitchen)
-  - Honey oak kitchen cabinets (NOT painted white)
-  - Antique dark wood shelves and dressers
-- **Color palette:** Sage green, dusty slate blue, cream, warm gold/yellow, tan/beige, burgundy accents, dark and honey wood tones
-- **Practical additions:** Wall-mounted TVs, window AC units, basic stainless/black stove (not hidden or fancy)
+```html
+<picture>
+  <source srcset="assets/images/hero.avif" type="image/avif">
+  <img src="assets/images/hero.avif" alt="Descriptive alt text"
+       width="1024" height="768" loading="lazy" decoding="async">
+</picture>
+```
 
-### What It Is NOT
-- No modern farmhouse shiplap
-- No industrial elements
-- No stainless steel appliances
-- No granite/marble counters
-- No open concept layouts
-- No fancy wine glasses or candles (Scandinavian simplicity)
-- No suits/formal attire (casual, comfortable)
-- No grand/tall ceilings or large rooms
-- **NO ALCOHOL** - strictly forbidden (no wine, beer, champagne, cocktails, etc.)
-- **KOSHER KITCHEN** - no pork, no shellfish
+For hero/above-the-fold images, do NOT use `loading="lazy"` — instead use `fetchpriority="high"`:
 
-### Strictly Prohibited in Images & Content
-- **Alcohol of any kind** - no wine glasses, wine bottles, champagne, beer, cocktails, bars, etc.
-- **Non-kosher foods** - no pork (bacon, ham, sausage, etc.), no shellfish (shrimp, crab, lobster, etc.)
-- Fancy/upscale restaurant aesthetics
-- Modern minimalist design
-- Staged or glamorous photography
-- High ceilings or grand spaces
+```html
+<img src="assets/images/hero.avif" alt="Hero description"
+     width="1600" height="900" fetchpriority="high" decoding="async">
+```
 
----
+### Lazy loading (mandatory for below-fold images)
 
-## Photo Style Guidelines
+- Add `loading="lazy"` to every `<img>` that is NOT in the initial viewport
+- Add `decoding="async"` to all images
+- Always include `width` and `height` attributes to prevent layout shift
 
-When generating images for SILK Cafe:
-- **Realistic, documentary-style** photography
-- **Cozy, humble, authentic** - not staged or glamorous
-- **People in casual attire** - sweaters, jeans, button-downs (no suits)
-- **Small intimate spaces** with natural daylight
-- Reference photos available at: `C:\Users\MrHackney\Tao Mgt\Tao Cottage - Documents\200 Henrietta\Photos\refined\`
+### Image generation
 
----
+Use the `/comfyui` skill to generate images. The default model (Z-Image Turbo) produces photorealistic 1024x1024 images in ~6 seconds. Output format is AVIF by default.
 
-## Visiting Chefs
+Common dimensions for site images:
 
-SILK Cafe features exclusive private dining with visiting chefs:
+| Use Case | Generate Size | Display Size | Aspect |
+|----------|--------------|--------------|--------|
+| Hero banner | 1024x576 | 1600x900 | 16:9 |
+| Card / thumbnail | 1024x768 | 600x450 | 4:3 |
+| Square (social, avatar) | 1024x1024 | 400x400 | 1:1 |
+| Portrait | 768x1344 | 400x700 | ~9:16 |
 
-| Chef | Heritage | Specialty | Signature |
-|------|----------|-----------|-----------|
-| Chef Suzanne | Filipina | Asian Fusion | Local shredded beef lumpia, rice noodles with seasonal vegetables |
-| Chef Dustin | Columbus, Ohio | Authentic Appalachian | Root-to-stem cooking, smoked meats, preserved vegetables (20+ years experience) |
+After generating, place images in the repo's existing image directory (typically `assets/images/`, `images/`, or `assets/img/`).
 
----
+## HTML Standards
 
-## Private Dining Model
+### Structure
 
-- **NOT a restaurant** - exclusive private catering experiences only
-- **Reservations required:** 2-4 weeks advance notice
-- **Guest capacity:** 6-12 guests per event
-- **Pricing:** $125-500+ per guest
-- **Custom menus:** All experiences tailored to guest preferences
-- **Simple cooking philosophy:** Simplicity IS what makes it high-end and elite
+- These are static HTML sites — no build tools, no npm, no bundlers
+- Do NOT add package.json, webpack, vite, or any build system
+- Keep the existing CSS framework (Bootstrap 3, 4, or 5 — whichever the site uses)
+- Preserve the existing directory structure and naming conventions
+
+### Navigation consistency
+
+Many sites have navigation copy-pasted across every HTML file. When updating navigation:
+- Update ALL HTML files in the repo, not just one
+- Use grep/glob to find every file containing the nav markup
+- Verify the update is consistent across all pages
+
+### Semantic HTML
+
+- Use `<header>`, `<main>`, `<footer>`, `<section>`, `<nav>`, `<article>` elements
+- Every `<img>` must have a descriptive `alt` attribute (never empty, never "image")
+- Use heading hierarchy (`h1` > `h2` > `h3`) — one `h1` per page
+
+### Performance
+
+- Add `defer` to all `<script>` tags (except inline scripts that must run immediately)
+- Preload the hero/LCP image: `<link rel="preload" as="image" href="hero.avif" type="image/avif">`
+- Do NOT add new JavaScript libraries unless absolutely necessary
+- Prefer CSS animations over JavaScript animations
+
+## CSS Standards
+
+- Follow the existing site's class naming convention (BEM, utility, or template-specific like `ct-`)
+- Add new styles to the existing custom stylesheet — do NOT create new CSS files
+- Use CSS custom properties (`var(--color-primary)`) for colors when the site already uses them
+- Mobile-first responsive design: start with mobile styles, add `min-width` media queries for larger screens
+
+## What NOT To Do
+
+- Do NOT delete the `CNAME` file
+- Do NOT add build tools, bundlers, or package managers
+- Do NOT replace the existing CSS framework with a different one
+- Do NOT add React, Vue, Angular, or any SPA framework
+- Do NOT commit node_modules or any dependency directories
+- Do NOT use placeholder text (Lorem ipsum) — always write real content
+- Do NOT leave dead code (commented-out sections, unused CSS/JS)
+- Do NOT reference external images by URL — always commit images to the repo
+- Do NOT use PHP, Python, or any server-side code (GitHub Pages is static only)
